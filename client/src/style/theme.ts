@@ -12,7 +12,7 @@ const theme = {
     },
     fontFamily: {
         primary: ["Poppins", "sans-serif"],
-        secondary:["Turret Road","serif"]
+        secondary:["Nova Square","serif"]
     }
 };
 

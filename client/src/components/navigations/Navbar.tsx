@@ -1,20 +1,26 @@
-import styled from "styled-components";
+import AppLogo from "@/assets/images/base-dna.png";
+
+import {
+  Nav,
+  NavContainer,
+  NavbarLogo,
+  LogoImage,
+  Title,
+  NavMenu
+} from "./Navbar.styled";
 
 const Navbar = () => {
   return (
-    <NavContainer>
-      <h1>Test</h1>
-    </NavContainer>
+    <Nav>
+      <NavContainer>
+        <NavbarLogo>
+          <LogoImage src={AppLogo} alt="logo" />
+          <Title>DNASeq Explorer</Title>
+        </NavbarLogo>
+        <NavMenu>Navbar Menu Section</NavMenu>
+      </NavContainer>
+    </Nav>
   )
 }
 
 export default Navbar;
-
-
-const NavContainer = styled.nav`
-  position: sticky;
-  top: 0;
-  padding: 14px 20px;
-  background-color: ${(props) => props.theme.color.accent};
-  color: ${(props) => props.theme.color.light};
-`
