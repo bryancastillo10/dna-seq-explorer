@@ -17,7 +17,9 @@ const Navbar = () => {
           <LogoImage src={AppLogo} alt="logo" />
           <Title>DNASeq Explorer</Title>
         </NavbarLogo>
-        <NavMenu>Navbar Menu Section</NavMenu>
+        <NavMenu>
+            Some Nav Menu
+        </NavMenu>
       </NavContainer>
     </Nav>
   )
