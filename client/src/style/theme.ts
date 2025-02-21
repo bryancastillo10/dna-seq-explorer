@@ -2,7 +2,7 @@ const theme = {
     color: {
         "light": "#FCFAFA", // snow white
         "dark":"#07090F", // black
-        "accent": "#598B2C", //medium green
+        "accent": "#58855C", //mint green
         "lightGray": "#847E89", //light gray
         "canvas":"#F3E9D2" //beige parchment
     },
