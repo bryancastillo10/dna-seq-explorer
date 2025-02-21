@@ -3,7 +3,10 @@ import { createRoot } from 'react-dom/client'
 import { createRouter, RouterProvider } from '@tanstack/react-router';
 
 import { routeTree } from './routeTree.gen';
+
 import PageNotFound from '@/components/navigations/PageNotFound';
+import Providers from '@/components/providers/Providers';
+import { GlobalStyles } from '@/style/globalStyles';
 
 const router = createRouter({
   routeTree,
@@ -18,6 +21,9 @@ declare module '@tanstack/react-router' {
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <RouterProvider router={router}/>
+    <Providers>
+      <GlobalStyles/>
+      <RouterProvider router={router} />
+    </Providers>  
   </StrictMode>,
 )
