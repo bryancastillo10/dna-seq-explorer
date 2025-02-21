@@ -13,6 +13,6 @@ async def dotplot_alignment(data: PairwiseSequence):
 async def local_alignment(data:PairwiseSequence):
     return
 
-@sequencingRoute.post("/local", tags=["sequencing"])
+@sequencingRoute.post("/global", tags=["sequencing"])
 async def global_alignment(data: PairwiseSequence):
     return
