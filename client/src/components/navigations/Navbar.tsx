@@ -1,28 +1,51 @@
 import AppLogo from "@/assets/images/base-dna.png";
+import { Menu } from "lucide-react";
+import { Title, Nav, NavLayout } from "@/style/globalStyles";
+import styled from "styled-components";
 
-import {
-  Nav,
-  NavContainer,
-  NavbarLogo,
-  LogoImage,
-  Title,
-  NavMenu
-} from "./Navbar.styled";
 
-const Navbar = () => {
+const Navbar = () => { 
   return (
-    <Nav>
-      <NavContainer>
+    <Nav stickyPosition="top">
+      <NavLayout>
         <NavbarLogo>
           <LogoImage src={AppLogo} alt="logo" />
           <Title>DNASeq Explorer</Title>
         </NavbarLogo>
         <NavMenu>
-            Some Nav Menu
+          <StyledMenu size={24}/>
         </NavMenu>
-      </NavContainer>
+      </NavLayout>
     </Nav>
   )
 }
 
 export default Navbar;
+
+const NavbarLogo = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 10px;
+`
+
+const NavMenu = styled.div`
+  display: flex;
+  gap: 12;
+  align-items:center;
+  margin-right:8px;
+  cursor:pointer;
+`
+
+const StyledMenu = styled(Menu)`
+  transition: color 0.5s ease-in-out, transform 0.5s;
+
+  &:hover {
+    color: ${(props) => props.theme.color.canvas};
+    transform: scale(1.1);
+  }
+`
+
+const LogoImage = styled.img`
+  width:40px;
+  height:40px;
+`
