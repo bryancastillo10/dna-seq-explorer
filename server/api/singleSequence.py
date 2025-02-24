@@ -2,6 +2,7 @@ from fastapi import APIRouter, HTTPException, Depends
 
 from models.dna import SingleSequence
 from utils.validateSequence import validate_sequence
+from service.basic_analysis_service import analyze_sequence
 
 analysisRoute = APIRouter()
 
@@ -26,12 +27,14 @@ def validated_sequence(data: SingleSequence) -> SingleSequence:
 @analysisRoute.post("/basic",tags=["analysis"])
 async def basic_sequence_analysis(data: SingleSequence = Depends(validated_sequence)):
     
-    # Service Layer function call here
-    sequence = data.seq
+    try:
+        analysis_results = analyze_sequence(data)
+    except ValueError as e:
+        raise HTTPException(status_code=400, detail=str(e))
 
     return {
         "message":"Basic Sequence Analysis is Successful",
-        "data": sequence
+        "data": analysis_results
     }
 
 
