@@ -1,4 +1,4 @@
-from fastapi import APIRouter, HTTPException, Depends
+from fastapi import APIRouter, HTTPException
 
 from models.dna import SingleSequence
 from utils.validateSequence import validate_sequence
