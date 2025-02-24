@@ -11,7 +11,7 @@ analysisRoute = APIRouter()
 @analysisRoute.post("/basic",tags=["analysis"])
 async def basic_sequence_analysis(data: SingleSequence):
     
-    try:
+    try: 
         analysis_results = analyze_sequence(data)
     except ValueError as e:
         raise HTTPException(status_code=400, detail=str(e))

@@ -17,4 +17,4 @@ def analyze_sequence(data: SingleSequence):
     elif bio_obj.seq_type == "PROTEIN":
         return ProteinService.all_protein_analysis(bio_obj)
     else:
-        raise ValueError("Unsupported sequence type.")
+        raise ValueError("Invalid sequence type")
