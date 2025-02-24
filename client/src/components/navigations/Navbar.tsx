@@ -1,9 +1,9 @@
-import AppLogo from "@/assets/images/base-dna.png";
-import { Menu } from "lucide-react";
-import { Title, Nav, NavLayout } from "@/style/globalStyles";
-
 import styled from "styled-components";
+import { Menu } from "lucide-react";
+import { Link } from "@tanstack/react-router";
 
+import { Title, Nav, NavLayout, Paragraph } from "@/style/globalStyles";
+import AppLogo from "@/assets/images/base-dna.png";
 
 import useOpenMenu from "@/zustand/openMenu";
 import { navitems } from "@/constants/navbaritems";
@@ -23,9 +23,17 @@ const Navbar = () => {
             <StyledMenu size={24} onClick={toggleMenu} />
           </NavMenu>
           <NavList isOpen={isMenuOpen}>
-            {navitems.map((nav) => (
-              <div key={nav.id} className="">{nav.name}</div>
-            ))}
+            {navitems.map((nav) => {
+              const Icon = nav.icon;
+              return (
+                <StyledLink key={nav.id} to={nav.link}>
+                  <Item>
+                    <Icon />
+                    <Paragraph size="lg">{nav.name}</Paragraph>
+                    </Item>
+                </StyledLink>
+              )
+            })}
           </NavList>
         </div>
       </NavLayout>
@@ -72,6 +80,36 @@ const NavList = styled.div<{ isOpen: boolean }>`
   transition: transform 0.5s ease-in-out;
 `;
 
+const Item = styled.div`
+  position: relative; 
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  width: fit-content;
+  cursor:pointer;
+  
+  &::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 2px;
+    background-color: ${(props) => props.theme.color.light};
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.5s ease-in-out;
+  }
+
+  &:hover::after {
+    transform: scaleX(1);
+  }
+`;
+
+const StyledLink = styled(Link)`
+  color: ${(props) => props.theme.color.light};
+  text-decoration: none;
+`
 const LogoImage = styled.img`
   width: 40px;
   height: 40px;

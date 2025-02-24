@@ -31,7 +31,19 @@ export const NavLayout = styled.div`
 
 // Typography
 
+interface ParagraphProps {
+  size?: "xl" | "lg" | "base" | "sm" | "xs";
+  color?: "dark" | "light";
+}
+
 export const Title = styled.h1`
   font-family: ${(props) => props.theme.fontFamily.secondary.join(', ')};
   font-weight: ${(props) => props.theme.fontWeight.semibold};
 `;
+
+export const Paragraph = styled.p<ParagraphProps>`
+  font-family: ${(props) => props.theme.fontFamily.primary.join(', ')};
+  font-weight: ${(props) => props.theme.fontWeight.regular};
+  font-size: ${(props) => props.size ? props.theme.fontSize[props.size]: props.theme.fontSize.base};
+  color: ${(props) => props.color === "dark" ? props.theme.color.dark : props.theme.color.light};
+`

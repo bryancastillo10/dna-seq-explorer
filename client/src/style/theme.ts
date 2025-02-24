@@ -13,6 +13,13 @@ const theme = {
     fontFamily: {
         primary: ["Poppins", "sans-serif"],
         secondary:["Nova Square","serif"]
+    },
+    fontSize: {
+        xl: "22px",
+        lg: "18px",
+        base: "16px",
+        sm: "14px",
+        xs: "12px"
     }
 };
 
