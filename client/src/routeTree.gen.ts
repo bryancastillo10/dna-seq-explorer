@@ -13,7 +13,11 @@ import { createFileRoute } from '@tanstack/react-router'
 // Import Routes
 
 import { Route as rootRoute } from './routes/__root'
+import { Route as LocalImport } from './routes/local'
+import { Route as GlobalImport } from './routes/global'
 import { Route as DotplotImport } from './routes/dotplot'
+import { Route as BasicImport } from './routes/basic'
+import { Route as AdvancedImport } from './routes/advanced'
 
 // Create Virtual Routes
 
@@ -21,9 +25,33 @@ const IndexLazyImport = createFileRoute('/')()
 
 // Create/Update Routes
 
+const LocalRoute = LocalImport.update({
+  id: '/local',
+  path: '/local',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const GlobalRoute = GlobalImport.update({
+  id: '/global',
+  path: '/global',
+  getParentRoute: () => rootRoute,
+} as any)
+
 const DotplotRoute = DotplotImport.update({
   id: '/dotplot',
   path: '/dotplot',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const BasicRoute = BasicImport.update({
+  id: '/basic',
+  path: '/basic',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const AdvancedRoute = AdvancedImport.update({
+  id: '/advanced',
+  path: '/advanced',
   getParentRoute: () => rootRoute,
 } as any)
 
@@ -44,11 +72,39 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexLazyImport
       parentRoute: typeof rootRoute
     }
+    '/advanced': {
+      id: '/advanced'
+      path: '/advanced'
+      fullPath: '/advanced'
+      preLoaderRoute: typeof AdvancedImport
+      parentRoute: typeof rootRoute
+    }
+    '/basic': {
+      id: '/basic'
+      path: '/basic'
+      fullPath: '/basic'
+      preLoaderRoute: typeof BasicImport
+      parentRoute: typeof rootRoute
+    }
     '/dotplot': {
       id: '/dotplot'
       path: '/dotplot'
       fullPath: '/dotplot'
       preLoaderRoute: typeof DotplotImport
+      parentRoute: typeof rootRoute
+    }
+    '/global': {
+      id: '/global'
+      path: '/global'
+      fullPath: '/global'
+      preLoaderRoute: typeof GlobalImport
+      parentRoute: typeof rootRoute
+    }
+    '/local': {
+      id: '/local'
+      path: '/local'
+      fullPath: '/local'
+      preLoaderRoute: typeof LocalImport
       parentRoute: typeof rootRoute
     }
   }
@@ -58,37 +114,64 @@ declare module '@tanstack/react-router' {
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexLazyRoute
+  '/advanced': typeof AdvancedRoute
+  '/basic': typeof BasicRoute
   '/dotplot': typeof DotplotRoute
+  '/global': typeof GlobalRoute
+  '/local': typeof LocalRoute
 }
 
 export interface FileRoutesByTo {
   '/': typeof IndexLazyRoute
+  '/advanced': typeof AdvancedRoute
+  '/basic': typeof BasicRoute
   '/dotplot': typeof DotplotRoute
+  '/global': typeof GlobalRoute
+  '/local': typeof LocalRoute
 }
 
 export interface FileRoutesById {
   __root__: typeof rootRoute
   '/': typeof IndexLazyRoute
+  '/advanced': typeof AdvancedRoute
+  '/basic': typeof BasicRoute
   '/dotplot': typeof DotplotRoute
+  '/global': typeof GlobalRoute
+  '/local': typeof LocalRoute
 }
 
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/dotplot'
+  fullPaths: '/' | '/advanced' | '/basic' | '/dotplot' | '/global' | '/local'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/dotplot'
-  id: '__root__' | '/' | '/dotplot'
+  to: '/' | '/advanced' | '/basic' | '/dotplot' | '/global' | '/local'
+  id:
+    | '__root__'
+    | '/'
+    | '/advanced'
+    | '/basic'
+    | '/dotplot'
+    | '/global'
+    | '/local'
   fileRoutesById: FileRoutesById
 }
 
 export interface RootRouteChildren {
   IndexLazyRoute: typeof IndexLazyRoute
+  AdvancedRoute: typeof AdvancedRoute
+  BasicRoute: typeof BasicRoute
   DotplotRoute: typeof DotplotRoute
+  GlobalRoute: typeof GlobalRoute
+  LocalRoute: typeof LocalRoute
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexLazyRoute: IndexLazyRoute,
+  AdvancedRoute: AdvancedRoute,
+  BasicRoute: BasicRoute,
   DotplotRoute: DotplotRoute,
+  GlobalRoute: GlobalRoute,
+  LocalRoute: LocalRoute,
 }
 
 export const routeTree = rootRoute
@@ -102,14 +185,30 @@ export const routeTree = rootRoute
       "filePath": "__root.tsx",
       "children": [
         "/",
-        "/dotplot"
+        "/advanced",
+        "/basic",
+        "/dotplot",
+        "/global",
+        "/local"
       ]
     },
     "/": {
       "filePath": "index.lazy.tsx"
     },
+    "/advanced": {
+      "filePath": "advanced.tsx"
+    },
+    "/basic": {
+      "filePath": "basic.tsx"
+    },
     "/dotplot": {
       "filePath": "dotplot.tsx"
+    },
+    "/global": {
+      "filePath": "global.tsx"
+    },
+    "/local": {
+      "filePath": "local.tsx"
     }
   }
 }
