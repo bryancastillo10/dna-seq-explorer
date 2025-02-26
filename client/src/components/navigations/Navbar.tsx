@@ -12,7 +12,7 @@ const Navbar = () => {
   const { toggleMenu, isMenuOpen } = useOpenMenu();
   
   return (
-    <Nav stickyPosition="top">
+    <Nav $stickyPosition="top">
       <NavLayout>
         <NavbarLogo>
           <LogoImage src={AppLogo} alt="logo" />
@@ -22,14 +22,14 @@ const Navbar = () => {
           <NavMenu>
             <StyledMenu size={24} onClick={toggleMenu} />
           </NavMenu>
-          <NavList isOpen={isMenuOpen}>
+          <NavList $isOpen={isMenuOpen}>
             {navitems.map((nav) => {
               const Icon = nav.icon;
               return (
                 <StyledLink key={nav.id} to={nav.link}>
                   <Item>
                     <Icon />
-                    <Paragraph size="lg">{nav.name}</Paragraph>
+                    <Paragraph $alignment="left" size="lg">{nav.name}</Paragraph>
                     </Item>
                 </StyledLink>
               )
@@ -64,7 +64,7 @@ const StyledMenu = styled(Menu)`
   }
 `;
 
-const NavList = styled.div<{ isOpen: boolean }>`
+const NavList = styled.div<{ $isOpen: boolean; }>`
   position: absolute;
   display: flex;
   flex-direction: column;
@@ -76,7 +76,7 @@ const NavList = styled.div<{ isOpen: boolean }>`
   height: 90vh;
   background-color: ${(props) => props.theme.color.accent};
 
-  transform: translateX(${(props) => (props.isOpen ? "0" : "100%")});
+  transform: translateX(${(props) => (props.$isOpen ? "0" : "100%")});
   transition: transform 0.5s ease-in-out;
 `;
 
