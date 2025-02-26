@@ -16,11 +16,12 @@ export const GlobalStyles = createGlobalStyle`
 //  Navigation 
 
 export const Nav = styled.nav<{$stickyPosition: "top" | "bottom"}>`
-  position: sticky;
+  position: ${(props) => props.$stickyPosition === "bottom" ? "fixed":"sticky"};
   ${(props) => props.$stickyPosition === "bottom" ? "bottom: 0;": "top: 0;"}
   padding: 14px 20px;
   background-color: ${(props) => props.theme.color.accent};
   color: ${(props) => props.theme.color.light};
+  width: calc(100% - 40px);
 `
 export const NavLayout = styled.div`
   display: flex;

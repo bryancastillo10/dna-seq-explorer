@@ -3,8 +3,9 @@ const theme = {
         "light": "#FCFAFA", // snow white
         "dark":"#07090F", // black
         "accent": "#58855C", //mint green
-        "lightGray": "#847E89", //light gray
-        "canvas":"#F3E9D2" //beige parchment
+        "lightGray": "#847E89", //light gray       
+        "canvas": "#F3E9D2", //beige parchment
+        "danger": "#F87171" //rose color
     },
     fontWeight: {
         regular: 500,

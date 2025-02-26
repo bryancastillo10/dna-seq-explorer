@@ -10,7 +10,7 @@ export const Route = createLazyFileRoute('/')({
 
 function RouteComponent() {
   return (
-    <div style={{width:"100%"}}>
+    <div style={{width:"100%", overflowY: "scroll"}}>
       <Title>Simplified Bioinformatics Tool For Sequence Analysis</Title>  
       <ParagraphContainer>
         <Paragraph $alignment="justify">
@@ -60,7 +60,7 @@ const ParagraphContainer = styled.div`
 
 const Block = styled.div`
   border: 1px solid #000;
-  width: 550px;
+  width: 600px;
   height: 450px;  
 `
 
