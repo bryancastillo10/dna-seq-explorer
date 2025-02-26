@@ -1,9 +1,14 @@
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute } from '@tanstack/react-router';
+import { Flex, Title } from '@/style/globalStyles';
+
 
 export const Route = createFileRoute('/basic')({
   component: RouteComponent,
 })
 
 function RouteComponent() {
-  return <div>Basic DNA/RNA/ or Protein Sequence Analysis</div>
+  return <Flex>
+    <Title>Basic Sequence Analysis</Title>
+   
+  </Flex>
 }
