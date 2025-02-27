@@ -1,25 +1,30 @@
 import { createFileRoute } from '@tanstack/react-router';
-import { P, Title } from '@/style/typography';
+import { Grid, Section } from '@/style/globalStyles';
+import PageHeader from '@/components/layout/PageHeader';
 
-import styled from 'styled-components';
 
 export const Route = createFileRoute('/basic')({
   component: RouteComponent,
 })
 
 function RouteComponent() {
-  return <section>
-    <div className="">
-    <Title>Basic Sequence Analysis</Title>
-    <P>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam, recusandae!</P>
-    </div>   
-      <InputBlock />
-  </section>
+  const pageDescription = `
+    Enter your DNA/RNA or Protein sequence, choose the sequence type, and click "Run" to analyze. For
+  DNA/RNA, you can expect outputs such as GC content, nucleotide frequency and transcription;
+  for Protein, you can expect to get amino acid frequency,molecular weight, or reading frames. "Save Output" to save results,
+  and "Clear" to start a new. Ensure correct inputs to avoid warnings.
+  `
+  return (
+    <Section>
+      <PageHeader
+        title="Basic Sequence Analysis"
+        description={pageDescription}
+      />
+      
+      <Grid cols={2}>
+        
+      </Grid>
+    </Section>
+  )
 }
 
-
-const InputBlock = styled.div`
-  width:300px;
-  height:500px;
-  border: 1px solid #000;
-`

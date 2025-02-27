@@ -10,20 +10,23 @@ interface PageHeaderProps {
 
 const PageHeader = ({title, description}: PageHeaderProps) => {
   return (
-    <div>
+    <HeaderContainer>
       <Title>{title}</Title>  
       <PContainer>
         <P $alignment="justify">
          {description}
         </P>
       </PContainer>
-    </div>
+    </HeaderContainer>
   )
 }
 
 export default PageHeader;
 
 
+const HeaderContainer = styled.div`
+  width:"fit-content";  
+`
 const PContainer = styled.div`
   width: 100%;  
 

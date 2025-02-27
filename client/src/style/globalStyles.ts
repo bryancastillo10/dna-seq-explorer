@@ -4,6 +4,7 @@ import { mediaQuery } from "@/utils/breakpoints";
 export const GlobalStyles = createGlobalStyle`
     body{
       margin: 0;
+      padding:0;
       font-family: ${(props) => props.theme.fontFamily.primary.join(', ')};
       font-weight: ${(props) => props.theme.fontWeight.regular};
       background-color: ${(props) => props.theme.color.canvas};
@@ -31,7 +32,7 @@ export const NavLayout = styled.div`
 export const Section = styled.section`
   width: fit-content;
   overflow-y: scroll;
-  padding: 22px 18px;
+  padding: 0 18px;
 `
 
 
