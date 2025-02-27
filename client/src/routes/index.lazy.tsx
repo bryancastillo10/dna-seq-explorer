@@ -1,4 +1,4 @@
-import { Paragraph, Title, UnorderedList, BulletPoint, Flex } from '@/style/globalStyles'
+import { Paragraph, Title, UnorderedList, BulletPoint } from '@/style/globalStyles'
 import { createLazyFileRoute } from '@tanstack/react-router'
 
 import styled from 'styled-components'
@@ -10,17 +10,17 @@ export const Route = createLazyFileRoute('/')({
 
 function RouteComponent() {
   return (
-    <div style={{width:"100%", overflowY: "scroll"}}>
+    <div style={{width:"fit", overflowY: "scroll", padding:"22px 18px"}}>
       <Title>Simplified Bioinformatics Tool For Sequence Analysis</Title>  
-      <ParagraphContainer>
+      <PContainer>
         <Paragraph $alignment="justify">
           DNASeq Explorer is a simple web application designed to help life science enthusiasts to explore &
           analyzing biological sequences. Whether you&apos;re a student just starting to learn about molecular biology
           or a researcher looking for quick and seamless tool, this app offers you some features
           assisting on common DNA Analysis tasks.
         </Paragraph>
-      </ParagraphContainer>
-      <Flex>
+      </PContainer>
+      <Grid cols={2}>
         <Block>
           <Title>How to Get Started?</Title>
           <UnorderedList>
@@ -39,14 +39,16 @@ function RouteComponent() {
             </BulletPoint>
           </UnorderedList>
         </Block>
-        <Block></Block>
-      </Flex>
+        <Block>
+        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Reprehenderit possimus ut est! Aut quibusdam ullam fugit rerum quae cupiditate saepe!
+        </Block>
+      </Grid>
     </div>
   )
 }
 
 
-const ParagraphContainer = styled.div`
+const PContainer = styled.div`
   width: 100%;  
 
   ${mediaQuery("md")} {
@@ -54,13 +56,21 @@ const ParagraphContainer = styled.div`
   }
 
   ${mediaQuery("xl")} {
-    width: 70%;
+    width: 60%;
   }
 `
 
 const Block = styled.div`
-  border: 1px solid #000;
-  width: 600px;
-  height: 450px;  
+  
 `
 
+const Grid = styled.div<{cols:number}>`
+  display: grid;
+  grid-template-columns: "repeat(1, minmax(0,1fr))";
+  align-items: start;
+  gap: 20px;
+
+  ${mediaQuery("xl")}{
+  grid-template-columns: ${({cols}) => `repeat(${cols}, minmax(0,1fr))`};
+  }
+`
