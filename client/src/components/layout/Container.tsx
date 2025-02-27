@@ -13,6 +13,7 @@ export default Container;
 const Section = styled.section`
   display: flex;
   flex-direction:column;
-  width: fit;
+  width: fit-content;
+  height: 100%;
   padding: 14px;
 `

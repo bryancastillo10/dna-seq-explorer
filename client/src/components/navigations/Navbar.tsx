@@ -67,11 +67,11 @@ const StyledIcon = styled(Menu || X)`
 
 const NavList = styled.div<{ $isOpen: boolean; }>`
   position: fixed;
+  z-index:500;
   display: flex;
   flex-direction: column;
   gap:12px;
   right:0;
-  top: 24;
   padding: 14px;
   width: 300px;
   height: 90vh;

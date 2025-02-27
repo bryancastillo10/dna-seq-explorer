@@ -6,7 +6,9 @@ import PageHeader from '@/components/layout/PageHeader';
 
 
 import FormInput from '@/components/ui/FormInput';
+import Select from '@/components/ui/Select';
 import { TestTubeDiagonal } from 'lucide-react';
+
 
 export const Route = createFileRoute('/basic')({
   component: RouteComponent,
@@ -26,7 +28,8 @@ function RouteComponent() {
       setValue(e.target.value);
   };
   
-  
+  const selectOptions = ["DNA", "RNA", "Protein"]
+  const [type, setType] = useState<string>("DNA");
   return (
     <Section>
       <PageHeader
@@ -35,6 +38,7 @@ function RouteComponent() {
       />
       
       <Grid cols={2}>
+        <div className="">
         <FormInput
           label="Sample Name"
           icon={TestTubeDiagonal}
@@ -42,6 +46,15 @@ function RouteComponent() {
           value={value}
           onChange={handleChangeInput}
         />
+        
+        <Select
+          value={type}
+          label="Biomolecule Type"
+          onChangeValue={(selected: string) => setType(selected) }  
+          options={selectOptions}
+          />
+        </div>
+        <div className="">Some Section Here</div>
       </Grid>
     </Section>
   )

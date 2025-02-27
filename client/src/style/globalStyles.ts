@@ -31,6 +31,7 @@ export const NavLayout = styled.div`
 // Layout
 export const Section = styled.section`
   width: fit-content;
+  height: 100vh;
   overflow-y: scroll;
   padding: 0 18px;
 `
