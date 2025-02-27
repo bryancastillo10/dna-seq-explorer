@@ -1,6 +1,6 @@
-import type { ParagraphProps } from "@/style/globalStyles";
+import type { PProps } from "@/style/typography";
 
-export const alignParagraph = (alignment: ParagraphProps["$alignment"]) => {
+export const alignParagraph = (alignment: PProps["$alignment"]) => {
     switch (alignment){
         case ("center"):
             return "center";

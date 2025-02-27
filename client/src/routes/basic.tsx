@@ -1,5 +1,5 @@
 import { createFileRoute } from '@tanstack/react-router';
-import { Paragraph, Title } from '@/style/globalStyles';
+import { P, Title } from '@/style/typography';
 
 import styled from 'styled-components';
 
@@ -11,7 +11,7 @@ function RouteComponent() {
   return <section>
     <div className="">
     <Title>Basic Sequence Analysis</Title>
-    <Paragraph>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam, recusandae!</Paragraph>
+    <P>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam, recusandae!</P>
     </div>   
       <InputBlock />
   </section>

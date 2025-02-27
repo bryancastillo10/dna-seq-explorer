@@ -1,6 +1,4 @@
 import { createGlobalStyle, styled } from "styled-components";
-
-import { alignParagraph } from "@/utils/alignParagraph";
 import { mediaQuery } from "@/utils/breakpoints";
 
 export const GlobalStyles = createGlobalStyle`
@@ -30,9 +28,14 @@ export const NavLayout = styled.div`
 `
 
 // Layout
+export const Section = styled.section`
+  width: fit-content;
+  overflow-y: scroll;
+  padding: 22px 18px;
+`
 
 
-export const Flex = styled.div <{$justifyContent?: "flex-start" | "center" | "flex-end"}>`
+export const Flex = styled.div <{ $justifyContent?: "flex-start" | "center" | "flex-end" }>`
   display:flex;
   flex-direction: column;
   align-items: center;
@@ -45,31 +48,18 @@ export const Flex = styled.div <{$justifyContent?: "flex-start" | "center" | "fl
   }
 `
 
-// Typography
+export const Grid = styled.div<{cols:number}>`
+  display: grid;
+  grid-template-columns: "repeat(1, minmax(0,1fr))";
+  align-items: start;
+  gap: 20px;
 
-export interface ParagraphProps {
-  size?: "xl" | "lg" | "base" | "sm" | "xs";
-  color?: "dark" | "light";
-  $alignment?: "left" | "center" | "right" | "justify" |"balance";
-}
-
-export const Title = styled.h1`
-  font-family: ${(props) => props.theme.fontFamily.secondary.join(', ')};
-  font-weight: ${(props) => props.theme.fontWeight.semibold};
-`;
-
-export const Paragraph = styled.p<ParagraphProps>`
-  font-family: ${(props) => props.theme.fontFamily.primary.join(', ')};
-  font-weight: ${(props) => props.theme.fontWeight.regular};
-  font-size: ${(props) => props.size ? props.theme.fontSize[props.size]: props.theme.fontSize.base};
-  color: ${(props) => props.color === "light" ? props.theme.color.light : props.theme.color.dark};
-  text-align: ${(props) => alignParagraph(props.$alignment)};
+  ${mediaQuery("xl")}{
+  grid-template-columns: ${({cols}) => `repeat(${cols}, minmax(0,1fr))`};
+  }
 `
-Paragraph.defaultProps = {
-  color: "dark",
-  $alignment:"left"
-}
 
+// List Items
 export const UnorderedList = styled.ul`
   padding: 8px 4px;
 `;

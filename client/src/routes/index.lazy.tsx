@@ -1,7 +1,9 @@
-import { Paragraph, Title, UnorderedList, BulletPoint } from '@/style/globalStyles'
 import { createLazyFileRoute } from '@tanstack/react-router'
-
 import styled from 'styled-components'
+
+import { UnorderedList, BulletPoint, Section, Grid } from '@/style/globalStyles'
+import { P, Title } from '@/style/typography'
+
 import { mediaQuery } from '@/utils/breakpoints'
 
 export const Route = createLazyFileRoute('/')({
@@ -10,15 +12,15 @@ export const Route = createLazyFileRoute('/')({
 
 function RouteComponent() {
   return (
-    <div style={{width:"fit", overflowY: "scroll", padding:"22px 18px"}}>
+    <Section>
       <Title>Simplified Bioinformatics Tool For Sequence Analysis</Title>  
       <PContainer>
-        <Paragraph $alignment="justify">
+        <P $alignment="justify">
           DNASeq Explorer is a simple web application designed to help life science enthusiasts to explore &
           analyzing biological sequences. Whether you&apos;re a student just starting to learn about molecular biology
           or a researcher looking for quick and seamless tool, this app offers you some features
           assisting on common DNA Analysis tasks.
-        </Paragraph>
+        </P>
       </PContainer>
       <Grid cols={2}>
         <Block>
@@ -43,10 +45,9 @@ function RouteComponent() {
         Lorem ipsum, dolor sit amet consectetur adipisicing elit. Reprehenderit possimus ut est! Aut quibusdam ullam fugit rerum quae cupiditate saepe!
         </Block>
       </Grid>
-    </div>
+    </Section>
   )
 }
-
 
 const PContainer = styled.div`
   width: 100%;  
@@ -62,15 +63,4 @@ const PContainer = styled.div`
 
 const Block = styled.div`
   
-`
-
-const Grid = styled.div<{cols:number}>`
-  display: grid;
-  grid-template-columns: "repeat(1, minmax(0,1fr))";
-  align-items: start;
-  gap: 20px;
-
-  ${mediaQuery("xl")}{
-  grid-template-columns: ${({cols}) => `repeat(${cols}, minmax(0,1fr))`};
-  }
 `

@@ -2,7 +2,8 @@ import styled from "styled-components";
 import { Menu, X } from "lucide-react";
 import { Link } from "@tanstack/react-router";
 
-import { Title, Nav, NavLayout, Paragraph } from "@/style/globalStyles";
+import { Nav, NavLayout } from "@/style/globalStyles";
+import { Title, P } from "@/style/typography";
 import AppLogo from "@/assets/images/base-dna.png";
 
 import useOpenMenu from "@/zustand/openMenu";
@@ -29,7 +30,7 @@ const Navbar = () => {
                 <StyledLink key={nav.id} to={nav.link}>
                   <Item>
                     <Icon />
-                    <Paragraph $alignment="left" size="lg" color="light">{nav.name}</Paragraph>
+                    <P $alignment="left" size="lg" color="light">{nav.name}</P>
                   </Item>
                 </StyledLink>
               )
