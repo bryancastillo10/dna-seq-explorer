@@ -3,11 +3,13 @@ const theme = {
         "light": "#FCFAFA", // snow white
         "dark":"#07090F", // black
         "accent": "#58855C", //mint green
+        "darkAccent": "#18251A", //dark green
         "lightGray": "#847E89", //light gray       
         "canvas": "#F3E9D2", //beige parchment
         "danger": "#F87171" //rose color
     },
     fontWeight: {
+        light: 300,
         regular: 500,
         semibold: 700
     },

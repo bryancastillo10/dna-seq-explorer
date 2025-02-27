@@ -1,33 +1,35 @@
-import { Paragraph, Title, UnorderedList, BulletPoint, Flex } from '@/style/globalStyles'
 import { createLazyFileRoute } from '@tanstack/react-router'
-
 import styled from 'styled-components'
-import { mediaQuery } from '@/utils/breakpoints'
+
+import { UnorderedList, BulletPoint, Section, Grid } from '@/style/globalStyles'
+import { Title, Highlight } from '@/style/typography'
+import PageHeader from '@/components/layout/PageHeader'
+
 
 export const Route = createLazyFileRoute('/')({
   component: RouteComponent,
 })
 
 function RouteComponent() {
-  return (
-    <div style={{width:"100%", overflowY: "scroll"}}>
-      <Title>Simplified Bioinformatics Tool For Sequence Analysis</Title>  
-      <ParagraphContainer>
-        <Paragraph $alignment="justify">
-          DNASeq Explorer is a simple web application designed to help life science enthusiasts to explore &
-          analyzing biological sequences. Whether you&apos;re a student just starting to learn about molecular biology
+  const pageDescription =`DNASeq Explorer is a simple web application designed to help life science enthusiasts to explore & 
+          analyzing biological sequences. Whether you're a student just starting to learn about molecular biology 
           or a researcher looking for quick and seamless tool, this app offers you some features
-          assisting on common DNA Analysis tasks.
-        </Paragraph>
-      </ParagraphContainer>
-      <Flex>
+          assisting on common DNA Analysis tasks.`
+  
+  return (
+    <Section>   
+      <PageHeader
+        title="Simplified Bioinformatics Tool For Sequence Analysis"
+        description={pageDescription}
+      />      
+      <Grid cols={2}>
         <Block>
           <Title>How to Get Started?</Title>
           <UnorderedList>
             <BulletPoint>
               You can check the available features on the sidebar
-              which consists of basic analysis, advanced analysis, dot plot alignment,
-              local alignment, and global alignment
+              which consists of <Highlight>basic analysis</Highlight>,
+              <Highlight>advanced analysis</Highlight>, <Highlight>dot plot alignment</Highlight>, <Highlight>local alignment</Highlight>, and <Highlight>global alignment</Highlight>
             </BulletPoint>
             <BulletPoint>
               Provide an input sequence you want to analyze, for basic & advanced analysis (only one sequence is allowed)
@@ -39,28 +41,14 @@ function RouteComponent() {
             </BulletPoint>
           </UnorderedList>
         </Block>
-        <Block></Block>
-      </Flex>
-    </div>
+        <Block>
+        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Reprehenderit possimus ut est! Aut quibusdam ullam fugit rerum quae cupiditate saepe!
+        </Block>
+      </Grid>
+    </Section>
   )
 }
 
-
-const ParagraphContainer = styled.div`
-  width: 100%;  
-
-  ${mediaQuery("md")} {
-    width: 85%;
-  }
-
-  ${mediaQuery("xl")} {
-    width: 70%;
-  }
-`
-
 const Block = styled.div`
-  border: 1px solid #000;
-  width: 600px;
-  height: 450px;  
+  
 `
-
