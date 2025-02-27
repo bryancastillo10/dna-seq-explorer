@@ -1,5 +1,7 @@
 import styled from "styled-components";
+
 import { alignParagraph } from "@/utils/alignParagraph";
+import { mediaQuery } from "@/utils/breakpoints";
 
 export interface PProps {
   size?: "xl" | "lg" | "base" | "sm" | "xs";
@@ -28,7 +30,13 @@ export const Highlight = styled.span`
 
 export const Label = styled.label`
   font-family: ${(props) => props.theme.fontFamily.primary.join(', ')};
-  font-size: ${(props) => props.theme.fontSize.lg};
+  font-size: ${(props) => props.theme.fontSize.base};
+  width:90%;
+
+  ${mediaQuery("lg")}{
+    font-size: ${(props) => props.theme.fontSize.lg};
+    width: fit-content;
+  }
 `
 
 P.defaultProps = {
