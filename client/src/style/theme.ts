@@ -8,6 +8,7 @@ const theme = {
         "danger": "#F87171" //rose color
     },
     fontWeight: {
+        light: 300,
         regular: 500,
         semibold: 700
     },

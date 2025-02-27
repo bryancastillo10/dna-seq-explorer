@@ -2,26 +2,26 @@ import { createLazyFileRoute } from '@tanstack/react-router'
 import styled from 'styled-components'
 
 import { UnorderedList, BulletPoint, Section, Grid } from '@/style/globalStyles'
-import { P, Title } from '@/style/typography'
+import { Title } from '@/style/typography'
+import PageHeader from '@/components/layout/PageHeader'
 
-import { mediaQuery } from '@/utils/breakpoints'
 
 export const Route = createLazyFileRoute('/')({
   component: RouteComponent,
 })
 
 function RouteComponent() {
-  return (
-    <Section>
-      <Title>Simplified Bioinformatics Tool For Sequence Analysis</Title>  
-      <PContainer>
-        <P $alignment="justify">
-          DNASeq Explorer is a simple web application designed to help life science enthusiasts to explore &
-          analyzing biological sequences. Whether you&apos;re a student just starting to learn about molecular biology
+  const pageDescription =`DNASeq Explorer is a simple web application designed to help life science enthusiasts to explore & 
+          analyzing biological sequences. Whether you're a student just starting to learn about molecular biology 
           or a researcher looking for quick and seamless tool, this app offers you some features
-          assisting on common DNA Analysis tasks.
-        </P>
-      </PContainer>
+          assisting on common DNA Analysis tasks.`
+  
+  return (
+    <Section>   
+      <PageHeader
+        title="Simplified Bioinformatics Tool For Sequence Analysis"
+        description={pageDescription}
+      />      
       <Grid cols={2}>
         <Block>
           <Title>How to Get Started?</Title>
@@ -48,18 +48,6 @@ function RouteComponent() {
     </Section>
   )
 }
-
-const PContainer = styled.div`
-  width: 100%;  
-
-  ${mediaQuery("md")} {
-    width: 85%;
-  }
-
-  ${mediaQuery("xl")} {
-    width: 60%;
-  }
-`
 
 const Block = styled.div`
   
