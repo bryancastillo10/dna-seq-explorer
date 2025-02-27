@@ -21,7 +21,14 @@ export const P = styled.p<PProps>`
 `
 
 export const Highlight = styled.span`
-    
+  font-weight:${(props) => props.theme.fontWeight.semibold};
+  font-family: ${(props) => props.theme.fontFamily.primary.join(', ')};
+  color: ${(props) => props.theme.color.darkAccent};
+`
+
+export const Label = styled.label`
+  font-family: ${(props) => props.theme.fontFamily.primary.join(', ')};
+  font-size: ${(props) => props.theme.fontSize.lg};
 `
 
 P.defaultProps = {

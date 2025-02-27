@@ -2,7 +2,7 @@ import { createLazyFileRoute } from '@tanstack/react-router'
 import styled from 'styled-components'
 
 import { UnorderedList, BulletPoint, Section, Grid } from '@/style/globalStyles'
-import { Title } from '@/style/typography'
+import { Title, Highlight } from '@/style/typography'
 import PageHeader from '@/components/layout/PageHeader'
 
 
@@ -28,8 +28,8 @@ function RouteComponent() {
           <UnorderedList>
             <BulletPoint>
               You can check the available features on the sidebar
-              which consists of basic analysis, advanced analysis, dot plot alignment,
-              local alignment, and global alignment
+              which consists of <Highlight>basic analysis</Highlight>,
+              <Highlight>advanced analysis</Highlight>, <Highlight>dot plot alignment</Highlight>, <Highlight>local alignment</Highlight>, and <Highlight>global alignment</Highlight>
             </BulletPoint>
             <BulletPoint>
               Provide an input sequence you want to analyze, for basic & advanced analysis (only one sequence is allowed)
