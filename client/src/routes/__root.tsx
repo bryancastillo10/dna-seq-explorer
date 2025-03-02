@@ -1,10 +1,7 @@
 import * as React from 'react'
 import { Outlet, createRootRoute } from '@tanstack/react-router'
-
-import Navbar from '@/components/navigations/Navbar';
-import Footer from '@/components/navigations/Footer';
-
-import Container from '@/components/layout/Container';
+import { Container } from '@mui/material'
+import Navbar from '@/components/navigations/Navbar'
 
 export const Route = createRootRoute({
   component: RootComponent,
@@ -13,11 +10,10 @@ export const Route = createRootRoute({
 function RootComponent() {
   return (
     <React.Fragment>
-      <Navbar />
+        <Navbar/>
         <Container>
           <Outlet />
         </Container>
-      <Footer/>
     </React.Fragment>
   )
 }
