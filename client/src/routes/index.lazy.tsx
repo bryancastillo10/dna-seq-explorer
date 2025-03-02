@@ -1,10 +1,4 @@
 import { createLazyFileRoute } from '@tanstack/react-router'
-import styled from 'styled-components'
-
-import { UnorderedList, BulletPoint, Section, Grid } from '@/style/globalStyles'
-import { Title, Highlight } from '@/style/typography'
-import PageHeader from '@/components/layout/PageHeader'
-
 
 export const Route = createLazyFileRoute('/')({
   component: RouteComponent,
@@ -17,38 +11,20 @@ function RouteComponent() {
           assisting on common DNA Analysis tasks.`
   
   return (
-    <Section>   
-      <PageHeader
-        title="Simplified Bioinformatics Tool For Sequence Analysis"
-        description={pageDescription}
-      />      
-      <Grid cols={2}>
-        <Block>
-          <Title>How to Get Started?</Title>
-          <UnorderedList>
-            <BulletPoint>
-              You can check the available features on the sidebar
-              which consists of <Highlight>basic analysis</Highlight>,
-              <Highlight>advanced analysis</Highlight>, <Highlight>dot plot alignment</Highlight>, <Highlight>local alignment</Highlight>, and <Highlight>global alignment</Highlight>
-            </BulletPoint>
-            <BulletPoint>
-              Provide an input sequence you want to analyze, for basic & advanced analysis (only one sequence is allowed)
+     <div>
+    <h1>How to Get Started?</h1>
+      <p>You can check the available features on the sidebar
+              which consists of basic analysis,
+              advanced analysis, dot plot alignment, local alignment, and global alignment
+        </p>
+        <p> Provide an input sequence you want to analyze, for basic & advanced analysis (only one sequence is allowed)
               the other features are for pairwise sequence alignments using different algorithms.
-            </BulletPoint>
-            <BulletPoint>
-              The results would be displayed accordingly on the output screen provided, and longer sequence may take a longer time
-              to process. Take note that the AI-feature may had provide some mistakes and does not represent every existing gene.
-            </BulletPoint>
-          </UnorderedList>
-        </Block>
-        <Block>
-        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Reprehenderit possimus ut est! Aut quibusdam ullam fugit rerum quae cupiditate saepe!
-        </Block>
-      </Grid>
-    </Section>
+        </p>
+        <p>The results would be displayed accordingly on the output screen provided, and longer sequence may take a longer time
+        to process. Take note that the AI-feature may had provide some mistakes and does not represent every existing gene.
+     </p>
+      
+      </div>  
   )
-}
+};
 
-const Block = styled.div`
-  
-`
