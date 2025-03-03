@@ -27,7 +27,7 @@ const Navbar = () => {
   };
 
   return (
-    <AppBar position="static">
+    <AppBar position="sticky" sx={{top: "0"}}>
       <Container maxWidth="lg">
         <Toolbar sx={{p: 2}} disableGutters>
           <Box
