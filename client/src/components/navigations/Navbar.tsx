@@ -12,7 +12,7 @@ import { Menu } from "lucide-react";
 
 import Sidebar from "@/components/navigations/Sidebar";
 
-import AppLogo from "@/assets/base-dna.png";
+import AppLogo from "@/assets/images/base-dna.png";
 import NavMenuList from "./NavMenuList";
 import useResponsiveQuery from "@/utils/useResponsiveQuery";
 

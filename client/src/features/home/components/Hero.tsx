@@ -1,4 +1,5 @@
 import { Box, Stack, Typography } from "@mui/material";
+import Researcher from "@/assets/images/researcher.png";
 
 const Hero = () => {
     const pageDescription =`DNASeq Explorer is a simple web application designed to help life science enthusiasts to explore & 
@@ -8,19 +9,32 @@ const Hero = () => {
     return (
         <Stack
             direction={{ xs: "column-reverse", md: "row" }}
-            alignItems={{ xs: "center", md: "column" }}
+            justifyContent={{xs:"center", md:"space-between"}}
+            alignItems="center"
         >
         <Box 
             sx={{ backgroundColor: "teal" }} 
-            width={{xs:"100%", md:"50%"}} 
+            width={{xs:"100%", md:"70%"}} 
             height="500px"
         >
             <Typography variant="body1">
                 {pageDescription}
             </Typography>
         </Box>
-       <Box 
-        sx={{ backgroundColor:"dodgerblue" }} width={{xs:"100%", md:"50%"}} height="500px"></Box>
+        <Box 
+            sx={{
+                width:{ xs: "100%", md: "50%" },
+                display: "flex",
+                justifyContent: { xs: "center", md: "flex-end" }
+            }}
+            >
+            <Box 
+                component="img"
+                src={Researcher}
+                sx={{ width: 400, height: 400 }}
+                >
+            </Box>
+        </Box>
     </Stack>
   )
 }

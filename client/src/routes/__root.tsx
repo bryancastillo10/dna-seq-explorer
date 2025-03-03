@@ -13,7 +13,7 @@ function RootComponent() {
   return (
     <React.Fragment>
       <Navbar/>
-      <Container maxWidth="lg" sx={{ p: 2 }}>
+      <Container maxWidth="lg" sx={{ p: 2, height: "100vh" }}>
         <Stack padding={2}>
           <Outlet />
         </Stack>

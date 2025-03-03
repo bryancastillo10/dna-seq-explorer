@@ -5,7 +5,7 @@ const Footer = () => {
     <Box
       component="footer"
       sx={{
-        position: "sticky",
+        position: "fixed",
         bottom:0,
         px:8,
         py: 2,
