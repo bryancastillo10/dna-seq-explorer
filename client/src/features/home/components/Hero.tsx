@@ -6,6 +6,7 @@ const Hero = () => {
           analyzing biological sequences. Whether you're a student just starting to learn about molecular biology 
           or a researcher looking for quick and seamless tool, this app offers you some features
           assisting on common DNA Analysis tasks.`
+        
     return (
         <Stack
             direction={{ xs: "column-reverse", md: "row" }}
@@ -13,11 +14,17 @@ const Hero = () => {
             alignItems="center"
         >
         <Box 
-            sx={{ backgroundColor: "teal" }} 
-            width={{xs:"100%", md:"70%"}} 
-            height="500px"
+            sx={{
+                width:{ xs: "100%", md: "70%" },
+                display: "flex",
+                flexDirection:"column",
+                alignItems:{xs:"center", md:"start"}
+            }}
         >
-            <Typography variant="body1">
+            <Typography variant="h3" sx={{ my: 4 }} textAlign={{ xs: "center", md: "left" }}>
+                    Simplified Tool for Biological Sequences
+            </Typography>  
+            <Typography variant="body2" sx={{ mb: 6 }} textAlign={{ xs: "center", md: "left" }}>
                 {pageDescription}
             </Typography>
         </Box>

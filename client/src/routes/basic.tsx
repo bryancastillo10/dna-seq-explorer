@@ -1,6 +1,5 @@
 import { createFileRoute } from '@tanstack/react-router';
-import { useState, type ChangeEvent } from 'react';
-
+import { TextField, Select, FormControl, Typography, MenuItem } from '@mui/material';
 
 export const Route = createFileRoute('/basic')({
   component: RouteComponent,
@@ -14,9 +13,28 @@ function RouteComponent() {
   and "Clear" to start a new. Ensure correct inputs to avoid warnings.
   `
 
+  
   return (
     <div className="">
       <h1>Basic Analysis</h1>
+      <Typography>{pageDescription}</Typography>
+      <FormControl>
+        <Select
+          id="seqType"
+          value="Biomolecule Type"
+        >
+          <MenuItem value={10}>DNA</MenuItem>
+          <MenuItem value={20}>RNA</MenuItem>
+          <MenuItem value={30}>Protein</MenuItem>
+        </Select>
+        <TextField
+          label="Sequence"
+          multiline
+          rows={10}
+          variant="filled"
+          style={{overflow:"auto"}}
+        />
+      </FormControl>
     </div>
   )
 }
