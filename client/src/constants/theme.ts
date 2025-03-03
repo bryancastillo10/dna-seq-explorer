@@ -23,8 +23,8 @@ export const theme = createTheme({
 
   // Font Styles, Font Size, Font Weight
   typography: {
-      fontFamily: ["-apple-system", "Poppins", "sans-serif"].join(','),
-      fontSize: 16,
+      fontFamily: ["Poppins","Nova Square", "sans-serif"].join(','),
+      fontSize: 14,
       h1: {
         fontSize: "2rem",
         fontWeight: 700   
@@ -35,7 +35,8 @@ export const theme = createTheme({
       },
       h3: {
         fontSize: "1.55rem",
-        fontWeight: 500
+        fontWeight: 500,
+        fontFamily: "Nova Square"
       }
     }
 });

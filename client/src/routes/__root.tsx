@@ -11,7 +11,7 @@ function RootComponent() {
   return (
     <React.Fragment>
         <Navbar/>
-        <Container>
+        <Container maxWidth="xl">
           <Outlet />
         </Container>
     </React.Fragment>

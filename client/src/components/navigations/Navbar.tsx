@@ -1,12 +1,10 @@
 import { useState } from "react";
 import {
   AppBar,
-  Container,
   Typography,
   IconButton,
   Box,
   Toolbar,
-  useMediaQuery,
   useTheme
 } from "@mui/material";
 import { Menu } from "lucide-react";
@@ -15,12 +13,13 @@ import Sidebar from "@/components/navigations/Sidebar";
 
 import AppLogo from "@/assets/base-dna.png";
 import NavMenuList from "./NavMenuList";
+import useResponsiveQuery from "@/utils/useResponsiveQuery";
 
 const Navbar = () => {
   const [openMenu, setOpenMenu] = useState<boolean>(false);
   
   const theme = useTheme();
-  const isSmallScreen = useMediaQuery(theme.breakpoints.down("md"));
+  const isDesktop = useResponsiveQuery("lg");
 
   const toggleDrawer = () => {
     setOpenMenu(!openMenu);
@@ -28,8 +27,7 @@ const Navbar = () => {
 
   return (
     <AppBar position="static">
-      <Container maxWidth="xl">
-        <Toolbar sx={{margin: 2}} disableGutters>
+        <Toolbar sx={{padding: 4}} disableGutters>
           <Box
             component="img"
             src={AppLogo}
@@ -38,22 +36,20 @@ const Navbar = () => {
           />
           <Typography
             variant="h3"
-            sx={{ flexGrow: 1, fontFamily: "Poppins" }}>
+            sx={{ flexGrow: 1 }}>
             DNA Seq Explorer
           </Typography>
-         {isSmallScreen ? (
+         {isDesktop ?  (
+            <NavMenuList theme={theme}/> 
+          ): (
             <>
               <IconButton onClick={toggleDrawer}>
                 <Menu size={26} color={theme.palette.primary.contrastText}/>
               </IconButton>
               <Sidebar openMenu={openMenu} toggleDrawer={toggleDrawer} />
             </>
-          ) : (
-            <NavMenuList theme={theme}/>
-          )}
-        </Toolbar>
-      </Container>
-      
+          ) }
+        </Toolbar>  
     </AppBar>
   );
 }

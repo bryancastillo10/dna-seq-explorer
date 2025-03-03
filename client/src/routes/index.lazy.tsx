@@ -1,3 +1,4 @@
+import { Stack } from '@mui/material'
 import { createLazyFileRoute } from '@tanstack/react-router'
 
 export const Route = createLazyFileRoute('/')({
@@ -11,7 +12,7 @@ function RouteComponent() {
           assisting on common DNA Analysis tasks.`
   
   return (
-     <div>
+    <Stack width="100%">
     <h1>How to Get Started?</h1>
       <p>You can check the available features on the sidebar
               which consists of basic analysis,
@@ -22,9 +23,8 @@ function RouteComponent() {
         </p>
         <p>The results would be displayed accordingly on the output screen provided, and longer sequence may take a longer time
         to process. Take note that the AI-feature may had provide some mistakes and does not represent every existing gene.
-     </p>
-      
-      </div>  
+     </p>  
+    </Stack>
   )
 };
 
