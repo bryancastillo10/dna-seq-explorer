@@ -1,17 +1,11 @@
-import { createTheme, ThemeProvider } from "@mui/material";
-import { teal } from "@mui/material/colors";
+import { ThemeProvider, CssBaseline } from "@mui/material";
+import { theme } from "@/constants/theme";
 
-const theme = createTheme({
-  palette: {
-    primary: {
-        main: teal[500]
-    }
-  }
-});
 
 const Providers = ({children}:{children:React.ReactNode}) => {
   return (
     <ThemeProvider theme={theme}>
+      <CssBaseline/>
       {children}
     </ThemeProvider>
   )
