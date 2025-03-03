@@ -1,6 +1,7 @@
 import { useState } from "react";
 import {
   AppBar,
+  Container,
   Typography,
   IconButton,
   Box,
@@ -27,7 +28,8 @@ const Navbar = () => {
 
   return (
     <AppBar position="static">
-        <Toolbar sx={{padding: 4}} disableGutters>
+      <Container maxWidth="lg">
+        <Toolbar sx={{p: 2}} disableGutters>
           <Box
             component="img"
             src={AppLogo}
@@ -49,7 +51,8 @@ const Navbar = () => {
               <Sidebar openMenu={openMenu} toggleDrawer={toggleDrawer} />
             </>
           ) }
-        </Toolbar>  
+        </Toolbar>
+      </Container>        
     </AppBar>
   );
 }

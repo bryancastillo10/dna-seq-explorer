@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { Outlet, createRootRoute } from '@tanstack/react-router'
-import { Container } from '@mui/material'
+import { Container, Stack } from '@mui/material'
 import Navbar from '@/components/navigations/Navbar'
 
 export const Route = createRootRoute({
@@ -10,10 +10,13 @@ export const Route = createRootRoute({
 function RootComponent() {
   return (
     <React.Fragment>
-        <Navbar/>
-        <Container maxWidth="xl">
+      <Navbar/>
+      <Container maxWidth="lg" sx={{ p: 2 }}>
+        <Stack padding={2}>
           <Outlet />
-        </Container>
+        </Stack>
+      </Container>
+      
     </React.Fragment>
   )
 }
