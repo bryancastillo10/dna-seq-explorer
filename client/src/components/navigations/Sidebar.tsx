@@ -1,4 +1,5 @@
-import { Drawer, Box, Typography, Stack, Link, useTheme } from "@mui/material";
+import { Drawer, Box, Typography, Stack, Link as MUILink, useTheme } from "@mui/material";
+import { Link } from "@tanstack/react-router";
 import { navitems } from "@/constants/navItems";
 interface SidebarProps {
     openMenu: boolean;
@@ -57,8 +58,9 @@ const Sidebar = ({ openMenu, toggleDrawer }: SidebarProps) => {
         {navitems.map((nav) => {
             const Icon = nav.icon;
             return (
-                <Link
+                <MUILink
                     key={nav.id}
+                    component={Link}
                     href={nav.link}
                     sx={linkStyles}
                     underline="none"
@@ -67,7 +69,7 @@ const Sidebar = ({ openMenu, toggleDrawer }: SidebarProps) => {
                         <Box component="div"><Icon/></Box>
                         <Typography>{nav.name}</Typography>
                     </Stack>
-                </Link>
+                </MUILink>
             )
         })}
         </Stack>
