@@ -38,5 +38,30 @@ export const theme = createTheme({
         fontWeight: 700,
         fontFamily: "Nova Square"
       }
+    },
+  components: {
+    MuiCard: {
+      styleOverrides: {
+        root: {
+            width: 300,
+            height:400,
+            backgroundColor: "#FFE1C6",
+            padding: "24px 32px"
+        }
+      }
+    },
+    MuiBadge: {
+      styleOverrides: {
+        badge: ({theme}) => ({
+          width: 50,
+          height: 50,
+          borderRadius: "50%",
+          fontSize: "1.5rem",
+          backgroundColor: theme.palette.primary.main,
+          color: theme.palette.common.white,
+          boxShadow: `0 0 0 4px ${theme.palette.primary.light}`,
+        })
+      }
     }
+  }
 });

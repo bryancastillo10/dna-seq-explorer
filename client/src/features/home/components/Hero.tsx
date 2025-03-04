@@ -21,7 +21,7 @@ const Hero = () => {
             }}
         >
             <Typography variant="h3" sx={{ my: 4 }} textAlign={{ xs: "center", md: "left" }}>
-                    Simplified Tool for Biological Sequences
+                Simplified Tool for Biological Sequences
             </Typography>  
             <Typography variant="body1" sx={{ mb: 6 }} textAlign={{ xs: "center", md: "left" }}>
                 {pageDescription}
