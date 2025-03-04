@@ -9,6 +9,7 @@ export const cardContainerStyle = {
 };
 
 export const cardHeaderStyle = {
+    position:"relative",
     display: "flex",
     flexDirection: "column",
     gap: 2,
@@ -18,3 +19,15 @@ export const cardHeaderStyle = {
     borderRadius: "20px",
     boxShadow: "0 0 0 1px rgba(0,0,0,0.1)"
 }
+
+export const cardBadgeStyle = {
+  position: "absolute",
+  top: 5,
+  right: 5,
+  "& .MuiBadge-badge": {
+    width: 40,
+    height: 40,
+    fontSize: "1rem",
+    borderRadius:"60%"
+  },
+};

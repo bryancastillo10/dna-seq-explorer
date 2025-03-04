@@ -1,7 +1,7 @@
-import { Box, Typography } from "@mui/material";
+import { Box, Container, Typography } from "@mui/material";
 
 const Footer = () => {
-  return (
+  return (  
     <Box
       component="footer"
       sx={{
@@ -16,9 +16,11 @@ const Footer = () => {
         backgroundColor: (theme) => theme.palette.primary.main,
       }}
     >
+    <Container maxWidth="lg" sx={{px: 2}}>
       <Typography variant="body2" color="#F4F3F2">
         © {new Date().getFullYear()} Developed by Bryan C. All Rights Reserved.
-      </Typography>
+        </Typography>
+    </Container>
     </Box>
   );
 };
