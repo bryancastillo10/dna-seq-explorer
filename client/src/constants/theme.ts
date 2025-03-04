@@ -37,7 +37,12 @@ export const theme = createTheme({
         fontSize: "1.55rem",
         fontWeight: 700,
         fontFamily: "Nova Square"
-      }
+      },
+    h6: {
+      fontSize: "1rem",
+      fontWeight: "bold",
+      letterSpacing: 1
+    }
     },
   components: {
     MuiCard: {
@@ -49,6 +54,36 @@ export const theme = createTheme({
             padding: "24px 32px"
         }
       }
+    },
+    MuiOutlinedInput: {
+      styleOverrides: {
+        root: {
+          borderRadius: "12px",
+        }
+      }
+    },
+    MuiMenu: {
+      styleOverrides: {
+        paper: ({ theme }) => ({
+          backgroundColor: theme.palette.secondary.main,
+        }),
+      },
+    },
+    MuiButton: {
+      styleOverrides: {
+        contained: ({ theme }) => ({
+          '&:hover': {
+            backgroundColor: theme.palette.secondary.light,
+            color: theme.palette.primary.main
+          },
+        }),
+        outlined: ({ theme }) => ({
+          '&:hover': {
+            backgroundColor: theme.palette.secondary.light,
+            color: theme.palette.primary.light
+          },
+        }),
+      },
     },
   }
 });
