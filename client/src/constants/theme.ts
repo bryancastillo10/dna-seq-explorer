@@ -50,5 +50,19 @@ export const theme = createTheme({
         }
       }
     },
+    MuiOutlinedInput: {
+      styleOverrides: {
+        root: {
+          borderRadius: "12px",
+        }
+      }
+    },
+    MuiMenu: {
+      styleOverrides: {
+        paper: ({ theme }) => ({
+          backgroundColor: theme.palette.secondary.main,
+        }),
+      },
+    },
   }
 });

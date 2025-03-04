@@ -1,6 +1,8 @@
 import { createFileRoute } from '@tanstack/react-router';
 import { Stack, Box } from '@mui/material';
+
 import SectionHeader from '@/components/layout/SectionHeader';
+import InputSingleSequenceBlock from '@/components/layout/InputSingleSequenceBlock';
 
 export const Route = createFileRoute('/basic')({
   component: RouteComponent,
@@ -22,20 +24,13 @@ function RouteComponent() {
         title="Basic Sequence Analysis"
         description={pageDescription}
       />
-      <Stack flexDirection="row"  marginTop={2}>
+      <Stack flexDirection={{xs: "column", md:"row"}} marginTop={2}>
+        <InputSingleSequenceBlock/>
         <Box
           sx={{
-            width: "50%",
+            width: {xs:"100%", md:"50%"},
             height: 500,
             backgroundColor: "#D7D7D7"
-          }}
-          ></Box>
-
-          <Box
-          sx={{
-            width: "50%",
-            height: 500,
-            backgroundColor: "#0075D7"
           }}
           ></Box>
       </Stack>
