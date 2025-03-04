@@ -41,6 +41,7 @@ const InputControlButtons = ({
         <Button
           fullWidth
           variant="contained"
+          type={mainBtnAction ? "button" : "submit"}
           onClick={mainBtnAction}
         >
           {mainBtnLabel}
