@@ -24,7 +24,7 @@ function RouteComponent() {
         title="Basic Sequence Analysis"
         description={pageDescription}
       />
-      <Stack flexDirection={{xs: "column", md:"row"}} marginTop={2}>
+      <Stack flexDirection={{xs: "column", md:"row"}} marginTop={2} marginBottom={4}>
         <InputSingleSequenceBlock/>
         <Box
           sx={{

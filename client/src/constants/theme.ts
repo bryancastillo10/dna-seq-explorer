@@ -64,5 +64,21 @@ export const theme = createTheme({
         }),
       },
     },
+    MuiButton: {
+      styleOverrides: {
+        contained: ({ theme }) => ({
+          '&:hover': {
+            backgroundColor: theme.palette.secondary.light,
+            color: theme.palette.primary.main
+          },
+        }),
+        outlined: ({ theme }) => ({
+          '&:hover': {
+            backgroundColor: theme.palette.secondary.light,
+            color: theme.palette.primary.light
+          },
+        }),
+      },
+    },
   }
 });

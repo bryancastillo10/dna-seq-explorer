@@ -4,11 +4,13 @@ import {
   Select,
   TextField,
   InputLabel,
-  MenuItem,
-  Button
+  MenuItem
 } from "@mui/material";
-import { Tag, Atom, Dna  } from "lucide-react";
-import FormFieldLabel from "../ui/FormFieldLabel";
+import { Tag, Atom, Dna } from "lucide-react";
+
+import FormFieldLabel from "@/components/ui/FormFieldLabel";
+import InputControlButtons from "@/components/ui/InputControlButtons";
+
 const InputSingleSequenceBlock = () => {
   const moleculeOptions = ["DNA", "RNA", "Protein"];
 
@@ -39,7 +41,7 @@ const InputSingleSequenceBlock = () => {
             <Select
                 label="Hd Biomolecule Type"
                 id="seqType"
-                value="DNA"
+                value=""
                 onChange={() => { }}
                 fullWidth
               >
@@ -55,11 +57,9 @@ const InputSingleSequenceBlock = () => {
               rows={8}
             />
           </FormControl>
-          <Box sx={{ flexWrap:"wrap", display:"flex", gap: 8}}>
-            <Button variant="outlined">Cancel</Button>
-            <Button  variant="outlined">Clear Input</Button>
-            <Button  variant="contained">Submit</Button>
-          </Box>
+          <InputControlButtons
+              mainBtnLabel="Run Analysis"
+          />
       </Box>
   )
 }
