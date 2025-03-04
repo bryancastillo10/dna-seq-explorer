@@ -35,7 +35,7 @@ export const theme = createTheme({
       },
       h3: {
         fontSize: "1.55rem",
-        fontWeight: 500,
+        fontWeight: 700,
         fontFamily: "Nova Square"
       }
     }

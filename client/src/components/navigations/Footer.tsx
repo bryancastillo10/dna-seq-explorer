@@ -10,7 +10,8 @@ const Footer = () => {
         px:8,
         py: 2,
         mt: "auto",
-        width:"100%",
+        width: "100%",
+        zIndex: 100,
         textAlign: {sm: "center", md:"left"},
         backgroundColor: (theme) => theme.palette.primary.main,
       }}
