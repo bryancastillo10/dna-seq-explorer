@@ -2,16 +2,15 @@ import { Box, Stack, Typography } from "@mui/material";
 import Researcher from "@/assets/images/researcher.png";
 
 const Hero = () => {
-    const pageDescription =`DNASeq Explorer is a simple web application designed to help life science enthusiasts to explore & 
-          analyzing biological sequences. Whether you're a student just starting to learn about molecular biology 
-          or a researcher looking for quick and seamless tool, this app offers you some features
-          assisting on common DNA Analysis tasks.`
+    const pageDescription = `DNASeq Explorer helps life science enthusiasts explore and 
+        analyze biological sequences quickly. Whether you're a student or researcher, this 
+        tool streamlines common DNA analysis tasks.`
         
     return (
         <Stack
             direction={{ xs: "column-reverse", md: "row" }}
             justifyContent={{xs:"center", md:"space-between"}}
-            alignItems="center"
+            alignItems={{xs:"center", md:"start"}}
         >
         <Box 
             sx={{
@@ -22,9 +21,9 @@ const Hero = () => {
             }}
         >
             <Typography variant="h3" sx={{ my: 4 }} textAlign={{ xs: "center", md: "left" }}>
-                    Simplified Tool for Biological Sequences
+                Simplified Tool for Biological Sequences
             </Typography>  
-            <Typography variant="body2" sx={{ mb: 6 }} textAlign={{ xs: "center", md: "left" }}>
+            <Typography variant="body1" sx={{ mb: 6 }} textAlign={{ xs: "center", md: "left" }}>
                 {pageDescription}
             </Typography>
         </Box>

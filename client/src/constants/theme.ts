@@ -35,8 +35,20 @@ export const theme = createTheme({
       },
       h3: {
         fontSize: "1.55rem",
-        fontWeight: 500,
+        fontWeight: 700,
         fontFamily: "Nova Square"
       }
-    }
+    },
+  components: {
+    MuiCard: {
+      styleOverrides: {
+        root: {
+            width: 320,
+            height:500,
+            backgroundColor: "#FFE1C6",
+            padding: "24px 32px"
+        }
+      }
+    },
+  }
 });
