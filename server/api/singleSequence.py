@@ -18,6 +18,7 @@ async def basic_sequence_analysis(data: SingleSequence):
 
     return {
         "message":"Basic Sequence Analysis is Successful",
+        "sampleLabel": data.sample_name,
         "data": analysis_results
     }
 
@@ -29,6 +30,7 @@ async def advanced_sequence_analysis(data: SingleSequence):
     sequence = data.seq
 
     return {
-        "message":"Basic Sequence Analysis is Successful",
+        "message":"Advanced Sequence Analysis is Successful",
+        "sampleLabel": data.sample_name,
         "data": sequence
     }

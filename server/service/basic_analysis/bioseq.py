@@ -7,7 +7,7 @@ class BioSeq:
     def __init__(self, seq="ATCG", seq_type="DNA", label="None"):
         self.seq = seq.upper()
         self.label = label
-        self.seq_type = seq_type.upper()
+        self.seq_type = seq_type
         self.is_valid = self.__validate()
         if not self.is_valid:
             raise ValueError(f"Invalid sequence at {self.label}, please make sure it matches the provided sequence type")
