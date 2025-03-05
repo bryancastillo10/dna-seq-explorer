@@ -1,6 +1,5 @@
 import { createTheme } from '@mui/material/styles';
 
-
 export const theme = createTheme({
   // Colors
   palette: {
@@ -42,8 +41,9 @@ export const theme = createTheme({
       fontSize: "1rem",
       fontWeight: "bold",
       letterSpacing: 1
-    }
-    },
+    }},
+
+  // Component Overrides
   components: {
     MuiCard: {
       styleOverrides: {
@@ -85,5 +85,21 @@ export const theme = createTheme({
         }),
       },
     },
+    MuiAlert: {
+      styleOverrides: {
+        filledSuccess: ({theme}) => ({
+            backgroundColor: "#6ED6A6",
+            color: theme.palette.primary.dark
+        }),
+        filledError: ({theme}) => ({
+            backgroundColor: "#C82525",
+            color: theme.palette.primary.contrastText
+        }),
+        filledWarning: ({}) =>({
+            backgroundColor: "#FFED49",
+            color: theme.palette.primary.dark
+        })
+      }
+    }
   }
 });

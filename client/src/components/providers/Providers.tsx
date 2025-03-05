@@ -1,12 +1,15 @@
 import { ThemeProvider, CssBaseline } from "@mui/material";
+import { ToastProvider } from "@/context/ToastProvider";
 import { theme } from "@/constants/theme";
 
 
 const Providers = ({children}:{children:React.ReactNode}) => {
   return (
     <ThemeProvider theme={theme}>
-      <CssBaseline/>
-      {children}
+      <ToastProvider>
+        <CssBaseline/>
+        {children}
+      </ToastProvider>
     </ThemeProvider>
   )
 }

@@ -3,6 +3,7 @@ import { Box, Typography } from "@mui/material"
 import LongStringResult from "@/components/ui/LongStringResult"
 
 const OutputBasicAnalysisBlock = () => {
+
   return (
          <Box
           sx={{
@@ -27,6 +28,7 @@ const OutputBasicAnalysisBlock = () => {
                   label="Translated Sequence"
                   result="ATSRGSSI"
               />
+          
                 <Typography>GC Content</Typography>
                 <Typography>Nucleotide Frequency</Typography>
             </Box>  
