@@ -1,6 +1,6 @@
-import { Box, Typography } from "@mui/material"
-
-import LongStringResult from "@/components/ui/LongStringResult"
+import { Box, Stack, Typography } from "@mui/material"
+import { Tag } from "lucide-react"
+import NucleotideBasicResult from "@/features/singleSeq/components/NucleotideBasicResult"
 
 const OutputBasicAnalysisBlock = () => {
 
@@ -15,23 +15,14 @@ const OutputBasicAnalysisBlock = () => {
           }}
       >
         <Typography variant="h3" textAlign="center">Analysis Result</Typography>
-            <Box p={2} height={400}>
-                <LongStringResult
-                  label="Transcription"
-                  result="GCUACUAGCAGGGGCAGCAGCAUUGCUACUAGCAGGGGCAGCAGCAUUGCUACUAGCAGGGGCAGCAGCAUU"
-                />
-              <LongStringResult
-                  label="Reverse Compliment"
-                  result="AATGCTGCTGCCCCTGCTAGTAGCAATGCTGCTGCCCCTGCTAGTAGC"
-              />
-              <LongStringResult
-                  label="Translated Sequence"
-                  result="ATSRGSSI"
-              />
-          
-                <Typography>GC Content</Typography>
-                <Typography>Nucleotide Frequency</Typography>
-            </Box>  
+          <Stack flexDirection="row" alignItems="center" gap={1}>
+            <Tag size={20}/>
+
+            <Typography>
+              Sample Data Label
+            </Typography>
+          </Stack>
+          <NucleotideBasicResult/>
       </Box>
   )
 }
