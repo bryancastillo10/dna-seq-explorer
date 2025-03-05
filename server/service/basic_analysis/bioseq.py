@@ -4,7 +4,7 @@ from collections import Counter
 class BioSeq:
     """ Common BioSeq class for DNA, RNA, and Protein sequences """
 
-    def __init__(self, seq="ATCG", seq_type="DNA", label="None"):
+    def __init__(self, seq="ATCG", seq_type="DNA", label="Sample"):
         self.seq = seq.upper()
         self.label = label
         self.seq_type = seq_type
