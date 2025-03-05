@@ -186,13 +186,12 @@ AminoAcid_Masses = {
     "*": 0,
 }
 
-codon_order = [
-    'AAA', 'AAC', 'AAG', 'AAT', 'ACA', 'ACC', 'ACG', 'ACT', 
-    'AGA', 'AGC', 'AGG', 'AGT', 'ATA', 'ATC', 'ATG', 'ATT',
-    'CAA', 'CAC', 'CAG', 'CAT', 'CCA', 'CCC', 'CCG', 'CCT',
-    'CGA', 'CGC', 'CGG', 'CGT', 'CTA', 'CTC', 'CTG', 'CTT',
-    'GAA', 'GAC', 'GAG', 'GAT', 'GCA', 'GCC', 'GCG', 'GCT',
-    'GGA', 'GGC', 'GGG', 'GGT', 'GTA', 'GTC', 'GTG', 'GTT',
-    'TAA', 'TAC', 'TAG', 'TAT', 'TCA', 'TCC', 'TCG', 'TCT',
-    'TGA', 'TGC', 'TGG', 'TGT', 'TTA', 'TTC', 'TTG', 'TTT'
+Codon_Order = [
+    "UUU", "UUC", "UUA", "UUG", "CUU", "CUC", "CUA", "CUG", "AUU", 
+    "AUC", "AUA", "AUG", "GUU", "GUC", "GUA", "GUG", "GCU", "GCC", 
+    "GCA", "GCG", "CCU", "CCC", "CCA", "CCG", "UGG", "GGU", "GGC", 
+    "GGA", "GGG", "UCU", "UCC", "UCA", "UCG", "AGU", "AGC", "ACU", 
+    "ACC", "ACA", "ACG", "UAU", "UAC", "CAA", "CAG", "AAU", "AAC", 
+    "UGU", "UGC", "CAU", "CAC", "AAA", "AAG", "CGU", "CGC", "CGA", 
+    "CGG", "AGA", "AGG", "GAU", "GAC", "GAA", "GAG", "UAA", "UAG", "UGA"
 ]
