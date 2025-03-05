@@ -1,4 +1,5 @@
 from service.basic_analysis.bioseq import BioSeq
+from service.basic_analysis.dna_rna import DNAService
 
 from Bio.Seq import Seq
 from Bio.SeqUtils.IsoelectricPoint import IsoelectricPoint as IEP
@@ -6,6 +7,7 @@ from Bio.SeqUtils.IsoelectricPoint import IsoelectricPoint as IEP
 from utils.bioStruct import AminoAcid_Masses
 
 class ProteinService:
+
     def amino_mw(bio_obj: BioSeq):
         """Calculate the molecular weight of the protein sequence."""
         return round(sum(AminoAcid_Masses.get(aa, 0) for aa in bio_obj.seq))
@@ -20,5 +22,6 @@ class ProteinService:
         return {
             "amino_acid_sequence": bio_obj.seq,
             "molecular_weight": ProteinService.amino_mw(bio_obj),
-            "isoelectric_point": ProteinService.calc_iso_point(bio_obj)
+            "amino_acid_frequency": bio_obj.nucleotide_frequency(),
+            "isoelectric_point": ProteinService.calc_iso_point(bio_obj),
         }

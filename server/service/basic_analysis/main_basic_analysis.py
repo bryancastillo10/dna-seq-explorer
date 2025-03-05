@@ -14,7 +14,7 @@ def analyze_sequence(data: SingleSequence):
     
     if bio_obj.seq_type in ["DNA", "RNA"]:
         return DNAService.all_dna_analysis(bio_obj)
-    elif bio_obj.seq_type == "PROTEIN":
+    elif bio_obj.seq_type == "Protein":
         return ProteinService.all_protein_analysis(bio_obj)
     else:
         raise ValueError("Invalid sequence type")

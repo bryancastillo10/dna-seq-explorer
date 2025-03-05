@@ -7,7 +7,7 @@ def validate_sequence(seq:str, seq_type: str) -> bool:
     elif seq_type == "RNA":
         valid_chars = set("AGCU")
     elif seq_type == "Protein":
-        valid_chars = set("ARNDCQEGHILKMFPSTWYV")
+        valid_chars = set("ARNDCQEGHILKMFPSTWYV*")
     else:
         raise ValueError("Invalid sequence type. Choose 'DNA', 'RNA', or 'Protein'.")
 

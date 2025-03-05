@@ -185,3 +185,13 @@ AminoAcid_Masses = {
     "V": 99.13,
     "*": 0,
 }
+
+Codon_Order = [
+    "UUU", "UUC", "UUA", "UUG", "CUU", "CUC", "CUA", "CUG", "AUU", 
+    "AUC", "AUA", "AUG", "GUU", "GUC", "GUA", "GUG", "GCU", "GCC", 
+    "GCA", "GCG", "CCU", "CCC", "CCA", "CCG", "UGG", "GGU", "GGC", 
+    "GGA", "GGG", "UCU", "UCC", "UCA", "UCG", "AGU", "AGC", "ACU", 
+    "ACC", "ACA", "ACG", "UAU", "UAC", "CAA", "CAG", "AAU", "AAC", 
+    "UGU", "UGC", "CAU", "CAC", "AAA", "AAG", "CGU", "CGC", "CGA", 
+    "CGG", "AGA", "AGG", "GAU", "GAC", "GAA", "GAG", "UAA", "UAG", "UGA"
+]
