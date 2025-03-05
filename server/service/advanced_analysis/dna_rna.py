@@ -1,6 +1,8 @@
 import pandas as pd
 import pickle
+
 from utils.bioStruct import Codon_Order 
+from utils.prediction_references import DNA_Types
 
 class ClassifyCodon:
 
@@ -33,6 +35,8 @@ class ClassifyCodon:
                 features[codon] = freq
 
         feature_vector = pd.DataFrame([features], columns=Codon_Order)
-        prediction = trained_model.predict(feature_vector)
-        return prediction[0]
+        prediction_code = int(trained_model.predict(feature_vector)[0])
+        prediction = DNA_Types.get(prediction_code)
+
+        return prediction
 

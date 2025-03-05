@@ -20,7 +20,7 @@ def prepare_codon_usage_analysis(data: SingleSequence):
 	
 	return rna_seq
 
-def all_dna_analysis(data: SingleSequence) -> dict:
+def all_ai_analysis_methods(data: SingleSequence) -> dict:
     """
     Perform advanced analysis: calculate codon usage and classify using the pre-trained model.
     """
