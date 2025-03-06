@@ -16,7 +16,7 @@ const NucleotideBasicResult = ({analysisResult, sampleLabel}: NucleotideBasicRes
   }
 
   if (!("transcription" in analysisResult)) {
-    return <Typography>Data is not of nucleotide type.</Typography>;
+    return <Typography>Data is not of DNA & RNA type.</Typography>;
   }
 
   const { transcription, 
