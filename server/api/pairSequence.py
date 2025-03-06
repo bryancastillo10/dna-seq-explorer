@@ -52,10 +52,10 @@ async def local_alignment(data:PairwiseSequence):
         similarity = sw_algo.calc_similarity()
 
         return {
-            "aligned_seq_A": aligned_seq_A,
-            "aligned_seq_A_label": data.seq_A_label,
-            "aligned_seq_B": aligned_seq_B,
-            "aligned_seq_B_label": data.seq_B_label,
+            "alignedSeqA": aligned_seq_A,
+            "alignedSeqALabel": data.seq_A_label,
+            "alignedSeqB": aligned_seq_B,
+            "alignedSeqBLabel": data.seq_B_label,
             "similarity": similarity
         }
 
@@ -81,10 +81,10 @@ async def global_alignment(data: PairwiseSequence):
         similarity = nw_algo.calc_similarity()
 
         return {
-            "aligned_seq_A": aligned_seq_A,
-            "aligned_seq_A_label": data.seq_A_label,
-            "aligned_seq_B": aligned_seq_B,
-            "aligned_seq_B_label": data.seq_B_label,
+            "alignedSeqA": aligned_seq_A,
+            "alignedSeqALabel": data.seq_A_label,
+            "alignedSeqB": aligned_seq_B,
+            "alignedSeqBLabel": data.seq_B_label,
             "similarity": similarity
         }
 

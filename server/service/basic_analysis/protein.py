@@ -20,8 +20,8 @@ class ProteinService:
     def all_protein_analysis(bio_obj: BioSeq):
         """Return a dictionary with all protein related analysis results."""
         return {
-            "amino_acid_sequence": bio_obj.seq,
-            "molecular_weight": ProteinService.amino_mw(bio_obj),
-            "amino_acid_frequency": bio_obj.nucleotide_frequency(),
-            "isoelectric_point": ProteinService.calc_iso_point(bio_obj),
+            "aminoAcidSequence": bio_obj.seq,
+            "molecularWeight": ProteinService.amino_mw(bio_obj),
+            "aminoAcidFrequency": bio_obj.nucleotide_frequency(),
+            "isoelectricPoint": ProteinService.calc_iso_point(bio_obj),
         }
