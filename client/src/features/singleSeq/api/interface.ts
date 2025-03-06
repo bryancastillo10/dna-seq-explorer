@@ -40,7 +40,8 @@ export interface ProteinResponse {
 }
 
 
-export type BasicAnalysisResults = BasicNucResult<string,number> | BasicProteinResult<string,number>;
+export type BasicAnalysisResults = BasicNucResult<string,number> 
+| BasicProteinResult<string,number> | null;
 
 // Advanced Analysis
 type RNABase = "A" | "G" | "C" | "U";
