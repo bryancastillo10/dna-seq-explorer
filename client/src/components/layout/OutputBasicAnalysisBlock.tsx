@@ -1,10 +1,36 @@
-import { Box, Stack, Typography } from "@mui/material"
-import { Tag } from "lucide-react"
+import { Box,  Typography } from "@mui/material"
 
-import NucleotideBasicResult from "@/features/singleSeq/components/NucleotideBasicResult"
-import { mockDNAData } from "@/features/singleSeq/api/mockData"
+import NucleotideBasicResult from "@/features/singleSeq/components/NucleotideBasicResult";
+import ProteinBasicResult from "@/features/singleSeq/components/ProteinBasicResult";
+
+// import { mockProteinData } from "@/features/singleSeq/api/mockData";
+import { getDataComponent } from "@/utils/getDataComponent";
+import NullOutput from "./NullOutput";
 
 const OutputBasicAnalysisBlock = () => {
+  // const { sampleLabel, data } = mockProteinData;
+  const data = null;
+  const sampleLabel = "Test Sample";
+
+  const renderAnalysisResult = () => {
+    switch(getDataComponent(data)) {
+      case "nucleotide":
+        return (
+          <NucleotideBasicResult
+            sampleLabel={sampleLabel}
+            analysisResult={data}
+          />);
+      case "protein":
+        return (
+          <ProteinBasicResult
+            sampleLabel={sampleLabel}
+            analysisResult={data}
+          />);
+      default:
+        return <NullOutput/>;
+    }
+
+  };
 
   return (
          <Box
@@ -17,15 +43,7 @@ const OutputBasicAnalysisBlock = () => {
           }}
       >
         <Typography variant="h3" textAlign="center">Analysis Result</Typography>
-          <Stack flexDirection="row" alignItems="center" gap={1}>
-            <Tag size={20}/>
-            <Typography>
-              {mockDNAData.sampleLabel}
-            </Typography>
-          </Stack>
-          <NucleotideBasicResult
-            analysisResult={mockDNAData.data}
-          />
+         {renderAnalysisResult()}
       </Box>
   )
 }

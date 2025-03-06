@@ -15,7 +15,7 @@ export const mockDNAData = {
 }
 
 
-export const proteinMockData = {
+export const mockProteinData = {
     "sampleLabel": "Sample Protein Label",
     "data": {
         "aminoAcidSequence": "ATSRGSSIYTRMKNPEVDYQRFWSGLHQTYWCAPTRIQKYDFTRGNTVWA",

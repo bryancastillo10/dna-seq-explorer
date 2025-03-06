@@ -1,15 +1,24 @@
-import { Typography, Box, Button } from "@mui/material";
-
+import { Typography, Box, Stack, Button } from "@mui/material";
+import { Tag } from "lucide-react";
 import LongStringResult from "@/components/ui/LongStringResult";
 import BarChartBlock from "@/components/ui/BarChartBlock";
 
-import type { BasicNucResult } from "@/features/singleSeq/api/interface";
+import type { BasicAnalysisResults } from "@/features/singleSeq/api/interface";
 
 interface NucleotideBasicResultProps {
-  analysisResult: BasicNucResult<string,number>;
+  analysisResult?: BasicAnalysisResults;
+  sampleLabel: string;
 }
 
-const NucleotideBasicResult = ({analysisResult}: NucleotideBasicResultProps) => {
+const NucleotideBasicResult = ({analysisResult, sampleLabel}: NucleotideBasicResultProps) => {
+  if(!analysisResult){
+    return <Typography>Data Failed to Fetch</Typography>
+  }
+
+  if (!("transcription" in analysisResult)) {
+    return <Typography>Data is not of DNA & RNA type.</Typography>;
+  }
+
   const { transcription, 
           reverseComplement, 
           gcContent, 
@@ -17,7 +26,12 @@ const NucleotideBasicResult = ({analysisResult}: NucleotideBasicResultProps) => 
           translatedSequence } = analysisResult;
 
   return (
-		<Box justifyContent="start">
+    <>
+    <Stack flexDirection="row" alignItems="center" gap={1}>
+      <Tag size={20}/>
+      <Typography>{sampleLabel}</Typography>
+    </Stack>
+		<Box>
       <LongStringResult
           label="Transcription"
           result={transcription}
@@ -49,7 +63,8 @@ const NucleotideBasicResult = ({analysisResult}: NucleotideBasicResultProps) => 
         <Button variant="outlined">Clear</Button>
         <Button variant="contained">Save</Button>
       </Box>
-    </Box>  
+    </Box>
+    </>  
   )
 };
 
