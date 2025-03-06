@@ -9,13 +9,14 @@ const nucleotideBases = ["G", "C", "A", "T", "U"];
 const aminoAcids = ["A", "C", "D", "E", "F", "G", "H", "I", "K", "L", 
 "M", "N", "P", "Q", "R", "S", "T", "V", "W", "Y"];
 
-type Nucleotides = typeof nucleotideBases[number];
-type AminoAcid = typeof aminoAcids[number];
+export type Nucleotides = typeof nucleotideBases[number];
+export type AminoAcid = typeof aminoAcids[number];
 
 // Basic Analysis: DNA or RNA 
-type BasicNucResult<T,U> = {
+export type BasicNucResult<T,U> = {
     transcription: T;
     gcContent: U;
+    reverseComplement: T;
     nucleotideFrequency: Partial<Record<Nucleotides, number>>,
     translatedSequence: T;
 }
@@ -26,7 +27,7 @@ export interface NucleotideResponse {
 }
 
 //  Basic Analysis: Protein
-type BasicProteinResult<T,U> = {
+export type BasicProteinResult<T,U> = {
     aminoAcidSequence: T;
     molecularWeight: U;
     aminoAcidFrequency: Record<AminoAcid, U>;

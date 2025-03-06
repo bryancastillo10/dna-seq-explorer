@@ -1,5 +1,4 @@
-export const mockDNAData = [
-    {
+export const mockDNAData = {
      "sampleLabel": "Sample Data Label",
      "data": {
         "transcription": "GCUACUAGCAGGGGCAGCAGCAUUCGAAUGCUGCGCUACUAGCAGGCUAAGUGCAGGAU",
@@ -12,11 +11,11 @@ export const mockDNAData = [
             "A": 15
         },
         "translatedSequence": "ATSRGSSIRMLRY*QAKCR"
-    }}
-]
+    }
+}
 
-export const proteinMockData = [
-    {
+
+export const proteinMockData = {
     "sampleLabel": "Sample Protein Label",
     "data": {
         "aminoAcidSequence": "ATSRGSSIYTRMKNPEVDYQRFWSGLHQTYWCAPTRIQKYDFTRGNTVWA",
@@ -44,11 +43,10 @@ export const proteinMockData = [
             "C": 1
         },
         "isoelectricPoint": 9.74}
-    }
-]
+}
 
-export const advancedMockData = [
-    {
+
+export const advancedMockData = {
     "sampleLabel": "ChloroplastTest",
         "codonUsage": {
             "AUG": 0.12280701754385964,
@@ -88,4 +86,3 @@ export const advancedMockData = [
         },
         "prediction": "mitochondrial"
     }
-]

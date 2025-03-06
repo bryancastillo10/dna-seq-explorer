@@ -1,6 +1,8 @@
 import { Box, Stack, Typography } from "@mui/material"
 import { Tag } from "lucide-react"
+
 import NucleotideBasicResult from "@/features/singleSeq/components/NucleotideBasicResult"
+import { mockDNAData } from "@/features/singleSeq/api/mockData"
 
 const OutputBasicAnalysisBlock = () => {
 
@@ -17,12 +19,13 @@ const OutputBasicAnalysisBlock = () => {
         <Typography variant="h3" textAlign="center">Analysis Result</Typography>
           <Stack flexDirection="row" alignItems="center" gap={1}>
             <Tag size={20}/>
-
             <Typography>
-              Sample Data Label
+              {mockDNAData.sampleLabel}
             </Typography>
           </Stack>
-          <NucleotideBasicResult/>
+          <NucleotideBasicResult
+            analysisResult={mockDNAData.data}
+          />
       </Box>
   )
 }

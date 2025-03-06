@@ -1,33 +1,43 @@
 import { Typography, Box } from "@mui/material";
+
 import LongStringResult from "@/components/ui/LongStringResult";
 
-const NucleotideBasicResult = () => {
+import type { BasicNucResult } from "@/features/singleSeq/api/interface";
+
+interface NucleotideBasicResultProps {
+  analysisResult: BasicNucResult<string,number>;
+}
+
+const NucleotideBasicResult = ({analysisResult}: NucleotideBasicResultProps) => {
+  const { transcription, 
+          reverseComplement, 
+          gcContent, 
+          nucleotideFrequency, 
+          translatedSequence } = analysisResult;
+
   return (
 		<Box height={400}>
         <LongStringResult
             label="Transcription"
-            result="GCUACUAGCAGGGGCAGCAGCAUUGCUACUAGCAGGGGCAGCAGCAUUGCUACUAGCAGGGGCAGCAGCAUU"
+            result={transcription}
           />
         <LongStringResult
             label="Reverse Compliment"
-            result="AATGCTGCTGCCCCTGCTAGTAGCAATGCTGCTGCCCCTGCTAGTAGC"
+            result={reverseComplement}
         />
         <LongStringResult
             label="Translated Sequence"
-            result="ATSRGSSI"
+            result={translatedSequence}
         />
 
-		{/* GC Content */}
+		    {/* GC Content */}
         <Box sx={{ display:"flex", alignItems:"center", gap: 2 }}>
         	<Typography variant="h6">GC Content</Typography>
-			<Typography variant="h5">60 %</Typography>
+			    <Typography variant="h5">{gcContent} %</Typography>
       	</Box>
 			
-		
-
-
-		  <Typography variant="h6">Nucleotide Frequency</Typography>
-        </Box>  
+        <Typography variant="h6">Nucleotide Frequency</Typography>
+    </Box>  
   )
 };
 

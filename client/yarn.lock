@@ -2183,11 +2183,6 @@ react-dom@^19.0.0:
   dependencies:
     scheduler "^0.25.0"
 
-react-heatmap-grid@^0.9.1:
-  version "0.9.1"
-  resolved "https://registry.yarnpkg.com/react-heatmap-grid/-/react-heatmap-grid-0.9.1.tgz#c80a5adb1c57ec29bdedc30269d39ddb5fdcd731"
-  integrity sha512-rsN2IfFh85cBl4y3cPJrabA60uuS96BKbWeX4BV4pTaKy/qqn8o8dDwd436LBg/EJad2S4Di948XaxpxwsapGw==
-
 react-is@^16.13.1, react-is@^16.7.0:
   version "16.13.1"
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.13.1.tgz#789729a4dc36de2999dc156dd6c1d9c18cea56a4"
