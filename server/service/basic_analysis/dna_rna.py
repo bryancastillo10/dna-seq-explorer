@@ -43,8 +43,8 @@ class DNAService:
         """Return a dictionary with all DNA/RNA related analysis results."""
         return {
             "transcription": DNAService.transcription(bio_obj),
-            "reverse_complement": DNAService.reverse_complement(bio_obj),
-            "gc_content": DNAService.gc_content(bio_obj),
-            "nucleotide_frequency": bio_obj.nucleotide_frequency(),
-            "translated_sequence": DNAService.translate_seq(bio_obj)
+            "reverseComplement": DNAService.reverse_complement(bio_obj),
+            "gcContent": DNAService.gc_content(bio_obj),
+            "nucleotideFrequency": bio_obj.nucleotide_frequency(),
+            "translatedSequence": DNAService.translate_seq(bio_obj)
         }

@@ -1,42 +1,52 @@
-export const DNAMockData = [
-	{    
-	"sampleLabel": "Sample DNA Data Label",
-    "data": {
-        "transcription": "GCUACUAGCAGGGGCAGCAGCAUUC",
-        "reverse_complement": "GAATGCTGCTGCCCCTGCTAGTAGC",
-        "gc_content": 60,
-        "nucleotide_frequency": {
-            "G": 8,
-            "C": 7,
-            "T": 4,
-            "A": 6
+export const mockDNAData = {
+     "sampleLabel": "Sample Data Label",
+     "data": {
+        "transcription": "GCUACUAGCAGGGGCAGCAGCAUUCGAAUGCUGCGCUACUAGCAGGCUAAGUGCAGGAU",
+        "reverseComplement": "ATCCTGCACTTAGCCTGCTAGTAGCGCAGCATTCGAATGCTGCTGCCCCTGCTAGTAGC",
+        "gcContent": 56,
+        "nucleotideFrequency": {
+            "G": 19,
+            "C": 14,
+            "T": 11,
+            "A": 15
         },
-        "translated_sequence": "ATSRGSSI"}
-	}
-]
-
-export const proteinMockData = [
-    {
-        "sampleLabel": "Sample Protein Data Label",
-        "data": {
-            "amino_acid_sequence": "ATSRGSSIYTR",
-            "molecular_weight": 1180,
-            "amino_acid_frequency": {
-                "A": 1,
-                "T": 2,
-                "S": 3,
-                "R": 2,
-                "G": 1,
-                "I": 1,
-                "Y": 1
-            },
-            "isoelectric_point": 10.84
-        }
+        "translatedSequence": "ATSRGSSIRMLRY*QAKCR"
     }
-]
+}
 
-export const advancedMockData = [
-    {
+
+export const proteinMockData = {
+    "sampleLabel": "Sample Protein Label",
+    "data": {
+        "aminoAcidSequence": "ATSRGSSIYTRMKNPEVDYQRFWSGLHQTYWCAPTRIQKYDFTRGNTVWA",
+        "molecularWeight": 5958,
+        "aminoAcidFrequency": {
+            "A": 3,
+            "T": 6,
+            "S": 4,
+            "R": 5,
+            "G": 3,
+            "I": 2,
+            "Y": 4,
+            "M": 1,
+            "K": 2,
+            "N": 2,
+            "P": 2,
+            "E": 1,
+            "V": 2,
+            "D": 2,
+            "Q": 3,
+            "F": 2,
+            "W": 3,
+            "L": 1,
+            "H": 1,
+            "C": 1
+        },
+        "isoelectricPoint": 9.74}
+}
+
+
+export const advancedMockData = {
     "sampleLabel": "ChloroplastTest",
         "codonUsage": {
             "AUG": 0.12280701754385964,
@@ -76,4 +86,3 @@ export const advancedMockData = [
         },
         "prediction": "mitochondrial"
     }
-]

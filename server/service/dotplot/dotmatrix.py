@@ -30,15 +30,16 @@ class DotMatrix:
 
         matrix_list = matrix.tolist()
 
-        obj_matrix = []
-        for row_idx, row in enumerate(matrix_list):
-            cells = [{"col": col_idx, "value": cell} for col_idx, cell in enumerate(row)]
-            obj_matrix.append({"row": row_idx, "cells": cells})
+        data = [
+            { "row" : row_idx, "col": col_idx, "value": cell}
+            for row_idx, row in enumerate(matrix_list)
+            for col_idx, cell in enumerate(row)
+        ]
 
         return {
-            "seq_A_label": seq_A_label,
-            "seq_B_label": seq_B_label,
+            "seqALabel": seq_A_label,
+            "seqBLabel": seq_B_label,
             "match": match,
             "mismatch": mismatch,
-            "matrix": obj_matrix
+            "matrix": data
         }
