@@ -6,8 +6,7 @@ import {
   Select,
   TextField,
   InputLabel,
-  MenuItem,
-  Typography
+  MenuItem
 } from "@mui/material";
 import { Tag, Atom, Dna } from "lucide-react";
 
