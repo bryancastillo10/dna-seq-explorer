@@ -3,7 +3,8 @@ import { Stack } from '@mui/material';
 
 import SectionHeader from '@/components/layout/SectionHeader';
 import InputSingleSequenceBlock from '@/components/layout/InputSingleSequenceBlock';
-import OutputBasicAnalysisBlock from '@/components/layout/OutputBasicAnalysisBlock';
+import OutputBlock from '@/components/layout/OutputBlock';
+import BasicResultBlock from '@/features/singleSeq/components/BasicResultBlock';
 
 export const Route = createFileRoute('/basic')({
   component: RouteComponent,
@@ -26,7 +27,9 @@ function RouteComponent() {
       />
       <Stack flexDirection={{xs: "column", md:"row"}} marginTop={2} marginBottom={4}>
         <InputSingleSequenceBlock />
-        <OutputBasicAnalysisBlock />
+        <OutputBlock>
+          <BasicResultBlock/>
+        </OutputBlock>
       </Stack>
     </Stack>
   )
