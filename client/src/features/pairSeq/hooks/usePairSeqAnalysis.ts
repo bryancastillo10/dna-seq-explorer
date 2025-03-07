@@ -42,6 +42,13 @@ const usePairSeqAnalysis = () => {
 		setSeqB(initialSeqData);
   };
 
+  const handleRunAnalysis = (e: React.FormEvent<HTMLFormElement>) => {
+		e.preventDefault();
+
+		const payload = getPairSeqData();
+		console.log(payload);
+  };
+
   return {
 		seqType,
 		seqA,
@@ -50,7 +57,8 @@ const usePairSeqAnalysis = () => {
 		handleSeqAChange,
 		handleSeqBChange,
 		handleClearPairSeq,
-		getPairSeqData
+		getPairSeqData,
+		handleRunAnalysis
 	}
 }
 

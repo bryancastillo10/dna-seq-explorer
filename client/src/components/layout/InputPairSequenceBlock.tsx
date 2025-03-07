@@ -7,13 +7,26 @@ import {
   SequenceInput
 } from "@/components/ui/form";
 
+import usePairSeqAnalysis from "@/features/pairSeq/hooks/usePairSeqAnalysis";
 
 const InputPairSequenceBlock = () => {
+  const {
+		seqType,
+		seqA,
+		seqB,
+		handleSelectChange,
+		handleSeqAChange,
+		handleSeqBChange,
+		handleClearPairSeq,
+    handleRunAnalysis
+	} = usePairSeqAnalysis();
+ 
+
 
   return (
 	<Box
       component="form"
-      onSubmit={() =>{}}
+      onSubmit={handleRunAnalysis}
       sx={{
         display:"flex",
         flexDirection:"column",
@@ -23,50 +36,50 @@ const InputPairSequenceBlock = () => {
     >
      {/* Biomolecule Type */}
       <BioMoleSelect
-          value=""
-          onChange={()=>{}}
+          value={seqType}
+          onChange={handleSelectChange}
           feature="pairwise"
       />
     
 
       {/* Sequence A Label */}
       <SequenceLabel
-          id="seqALabel"
-          value=""
-          onChange={()=>{}}
+          id="label"
+          value={seqA.label}
+          onChange={handleSeqAChange}
           label="Sequence 1 Label"
           layout="inputWithBtn"
       />
 
       {/* Sequence A */}
       <SequenceInput
-          id="seqA"
-          value=""
-          onChange={()=>{}}
+          id="sequence"
+          value={seqA.sequence}
+          onChange={handleSeqAChange}
           label="Sequence 1"
       />
 
       {/* Sequence B Label */}
       <SequenceLabel
-          id="seqBLabel"
-          value=""
-          onChange={()=>{}}
+          id="label"
+          value={seqB.label}
+          onChange={handleSeqBChange}
           label="Sequence 2 Label"
           layout="inputWithBtn"
       />
 
       {/* Sequence B */}
       <SequenceInput
-          id="seqB"
-          value=""
-          onChange={()=>{}}
+          id="sequence"
+          value={seqB.sequence}
+          onChange={handleSeqBChange}
           label="Sequence 2"
       />
    
       <InputControlButtons
           mainBtnLabel="Run Analysis"
           otherBtn1Label="Clear Input"
-          otherBtn1Action={()=>{}}
+          otherBtn1Action={handleClearPairSeq}
           withOtherBtn2={false}
       />      
 	</Box>
