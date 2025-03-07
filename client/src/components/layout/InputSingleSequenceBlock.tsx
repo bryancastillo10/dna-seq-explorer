@@ -12,6 +12,7 @@ import { Tag, Atom, Dna } from "lucide-react";
 
 import FormFieldLabel from "@/components/ui/FormFieldLabel";
 import InputControlButtons from "@/components/ui/InputControlButtons";
+import { getInputStyle } from "@/utils/getInputStyle";
 
 interface InputSingleSequenceBlockprops {
   analysisFeature: "basic" | "advanced";
@@ -45,7 +46,7 @@ const InputSingleSequenceBlock = ({analysisFeature}: InputSingleSequenceBlockpro
         >
 
           {/* Sample Label */}
-          <FormControl sx={{width: {xs: "100%", md:"50%"}, my: 1}}>
+          <FormControl sx={getInputStyle("input")}>
               <TextField
                 id="sampleLabel"
                 value={singleSeq.sampleLabel}
@@ -55,7 +56,7 @@ const InputSingleSequenceBlock = ({analysisFeature}: InputSingleSequenceBlockpro
           </FormControl>
 
           {/* Biomolecule Type */}
-          <FormControl sx={{width: {xs: "100%", md:"50%"} , my: 1}}>
+          <FormControl sx={getInputStyle("select")}>
             <InputLabel sx={{
                         display: "flex",
                         alignItems: "center",
@@ -77,7 +78,7 @@ const InputSingleSequenceBlock = ({analysisFeature}: InputSingleSequenceBlockpro
           </FormControl>
 
           {/* Sequence */}
-          <FormControl sx={{width: {xs: "100%", md:"90%"}, my: 1}}>
+          <FormControl sx={getInputStyle("textarea")}>
             <TextField  
               id="seq"
               value={singleSeq.seq}
