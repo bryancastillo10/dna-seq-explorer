@@ -1,19 +1,14 @@
-import { Box, Button } from "@mui/material";
-import { Tag, Atom } from "lucide-react";
+import { Box } from "@mui/material";
 
-import {FormControl, 
-        InputLabel, 
-        TextField,
-        Select,
-        MenuItem
-      } from "@mui/material";
+import { 
+  InputControlButtons,
+  BioMoleSelect,
+  SequenceLabel,
+  SequenceInput
+} from "@/components/ui/form";
 
-import FormFieldLabel from "@/components/ui/form/FormFieldLabel";
-import SequenceInput from "@/components/ui/form/SequenceInput";
-import { getInputStyle } from "@/utils/getInputStyle";
 
 const InputPairSequenceBlock = () => {
-  const moleculeOptions = ["DNA", "RNA", "Protein"]
 
   return (
 	<Box
@@ -27,66 +22,53 @@ const InputPairSequenceBlock = () => {
           }}
     >
      {/* Biomolecule Type */}
-        <FormControl sx={getInputStyle("select")}>
-          <InputLabel sx={{
-                      display: "flex",
-                      alignItems: "center",
-                      gap: 0.4
-          }}>
-            <Atom size={16} />
-            Biomolecule Type
-          </InputLabel>
-          <Select
-              label="Hd Biomolecule Type"
-              id="seqType"
-              value=""
-              onChange={()=>{}}
-              fullWidth
-            >
-            {moleculeOptions.map(mole => (
-              <MenuItem key={mole} value={mole}>{mole}</MenuItem>))}
-          </Select>
-        </FormControl>
+      <BioMoleSelect
+          value=""
+          onChange={()=>{}}
+          feature="pairwise"
+      />
     
 
-        <FormControl sx={{display:"flex", flexDirection:"row", gap: 2}}>
-          <TextField
-            id="seqALabel"
-            value=""
-            onChange={()=>{}}
-            label={<FormFieldLabel label="Sequence 1 Label" icon={Tag} />}
-          />
-          <Button variant="outlined">Load</Button>
-        </FormControl>
+      {/* Sequence A Label */}
+      <SequenceLabel
+          id="seqALabel"
+          value=""
+          onChange={()=>{}}
+          label="Sequence 1 Label"
+          layout="inputWithBtn"
+      />
 
-       {/* Sequence A */}
-        <SequenceInput
-            id="seqA"
-            value=""
-            onChange={()=>{}}
-            label="Sequence 1"
-        />
+      {/* Sequence A */}
+      <SequenceInput
+          id="seqA"
+          value=""
+          onChange={()=>{}}
+          label="Sequence 1"
+      />
 
+      {/* Sequence B Label */}
+      <SequenceLabel
+          id="seqBLabel"
+          value=""
+          onChange={()=>{}}
+          label="Sequence 2 Label"
+          layout="inputWithBtn"
+      />
 
-      <FormControl sx={[getInputStyle("input"), 
-            { display:"flex", 
-              flexDirection:"row"}]}>
-          <TextField
-            id="seqBLabel"
-            value=""
-            onChange={()=>{}}
-            label={<FormFieldLabel label="Sequence 2 Label" icon={Tag} />}
-          />
-        </FormControl>
+      {/* Sequence B */}
+      <SequenceInput
+          id="seqB"
+          value=""
+          onChange={()=>{}}
+          label="Sequence 2"
+      />
 
-       {/* Sequence */}
-        <SequenceInput
-            id="seqB"
-            value=""
-            onChange={()=>{}}
-            label="Sequence 2"
-        />
-       
+      
+      <InputControlButtons
+          mainBtnLabel="Run Analysis"
+          otherBtn1Label="Clear Input"
+          otherBtn1Action={()=>{}}
+      />      
 	</Box>
   )
 }
