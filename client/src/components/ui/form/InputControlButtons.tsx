@@ -7,6 +7,7 @@ interface InputControlButtonsProps {
     otherBtn1Action?: () => void;
     otherBtn2Label?: string;
     otherBtn2Action?: () => void;
+    withOtherBtn2: boolean;
 }
 
 const InputControlButtons = ({
@@ -15,10 +16,16 @@ const InputControlButtons = ({
     otherBtn1Label = "Clear",
     otherBtn1Action,
     otherBtn2Label = "Load",
-    otherBtn2Action
+    otherBtn2Action,
+    withOtherBtn2
   }: InputControlButtonsProps) => {
   return (
-    <Box sx={{display:"grid", gridTemplateColumns:"repeat(2, 1fr)", gap: 2, marginBottom: 2}}>
+    <Box sx={{
+      display:"grid", 
+      gridTemplateColumns:"repeat(2, 1fr)", 
+      gap: 2, 
+      marginBottom: 3}}
+    >
       <Stack gap={2}>
         <Button
           onClick={otherBtn1Action}
@@ -26,12 +33,13 @@ const InputControlButtons = ({
         >
           {otherBtn1Label}
         </Button>
-        <Button
+        {withOtherBtn2 && 
+        (<Button
           onClick={otherBtn2Action}
           variant="outlined"
         >
           {otherBtn2Label}
-        </Button>
+        </Button>)}
       </Stack>
       
       <Box

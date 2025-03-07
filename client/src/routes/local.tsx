@@ -2,6 +2,10 @@ import { createFileRoute } from '@tanstack/react-router'
 import { Stack } from '@mui/material';
 
 import SectionHeader from '@/components/layout/SectionHeader';
+import InputPairSequenceBlock from '@/components/layout/InputPairSequenceBlock';
+import OutputBlock from '@/components/layout/OutputBlock';
+
+import PairSeqAlignmentResult from '@/features/pairSeq/components/PairSeqAlignmentResult';
 
 export const Route = createFileRoute('/local')({
   component: RouteComponent,
@@ -19,7 +23,10 @@ function RouteComponent() {
       description={pageDescription}
     />
     <Stack flexDirection={{xs: "column", md:"row"}} marginTop={2} marginBottom={4}>
-
+      <InputPairSequenceBlock/>
+      <OutputBlock>
+        <PairSeqAlignmentResult/>
+      </OutputBlock>
     </Stack>
   </Stack>
   );

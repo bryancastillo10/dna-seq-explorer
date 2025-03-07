@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 
 import { type SingleSeqInput } from "@/features/singleSeq/api/interface";
 import { type SelectChangeEvent } from "@mui/material";
@@ -11,9 +11,7 @@ const initialData = {
 
 const useSingleSeqAnalysis = () => {
   const [singleSeq, setSingleSeq] = useState<SingleSeqInput<string>>(initialData);
-  const basicAnalysismoleOptions = ["DNA", "RNA", "Protein"];
-  const advancedAnalysismoleOptions = basicAnalysismoleOptions.filter(opt => opt !== "Protein");
-  
+
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
       const { id, value } = e.target;
       setSingleSeq((prev) => ({...prev, [id]: value}))
@@ -37,8 +35,6 @@ const useSingleSeqAnalysis = () => {
 
   return {
     singleSeq,
-    basicAnalysismoleOptions,
-    advancedAnalysismoleOptions,
     handleInputChange,
     handleSelectChange,
     handleClearSingleSeq,

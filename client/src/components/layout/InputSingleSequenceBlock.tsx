@@ -1,17 +1,14 @@
 import useSingleSeqAnalysis from "@/features/singleSeq/hooks/useSingleSeqAnalysis";
 
-import {
-  Box,
-  FormControl,
-  Select,
-  TextField,
-  InputLabel,
-  MenuItem
-} from "@mui/material";
-import { Tag, Atom, Dna } from "lucide-react";
+import { Box } from "@mui/material";
 
-import FormFieldLabel from "@/components/ui/FormFieldLabel";
-import InputControlButtons from "@/components/ui/InputControlButtons";
+import { 
+  InputControlButtons,
+  BioMoleSelect,
+  SequenceLabel,
+  SequenceInput
+} from "@/components/ui/form";
+
 
 interface InputSingleSequenceBlockprops {
   analysisFeature: "basic" | "advanced";
@@ -20,18 +17,12 @@ interface InputSingleSequenceBlockprops {
 const InputSingleSequenceBlock = ({analysisFeature}: InputSingleSequenceBlockprops) => {
   const {
     singleSeq,
-    basicAnalysismoleOptions,
-    advancedAnalysismoleOptions,
     handleInputChange,
     handleSelectChange,
     handleClearSingleSeq,
     handleRunAnalysis
   } = useSingleSeqAnalysis();
 
-  const moleculeOptions = analysisFeature === "basic" 
-    ? basicAnalysismoleOptions 
-    : advancedAnalysismoleOptions;
-  
   return (
         <Box
           component="form"
@@ -43,55 +34,34 @@ const InputSingleSequenceBlock = ({analysisFeature}: InputSingleSequenceBlockpro
             width: {xs:"100%", md:"50%"},
           }}
         >
-
           {/* Sample Label */}
-          <FormControl sx={{width: {xs: "100%", md:"50%"}, my: 1}}>
-              <TextField
-                id="sampleLabel"
-                value={singleSeq.sampleLabel}
-                onChange={handleInputChange}
-                label={<FormFieldLabel label="Sample Label" icon={Tag} />}
-              />
-          </FormControl>
+          <SequenceLabel
+              id="sampleLabel"
+              value={singleSeq.sampleLabel}
+              onChange={handleInputChange}
+              label="Sample Label"
+              layout="input"
+          />
 
           {/* Biomolecule Type */}
-          <FormControl sx={{width: {xs: "100%", md:"50%"} , my: 1}}>
-            <InputLabel sx={{
-                        display: "flex",
-                        alignItems: "center",
-                        gap: 0.4
-            }}>
-              <Atom size={16} />
-              Biomolecule Type
-            </InputLabel>
-            <Select
-                label="Hd Biomolecule Type"
-                id="seqType"
-                value={singleSeq.seqType}
-                onChange={handleSelectChange}
-                fullWidth
-              >
-              {moleculeOptions.map(mole => (
-                <MenuItem key={mole} value={mole}>{mole}</MenuItem>))}
-            </Select>
-          </FormControl>
+          <BioMoleSelect
+              value={singleSeq.seqType}
+              onChange={handleSelectChange}
+              feature={analysisFeature}   
+          />
 
           {/* Sequence */}
-          <FormControl sx={{width: {xs: "100%", md:"90%"}, my: 1}}>
-            <TextField  
+          <SequenceInput
               id="seq"
               value={singleSeq.seq}
               onChange={handleInputChange}
-              label={<FormFieldLabel label="Sequence" icon={Dna} />}      
-              multiline
-              rows={8}
-            />
-          </FormControl>
+          />
 
           <InputControlButtons
               mainBtnLabel="Run Analysis"
               otherBtn1Label="Clear Input"
               otherBtn1Action={handleClearSingleSeq}
+              withOtherBtn2
           />
       </Box>
   )

@@ -1,6 +1,6 @@
 import { createContext, useState } from "react";
 import { type SnackbarCloseReason } from "@mui/material";
-import Toast from "@/components/ui/Toast";
+import Toast from "@/components/common/Toast";
 
 export type ToastStatus = "success" | "error" | "warning" | "info";
 
