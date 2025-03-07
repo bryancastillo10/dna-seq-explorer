@@ -14,8 +14,7 @@ function RouteComponent() {
   const pageDescription = `
   Enter your DNA/RNA sequence for advanced AI classification based on codon usage. Protein sequences are not allowed.
   Note: Although the model was rigorously evaluated using cross-validation and exploratory data analysis (EDA), it may still produce errors and is intended for demonstration purposes only.
-  Click “Run” to analyze, “Save Output” to save your results, and “Clear” to start over.
-`
+  Click “Run” to analyze, “Save Output” to save your results, and “Clear” to start over.`
 
   return (
   <Stack width="100%">
@@ -25,7 +24,7 @@ function RouteComponent() {
     />
 
     <Stack flexDirection={{xs: "column", md:"row"}} marginTop={2} marginBottom={4}>
-        <InputSingleSequenceBlock />
+        <InputSingleSequenceBlock analysisFeature='advanced' />
         <OutputBlock>
           <AdvancedResultBlock/>
         </OutputBlock>

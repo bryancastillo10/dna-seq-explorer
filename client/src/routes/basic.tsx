@@ -27,7 +27,7 @@ function RouteComponent() {
         description={pageDescription}
       />
       <Stack flexDirection={{xs: "column", md:"row"}} marginTop={2} marginBottom={4}>
-        <InputSingleSequenceBlock />
+        <InputSingleSequenceBlock analysisFeature='basic' />
         <OutputBlock>
           <BasicResultBlock/>
         </OutputBlock>

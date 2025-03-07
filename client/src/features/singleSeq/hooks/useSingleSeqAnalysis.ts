@@ -11,7 +11,8 @@ const initialData = {
 
 const useSingleSeqAnalysis = () => {
   const [singleSeq, setSingleSeq] = useState<SingleSeqInput<string>>(initialData);
-  const moleculeOptions = ["DNA", "RNA", "Protein"];
+  const basicAnalysismoleOptions = ["DNA", "RNA", "Protein"];
+  const advancedAnalysismoleOptions = basicAnalysismoleOptions.filter(opt => opt !== "Protein");
   
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
       const { id, value } = e.target;
@@ -36,7 +37,8 @@ const useSingleSeqAnalysis = () => {
 
   return {
     singleSeq,
-    moleculeOptions,
+    basicAnalysismoleOptions,
+    advancedAnalysismoleOptions,
     handleInputChange,
     handleSelectChange,
     handleClearSingleSeq,
