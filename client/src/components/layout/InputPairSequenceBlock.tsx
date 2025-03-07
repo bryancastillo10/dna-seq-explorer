@@ -9,6 +9,7 @@ import {FormControl,
       } from "@mui/material";
 
 import FormFieldLabel from "@/components/ui/FormFieldLabel";
+import SequenceInput from "@/components/ui/SequenceInput";
 import { getInputStyle } from "@/utils/getInputStyle";
 
 const InputPairSequenceBlock = () => {
@@ -25,7 +26,6 @@ const InputPairSequenceBlock = () => {
             width: {xs:"100%", md:"50%"},
           }}
     >
-
      {/* Biomolecule Type */}
           <FormControl sx={getInputStyle("select")}>
             <InputLabel sx={{
@@ -60,17 +60,13 @@ const InputPairSequenceBlock = () => {
           />
         </FormControl>
 
-       {/* Sequence */}
-       <FormControl sx={getInputStyle("textarea")}>
-         <TextField  
-           id="seq"
-           value=""
-           onChange={()=>{}}
-           label={<FormFieldLabel label="First Sequence" icon={Dna} />}      
-           multiline
-           rows={8}
-         />
-       </FormControl>
+       {/* Sequence A */}
+        <SequenceInput
+            id="seqA"
+            value=""
+            onChange={()=>{}}
+            label="Sequence 1"
+        />
 
 
       <FormControl sx={[getInputStyle("input"), 
@@ -85,16 +81,13 @@ const InputPairSequenceBlock = () => {
         </FormControl>
 
        {/* Sequence */}
-       <FormControl sx={getInputStyle("textarea")}>
-         <TextField  
-           id="seq"
-           value=""
-           onChange={()=>{}}
-           label={<FormFieldLabel label="Second Sequence" icon={Dna} />}      
-           multiline
-           rows={8}
-         />
-       </FormControl>
+        <SequenceInput
+            id="seqB"
+            value=""
+            onChange={()=>{}}
+            label="Sequence 2"
+        />
+       
 	</Box>
   )
 }

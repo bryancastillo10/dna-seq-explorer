@@ -12,6 +12,8 @@ import { Tag, Atom, Dna } from "lucide-react";
 
 import FormFieldLabel from "@/components/ui/FormFieldLabel";
 import InputControlButtons from "@/components/ui/InputControlButtons";
+import SequenceInput from "@/components/ui/SequenceInput";
+
 import { getInputStyle } from "@/utils/getInputStyle";
 
 interface InputSingleSequenceBlockprops {
@@ -78,16 +80,11 @@ const InputSingleSequenceBlock = ({analysisFeature}: InputSingleSequenceBlockpro
           </FormControl>
 
           {/* Sequence */}
-          <FormControl sx={getInputStyle("textarea")}>
-            <TextField  
+          <SequenceInput
               id="seq"
               value={singleSeq.seq}
               onChange={handleInputChange}
-              label={<FormFieldLabel label="Sequence" icon={Dna} />}      
-              multiline
-              rows={8}
-            />
-          </FormControl>
+          />
 
           <InputControlButtons
               mainBtnLabel="Run Analysis"
