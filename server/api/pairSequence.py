@@ -37,11 +37,13 @@ async def local_alignment(data:PairwiseSequence):
 
     return {
         "message": "Local Alignment is successful",
-        "seqALabel": data.seq_A_label,
-        "alignedSeqA": align_result["aligned_seq_A"],
-        "seqBLabel": data.seq_B_label,
-        "aliignedSeqB":  align_result["aligned_seq_B"],
-        "similarity": align_result["similarity"]
+        "data": {
+            "seqALabel": data.seq_A_label,
+            "alignedSeqA": align_result["aligned_seq_A"],
+            "seqBLabel": data.seq_B_label,
+            "aliignedSeqB":  align_result["aligned_seq_B"],
+            "similarity": align_result["similarity"]
+            }
         }
 
 
@@ -58,9 +60,11 @@ async def global_alignment(data: PairwiseSequence):
 
     return {
        "message": "Global Alignment is successful",
-       "seqALabel": data.seq_A_label,
-        "alignedSeqA": align_result["aligned_seq_A"],
-        "seqBLabel": data.seq_B_label,
-        "aliignedSeqB":  align_result["aligned_seq_B"],
-        "similarity": align_result["similarity"]
+        "data": {
+            "seqALabel": data.seq_A_label,
+            "alignedSeqA": align_result["aligned_seq_A"],
+            "seqBLabel": data.seq_B_label,
+            "aliignedSeqB":  align_result["aligned_seq_B"],
+            "similarity": align_result["similarity"]
+        }
     }
