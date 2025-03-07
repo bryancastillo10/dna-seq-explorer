@@ -6,6 +6,10 @@ export interface PairSeqInput<T> {
 	seqB: T;
 };
 
+export interface ISequenceData {
+	label:string;
+	sequence: string;
+}
 
 export interface LocalGlobalSeqResult<T> {
 	seqALabel: T;

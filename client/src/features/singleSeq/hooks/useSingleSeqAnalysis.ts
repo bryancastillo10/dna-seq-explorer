@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 
 import { type SingleSeqInput } from "@/features/singleSeq/api/interface";
 import { type SelectChangeEvent } from "@mui/material";
