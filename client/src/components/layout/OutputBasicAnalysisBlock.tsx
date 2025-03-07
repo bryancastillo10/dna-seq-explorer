@@ -3,14 +3,14 @@ import { Box,  Typography } from "@mui/material"
 import NucleotideBasicResult from "@/features/singleSeq/components/NucleotideBasicResult";
 import ProteinBasicResult from "@/features/singleSeq/components/ProteinBasicResult";
 
-// import { mockProteinData } from "@/features/singleSeq/api/mockData";
+import { mockDNAData } from "@/features/singleSeq/api/mockData";
 import { getDataComponent } from "@/utils/getDataComponent";
 import NullOutput from "./NullOutput";
 
 const OutputBasicAnalysisBlock = () => {
-  // const { sampleLabel, data } = mockProteinData;
-  const data = null;
-  const sampleLabel = "Test Sample";
+  const { sampleLabel, data } = mockDNAData;
+  // const data = null;
+  // const sampleLabel = "Test Sample";
 
   const renderAnalysisResult = () => {
     switch(getDataComponent(data)) {
