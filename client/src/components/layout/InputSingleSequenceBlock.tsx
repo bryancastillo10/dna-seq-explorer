@@ -13,15 +13,24 @@ import { Tag, Atom, Dna } from "lucide-react";
 import FormFieldLabel from "@/components/ui/FormFieldLabel";
 import InputControlButtons from "@/components/ui/InputControlButtons";
 
-const InputSingleSequenceBlock = () => {
+interface InputSingleSequenceBlockprops {
+  analysisFeature: "basic" | "advanced";
+}
+
+const InputSingleSequenceBlock = ({analysisFeature}: InputSingleSequenceBlockprops) => {
   const {
     singleSeq,
-    moleculeOptions,
+    basicAnalysismoleOptions,
+    advancedAnalysismoleOptions,
     handleInputChange,
     handleSelectChange,
     handleClearSingleSeq,
     handleRunAnalysis
   } = useSingleSeqAnalysis();
+
+  const moleculeOptions = analysisFeature === "basic" 
+    ? basicAnalysismoleOptions 
+    : advancedAnalysismoleOptions;
   
   return (
         <Box
@@ -34,6 +43,8 @@ const InputSingleSequenceBlock = () => {
             width: {xs:"100%", md:"50%"},
           }}
         >
+
+          {/* Sample Label */}
           <FormControl sx={{width: {xs: "100%", md:"50%"}, my: 1}}>
               <TextField
                 id="sampleLabel"
@@ -42,6 +53,8 @@ const InputSingleSequenceBlock = () => {
                 label={<FormFieldLabel label="Sample Label" icon={Tag} />}
               />
           </FormControl>
+
+          {/* Biomolecule Type */}
           <FormControl sx={{width: {xs: "100%", md:"50%"} , my: 1}}>
             <InputLabel sx={{
                         display: "flex",
@@ -62,6 +75,8 @@ const InputSingleSequenceBlock = () => {
                 <MenuItem key={mole} value={mole}>{mole}</MenuItem>))}
             </Select>
           </FormControl>
+
+          {/* Sequence */}
           <FormControl sx={{width: {xs: "100%", md:"90%"}, my: 1}}>
             <TextField  
               id="seq"
@@ -72,6 +87,7 @@ const InputSingleSequenceBlock = () => {
               rows={8}
             />
           </FormControl>
+
           <InputControlButtons
               mainBtnLabel="Run Analysis"
               otherBtn1Label="Clear Input"

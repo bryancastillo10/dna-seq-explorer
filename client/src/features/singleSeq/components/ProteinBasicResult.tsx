@@ -5,6 +5,7 @@ import LongStringResult from "@/components/ui/LongStringResult";
 import BarChartBlock from "@/components/ui/BarChartBlock";
 
 import type { BasicAnalysisResults } from "@/features/singleSeq/api/interface";
+import IntValueResult from "@/components/ui/IntValueResult";
 
 interface ProteinBasicResultProps {
   analysisResult?: BasicAnalysisResults;
@@ -35,15 +36,17 @@ const ProteinBasicResult = ({analysisResult, sampleLabel}: ProteinBasicResultPro
 				result={aminoAcidSequence}
 			/>
 
-			<Box sx={{ display:"flex", alignItems:"center", gap: 2 }}>
-				<Typography variant="h6">Molecular Weight</Typography>
-				<Typography variant="h5">{molecularWeight}</Typography>
-			</Box>
+			<IntValueResult
+				title="Molecular Weight"
+				result={molecularWeight}
+				withUnit
+				unit=" Da"
+			/>
 
-			<Box sx={{ display:"flex", alignItems:"center", gap: 2 }}>
-				<Typography variant="h6">Isoelectric Point</Typography>
-				<Typography variant="h5">{isoelectricPoint}</Typography>
-			</Box>
+			<IntValueResult
+				title="Isoelectric Point"
+				result={isoelectricPoint}
+			/>
 
 			<BarChartBlock
 				title="Amino Acid Frequency"

@@ -4,6 +4,7 @@ import LongStringResult from "@/components/ui/LongStringResult";
 import BarChartBlock from "@/components/ui/BarChartBlock";
 
 import type { BasicAnalysisResults } from "@/features/singleSeq/api/interface";
+import IntValueResult from "@/components/ui/IntValueResult";
 
 interface NucleotideBasicResultProps {
   analysisResult?: BasicAnalysisResults;
@@ -44,11 +45,13 @@ const NucleotideBasicResult = ({analysisResult, sampleLabel}: NucleotideBasicRes
           label="Translated Sequence"
           result={translatedSequence}
       />
-		  {/* GC Content */}
-      <Box sx={{ display:"flex", alignItems:"center", gap: 2 }}>
-      	<Typography variant="h6">GC Content</Typography>
-			  <Typography variant="h5">{gcContent} %</Typography>
-      </Box>
+
+      <IntValueResult
+          title="GC Content"
+          result={gcContent}
+          withUnit
+      />
+
       <BarChartBlock
         title="Nucleotide Frequency"
         data={nucleotideFrequency}
