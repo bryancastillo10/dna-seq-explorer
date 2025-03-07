@@ -1,7 +1,7 @@
 import { FormControl, TextField } from "@mui/material";
 import { Dna } from "lucide-react";
 
-import FormFieldLabel from "@/components/ui/FormFieldLabel";
+import FormFieldLabel from "@/components/ui/form/FormFieldLabel";
 import { getInputStyle } from "@/utils/getInputStyle";
 
 interface SequenceInputProps {
@@ -27,7 +27,7 @@ const SequenceInput = ({
               multiline
               rows={8}
             />
-     </FormControl>
+   </FormControl>
   )
 }
 

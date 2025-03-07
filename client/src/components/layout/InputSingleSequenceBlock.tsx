@@ -8,13 +8,14 @@ import {
   InputLabel,
   MenuItem
 } from "@mui/material";
-import { Tag, Atom, Dna } from "lucide-react";
+import { Tag, Atom } from "lucide-react";
 
-import FormFieldLabel from "@/components/ui/FormFieldLabel";
+import SequenceLabel from "@/components/ui/form/SequenceLabel";
 import InputControlButtons from "@/components/ui/InputControlButtons";
-import SequenceInput from "@/components/ui/SequenceInput";
+import SequenceInput from "@/components/ui/form/SequenceInput";
 
 import { getInputStyle } from "@/utils/getInputStyle";
+
 
 interface InputSingleSequenceBlockprops {
   analysisFeature: "basic" | "advanced";
@@ -48,14 +49,13 @@ const InputSingleSequenceBlock = ({analysisFeature}: InputSingleSequenceBlockpro
         >
 
           {/* Sample Label */}
-          <FormControl sx={getInputStyle("input")}>
-              <TextField
-                id="sampleLabel"
-                value={singleSeq.sampleLabel}
-                onChange={handleInputChange}
-                label={<FormFieldLabel label="Sample Label" icon={Tag} />}
-              />
-          </FormControl>
+          <SequenceLabel
+              id="sampleLabel"
+              value={singleSeq.sampleLabel}
+              onChange={handleInputChange}
+              label="Sample Label"
+              layout="input"
+          />
 
           {/* Biomolecule Type */}
           <FormControl sx={getInputStyle("select")}>
