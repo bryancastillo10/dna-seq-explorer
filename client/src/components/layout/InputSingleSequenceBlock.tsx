@@ -61,6 +61,7 @@ const InputSingleSequenceBlock = ({analysisFeature}: InputSingleSequenceBlockpro
               mainBtnLabel="Run Analysis"
               otherBtn1Label="Clear Input"
               otherBtn1Action={handleClearSingleSeq}
+              withOtherBtn2
           />
       </Box>
   )

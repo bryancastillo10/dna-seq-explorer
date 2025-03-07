@@ -12,14 +12,14 @@ const InputPairSequenceBlock = () => {
 
   return (
 	<Box
-          component="form"
-          onSubmit={() =>{}}
-          sx={{
-            display:"flex",
-            flexDirection:"column",
-            gap: 2,
-            width: {xs:"100%", md:"50%"},
-          }}
+      component="form"
+      onSubmit={() =>{}}
+      sx={{
+        display:"flex",
+        flexDirection:"column",
+        gap: 2,
+        width: {xs:"100%", md:"50%"},
+      }}
     >
      {/* Biomolecule Type */}
       <BioMoleSelect
@@ -62,12 +62,12 @@ const InputPairSequenceBlock = () => {
           onChange={()=>{}}
           label="Sequence 2"
       />
-
-      
+   
       <InputControlButtons
           mainBtnLabel="Run Analysis"
           otherBtn1Label="Clear Input"
           otherBtn1Action={()=>{}}
+          withOtherBtn2={false}
       />      
 	</Box>
   )
