@@ -1,7 +1,7 @@
 import { Box } from "@mui/material";
 
 import { 
-  InputControlButtons,
+  ControlButtons,
   BioMoleSelect,
   SequenceLabel,
   SequenceInput
@@ -76,7 +76,7 @@ const InputPairSequenceBlock = () => {
           label="Sequence 2"
       />
    
-      <InputControlButtons
+      <ControlButtons
           mainBtnLabel="Run Analysis"
           otherBtn1Label="Clear Input"
           otherBtn1Action={handleClearPairSeq}
