@@ -1,4 +1,4 @@
-import { Box, Stack, Typography, Button } from "@mui/material";
+import { Box, Stack, Typography } from "@mui/material";
 import { Tag } from "lucide-react";
 
 import LongStringResult from "@/components/ui/LongStringResult";
@@ -6,6 +6,7 @@ import BarChartBlock from "@/components/ui/BarChartBlock";
 
 import type { BasicAnalysisResults } from "@/features/singleSeq/api/interface";
 import IntValueResult from "@/components/ui/IntValueResult";
+import { ControlButtons } from "@/components/ui/form";
 
 interface ProteinBasicResultProps {
   analysisResult?: BasicAnalysisResults;
@@ -52,15 +53,11 @@ const ProteinBasicResult = ({analysisResult, sampleLabel}: ProteinBasicResultPro
 				title="Amino Acid Frequency"
 				data={aminoAcidFrequency}
 			/>
-			<Box sx={{
-        		display:"grid", 
-        		gridTemplateColumns:"repeat(2, 1fr)", 
-        		gap: 2,     
-        		marginBottom: 2}}
-      		>
-				<Button variant="outlined">Clear</Button>
-				<Button variant="contained">Save</Button>
-			</Box>
+			
+			<ControlButtons
+				mainBtnLabel="Save"
+				withOtherBtn2={false}
+			/>
 		</Box>
 	</>
   )

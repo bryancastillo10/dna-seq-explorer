@@ -3,6 +3,7 @@ import { Tag } from "lucide-react";
 
 import BarChartBlock from "@/components/ui/BarChartBlock";
 import { advancedMockData } from "@/features/singleSeq/api/mockData";
+import { ControlButtons } from "@/components/ui/form";
 
 const AdvancedResultBlock = () => {
   const { sampleLabel, codonUsage, prediction } = advancedMockData;
@@ -22,6 +23,11 @@ const AdvancedResultBlock = () => {
 			<Typography variant="h6">Prediction</Typography>
 			<Typography>{prediction}</Typography>
 		</Box>
+
+		<ControlButtons
+			mainBtnLabel="Save"
+			withOtherBtn2={false}
+		/>
 	</Stack>
   )
 }
