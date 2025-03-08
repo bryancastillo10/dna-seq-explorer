@@ -1,11 +1,11 @@
 import BioMoleSelect from "./BioMoleSelect";
 import SequenceLabel from "./SequenceLabel";
 import SequenceInput from "./SequenceInput";
-import InputControlButtons from "./InputControlButtons";
+import ControlButtons from "./ControlButtons";
 
 export {
 	BioMoleSelect,
 	SequenceLabel,
 	SequenceInput,
-	InputControlButtons
+	ControlButtons
 }

@@ -1,6 +1,6 @@
 import { Box, Button, Stack } from "@mui/material";
 
-interface InputControlButtonsProps {
+interface ControlButtonsProps {
     mainBtnLabel: string;
     mainBtnAction?: () => void;
     otherBtn1Label?: string;
@@ -10,7 +10,7 @@ interface InputControlButtonsProps {
     withOtherBtn2: boolean;
 }
 
-const InputControlButtons = ({
+const ControlButtons = ({
     mainBtnLabel,
     mainBtnAction,
     otherBtn1Label = "Clear",
@@ -18,7 +18,7 @@ const InputControlButtons = ({
     otherBtn2Label = "Load",
     otherBtn2Action,
     withOtherBtn2
-  }: InputControlButtonsProps) => {
+  }: ControlButtonsProps) => {
   return (
     <Box sx={{
       display:"grid", 
@@ -59,4 +59,4 @@ const InputControlButtons = ({
   )
 }
 
-export default InputControlButtons;
+export default ControlButtons;

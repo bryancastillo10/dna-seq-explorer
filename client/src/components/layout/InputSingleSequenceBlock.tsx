@@ -3,7 +3,7 @@ import useSingleSeqAnalysis from "@/features/singleSeq/hooks/useSingleSeqAnalysi
 import { Box } from "@mui/material";
 
 import { 
-  InputControlButtons,
+  ControlButtons,
   BioMoleSelect,
   SequenceLabel,
   SequenceInput
@@ -57,7 +57,7 @@ const InputSingleSequenceBlock = ({analysisFeature}: InputSingleSequenceBlockpro
               onChange={handleInputChange}
           />
 
-          <InputControlButtons
+          <ControlButtons
               mainBtnLabel="Run Analysis"
               otherBtn1Label="Clear Input"
               otherBtn1Action={handleClearSingleSeq}

@@ -1,11 +1,11 @@
 import { Box,  Typography } from "@mui/material"
+import NullOutput from "@/components/layout/NullOutput";
 
 import NucleotideBasicResult from "@/features/singleSeq/components/NucleotideBasicResult";
 import ProteinBasicResult from "@/features/singleSeq/components/ProteinBasicResult";
-
 import { mockDNAData } from "@/features/singleSeq/api/mockData";
+
 import { getDataComponent } from "@/utils/getDataComponent";
-import NullOutput from "./NullOutput";
 
 const OutputBasicAnalysisBlock = () => {
   const { sampleLabel, data } = mockDNAData;
