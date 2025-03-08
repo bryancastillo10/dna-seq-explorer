@@ -47,7 +47,7 @@ export const mockProteinData = {
 
 
 export const advancedMockData = {
-    "sampleLabel": "ChloroplastTest",
+    "sampleLabel": "Chloroplast Sample Test",
         "codonUsage": {
             "AUG": 0.12280701754385964,
             "UCA": 0.05263157894736842,
