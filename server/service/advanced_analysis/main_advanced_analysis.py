@@ -21,15 +21,16 @@ def prepare_codon_usage_analysis(data: SingleSequence):
 	return rna_seq
 
 def all_ai_analysis_methods(data: SingleSequence) -> dict:
-    """
-    Perform advanced analysis: calculate codon usage and classify using the pre-trained model.
-    """
+    """Perform advanced analysis: calculate codon usage and classify using the pre-trained model."""
+    
     rna_seq = prepare_codon_usage_analysis(data)
     codon_usage = ClassifyCodon.calculate_codon_usage(rna_seq)
-    prediction = ClassifyCodon.classify_codon_usage(codon_usage)
-    
+    dna_type_prediction = ClassifyCodon.classify_dna_type(codon_usage)
+    kingdom_taxa_prediction = ClassifyCodon.classify_kingdom_taxa(codon_usage)
+
     return {
         "codon_usage": codon_usage,
-        "prediction": prediction
+        "dna_type_prediction": dna_type_prediction,
+        "kingdom_taxa_prediction": kingdom_taxa_prediction
     }
 

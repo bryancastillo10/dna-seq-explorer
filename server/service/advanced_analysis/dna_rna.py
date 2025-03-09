@@ -2,7 +2,7 @@ import pandas as pd
 import pickle
 
 from utils.bioStruct import Codon_Order 
-from utils.prediction_references import DNA_Types
+from utils.prediction_references import DNA_Types, Kingdoms
 
 class ClassifyCodon:
 
@@ -23,9 +23,9 @@ class ClassifyCodon:
         return codon_usage
 
 
-    def classify_codon_usage(codon_usage: dict):
-        """Use a pre-trained model to classify based on codon usage."""
-        with open('../ml/trained_ai.pkl', 'rb') as file:
+    def classify_dna_type(codon_usage: dict):
+        """Use a pre-trained model to classify DNA Type based on codon usage."""
+        with open('../ml/dnaTypePrediction.pkl', 'rb') as file:
             trained_model = pickle.load(file)
 
         features = {codon: 0.0 for codon in Codon_Order}
@@ -36,7 +36,23 @@ class ClassifyCodon:
 
         feature_vector = pd.DataFrame([features], columns=Codon_Order)
         prediction_code = int(trained_model.predict(feature_vector)[0])
-        prediction = DNA_Types.get(prediction_code)
+        dna_type_pred = DNA_Types.get(prediction_code)
 
-        return prediction
+        return dna_type_pred
 
+
+    def classify_kingdom_taxa(codon_usage: dict):
+        """Use a pre-trained model to classify  Kingdom based on codon usage."""
+        with open('../ml/kingdomTaxaPrediction.pkl', 'rb') as file:
+            trained_model = pickle.load(file)
+
+        features = {codon: 0.0 for codon in Codon_Order}
+
+        for codon, freq in codon_usage.items():
+            if codon in features:
+                features[codon] = freq
+
+        feature_vector = pd.DataFrame([features], columns=Codon_Order)
+        prediction_code = int(trained_model.predict(feature_vector)[0])
+        kingdom_prediction = Kingdoms.get(prediction_code)
+        return kingdom_prediction

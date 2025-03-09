@@ -36,5 +36,6 @@ async def advanced_sequence_analysis(data: SingleSequence):
         "message": "Advanced Sequence Analysis is Successful",
         "sampleLabel": data.sample_name,
         "codonUsage": analysis_results["codon_usage"],
-        "prediction": analysis_results["prediction"]
+        "dnaType": analysis_results["dna_type_prediction"],
+        "kingdomTaxa": analysis_results["kingdom_taxa_prediction"]
     }
