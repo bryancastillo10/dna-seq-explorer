@@ -1,6 +1,8 @@
 import { useState } from "react";
 
 import { type SingleSeqInput } from "@/features/singleSeq/api/interface";
+import useBasicAnalysis from "@/features/singleSeq/hooks/useBasicAnalysis";
+
 import { type SelectChangeEvent } from "@mui/material";
 
 const initialData = {
@@ -11,6 +13,7 @@ const initialData = {
 
 const useSingleSeqAnalysis = () => {
   const [singleSeq, setSingleSeq] = useState<SingleSeqInput<string>>(initialData);
+  const { runBasicAnalysis, loading } = useBasicAnalysis();
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
       const { id, value } = e.target;
@@ -28,13 +31,16 @@ const useSingleSeqAnalysis = () => {
     setSingleSeq(initialData);
   };
   
+ 
+
   const handleRunAnalysis = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log(singleSeq);
+    runBasicAnalysis(singleSeq);
   };
 
   return {
     singleSeq,
+    loading,
     handleInputChange,
     handleSelectChange,
     handleClearSingleSeq,
