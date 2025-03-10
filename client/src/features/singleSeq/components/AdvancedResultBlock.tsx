@@ -1,10 +1,10 @@
 import { Box, Stack, Typography } from "@mui/material";
 import { Tag } from "lucide-react";
 
-import BarChartBlock from "@/components/ui/BarChartBlock";
+
 import { advancedMockData } from "@/features/singleSeq/api/mockData";
 import { ControlButtons } from "@/components/ui/form";
-import StringValueResult from "./StringValueResult";
+import {ShortStringResult, BarChartBlock }from "@/components/ui/outputs";
 
 const AdvancedResultBlock = () => {
   const { sampleLabel, 
@@ -25,12 +25,12 @@ const AdvancedResultBlock = () => {
 			data={codonUsage}
 		/>
 
-		<StringValueResult
+		<ShortStringResult
 			title="DNA Type Prediction"
 			result={dnaType}
 		/>
 
-		<StringValueResult
+		<ShortStringResult
 			title="Possible Taxa (Kingdom)"
 			result={kingdomTaxa}
 		/>

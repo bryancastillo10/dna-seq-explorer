@@ -1,11 +1,11 @@
 import { Box, Typography } from "@mui/material";
 
-interface StringValueResultProps {
+interface ShortStringValueResultProps {
 	title: string;
 	result: string;
 }
 
-const StringValueResult = ({title, result}: StringValueResultProps) => {
+const ShortStringResult = ({title, result}: ShortStringValueResultProps) => {
   return (
 	<Box sx={{ display:"flex", alignItems:"center", gap: 2, marginBottom: 2 }}>
 		<Typography variant="h6">{title}</Typography>
@@ -14,4 +14,4 @@ const StringValueResult = ({title, result}: StringValueResultProps) => {
   )
 }
 
-export default StringValueResult;
+export default ShortStringResult;
