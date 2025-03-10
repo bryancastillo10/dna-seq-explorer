@@ -1,18 +1,25 @@
 import { useEffect } from "react";
 
-import type { MatrixEntry } from "@/features/dotplot/api/interface";
+import type { MatrixEntry, DotPlotCanvasConfig } from "@/features/dotplot/api/interface";
+
+import { drawMatrix } from "@/features/dotplot/utils/drawMatrix";
+import { drawAxisLabels } from "@/features/dotplot/utils/drawAxisLabel";
 
 interface DotCanvas {
 	canvasRef: React.RefObject<HTMLCanvasElement | null>;
 	matrix: MatrixEntry<number>[];
 	cellSize?: number;
+	seqALabel?: string;
+	seqBLabel?: string;
 } 
 
 const useDotCanvas = (props: DotCanvas) => {
 	const {
 		canvasRef,
 		matrix,
-		cellSize = 50
+		cellSize = 50,
+		seqALabel="Sequence 1",
+		seqBLabel="Sequence 2"
 	} = props;
 
 	useEffect(() => {
@@ -25,30 +32,28 @@ const useDotCanvas = (props: DotCanvas) => {
 		const rowCount = Math.max(...matrix.map((m) => m.row)) + 1;
 		const colCount = Math.max(...matrix.map((m) => m.col)) + 1;
 
-		canvas.width = colCount * cellSize;
-    	canvas.height = rowCount * cellSize;
+		const marginLeft = seqALabel ? 50: 0;
+		const marginBottom = seqALabel ? 50 : 0;
+
+		canvas.width = colCount * cellSize + marginLeft;
+    	canvas.height = rowCount * cellSize + marginBottom;
 
 		context.clearRect(0, 0, canvas.width, canvas.height);
 
- 	matrix.forEach((entry) => {
-      if ((entry.row === 0 || entry.col === 0) && entry.value.trim() === "") {
-        return;
-      }
-      if (entry.value.trim() === "") {
-        return;
-      }
+		const config: DotPlotCanvasConfig<number> = {
+      		context,
+      		cellSize,
+      		marginLeft,
+      		marginBottom,
+      		rowCount,
+      		colCount,
+    	};
 
-      let color = "#FFECD1";
-      if (entry.value === "*") color = "#009688";
+		drawMatrix(matrix,config);
+		drawAxisLabels(seqALabel, seqBLabel, config);
 
-      const x = entry.col * cellSize;
-      const y = entry.row * cellSize;
-      context.fillStyle = color;
-
-      context.fillRect(x, y, cellSize, cellSize);
-    });
-
-	},[canvasRef, matrix, cellSize]);
+		
+	},[canvasRef, matrix, cellSize, seqALabel, seqBLabel]);
 
 
 };

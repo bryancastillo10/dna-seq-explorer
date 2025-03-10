@@ -1,11 +1,9 @@
 import { Box, Stack, Typography } from "@mui/material";
 import { Tag } from "lucide-react";
 
-import LongStringResult from "@/components/ui/LongStringResult";
-import BarChartBlock from "@/components/ui/BarChartBlock";
+import { BarChartBlock, LongStringResult, IntValueResult } from "@/components/ui/outputs";
 
 import type { BasicAnalysisResults } from "@/features/singleSeq/api/interface";
-import IntValueResult from "@/components/ui/IntValueResult";
 import { ControlButtons } from "@/components/ui/form";
 
 interface ProteinBasicResultProps {

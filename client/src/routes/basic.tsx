@@ -5,6 +5,9 @@ import SectionHeader from '@/components/layout/SectionHeader';
 import InputSingleSequenceBlock from '@/components/layout/InputSingleSequenceBlock';
 import OutputBlock from '@/components/layout/OutputBlock';
 import BasicResultBlock from '@/features/singleSeq/components/BasicResultBlock';
+import DNALoader from '@/components/common/DNALoader';
+
+import { getMainLayout } from '@/utils/getMainLayout';
 
 export const Route = createFileRoute('/basic')({
   component: RouteComponent,
@@ -20,17 +23,22 @@ function RouteComponent() {
     your inputs are correct to avoid warnings.
   `
 
+  const loading = false;
+
+
   return (
     <Stack width="100%">
       <SectionHeader
         title="Basic Sequence Analysis"
         description={pageDescription}
       />
-      <Stack flexDirection={{xs: "column", md:"row"}} marginTop={2} marginBottom={4}>
-        <InputSingleSequenceBlock analysisFeature='basic' />
+      <Stack sx={getMainLayout()}>
+      {!loading ? (<><InputSingleSequenceBlock analysisFeature='basic' />
         <OutputBlock>
           <BasicResultBlock/>
-        </OutputBlock>
+        </OutputBlock></>)
+        : <DNALoader/>}
+
       </Stack>
     </Stack>
   )

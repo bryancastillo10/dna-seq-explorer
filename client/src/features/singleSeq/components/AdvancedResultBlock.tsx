@@ -1,12 +1,17 @@
 import { Box, Stack, Typography } from "@mui/material";
 import { Tag } from "lucide-react";
 
-import BarChartBlock from "@/components/ui/BarChartBlock";
 import { advancedMockData } from "@/features/singleSeq/api/mockData";
 import { ControlButtons } from "@/components/ui/form";
+import {ShortStringResult, BarChartBlock }from "@/components/ui/outputs";
 
 const AdvancedResultBlock = () => {
-  const { sampleLabel, codonUsage, prediction } = advancedMockData;
+  const { sampleLabel, 
+		  codonUsage, 
+		  dnaType,
+		  kingdomTaxa
+	    } = advancedMockData;
+
   return (
 	<Stack flexDirection="column" gap={2} >
 		<Box display="flex" flexDirection="row" alignItems="center" gap={1}>
@@ -19,10 +24,15 @@ const AdvancedResultBlock = () => {
 			data={codonUsage}
 		/>
 
-		<Box sx={{ display:"flex", alignItems:"center", gap: 2, my: 2 }}>
-			<Typography variant="h6">Prediction</Typography>
-			<Typography>{prediction}</Typography>
-		</Box>
+		<ShortStringResult
+			title="DNA Type Prediction"
+			result={dnaType}
+		/>
+
+		<ShortStringResult
+			title="Possible Taxa (Kingdom)"
+			result={kingdomTaxa}
+		/>
 
 		<ControlButtons
 			mainBtnLabel="Save"

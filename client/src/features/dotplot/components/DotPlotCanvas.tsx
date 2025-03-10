@@ -1,27 +1,32 @@
 import { useRef } from "react";
-import type { DotPlotResponse } from "@/features/dotplot/api/interface";
+import type {  MatrixEntry } from "@/features/dotplot/api/interface";
 
 import useDotCanvas from "../hooks/useDotCanvas";
 
 interface DotPlotCanvasProps {
-  data: DotPlotResponse;
+  matrix: MatrixEntry<number>[];
+  seqALabel?: string;
+  seqBLabel?: string;
 }
 
-const DotPlotCanvas = ({ data }: DotPlotCanvasProps) => {
+const DotPlotCanvas = ({ 
+  matrix, 
+  seqALabel = "Sequence 1", 
+  seqBLabel = "Sequence 2" 
+  }: DotPlotCanvasProps) => {
+
   const canvasRef = useRef<HTMLCanvasElement | null >(null);
   
   useDotCanvas({
     canvasRef,
-    matrix: data.matrix,
-    cellSize: 50
+    matrix,
+    cellSize: 50,
+    seqALabel,
+    seqBLabel
   });
 
   return (
-    <div>
-      <canvas ref={canvasRef} style={{ border: "1px solid #ccc" }} />
-      <p>Number of matched bases: {data.match}</p>
-      <p>Number of mismatched bases: {data.mismatch}</p>
-    </div>
+      <canvas ref={canvasRef} style={{ border: "1px solid #8D818C" }} />
   );
 };
 

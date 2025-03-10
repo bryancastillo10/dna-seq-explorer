@@ -1,10 +1,9 @@
 import { Typography, Box, Stack } from "@mui/material";
 import { Tag } from "lucide-react";
-import LongStringResult from "@/components/ui/LongStringResult";
-import BarChartBlock from "@/components/ui/BarChartBlock";
 
 import type { BasicAnalysisResults } from "@/features/singleSeq/api/interface";
-import IntValueResult from "@/components/ui/IntValueResult";
+import { IntValueResult, LongStringResult, BarChartBlock } from "@/components/ui/outputs";
+
 import { ControlButtons } from "@/components/ui/form";
 
 interface NucleotideBasicResultProps {
