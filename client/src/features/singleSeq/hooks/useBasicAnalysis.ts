@@ -7,7 +7,7 @@ const useBasicAnalysis = () => {
 	const { showToast } = useToast();
 
 	const { mutate: runBasicAnalysis, 
-			data: basicAnalysisResult, 
+			data: analysisResult, 
 			isPending: loading }
 	 = useMutation({
 		mutationKey:["basicAnalysis"],
@@ -20,7 +20,7 @@ const useBasicAnalysis = () => {
 		} 
 	});
 
-	return { runBasicAnalysis, basicAnalysisResult, loading };
+	return { runBasicAnalysis, analysisResult, loading };
 }
 
 export default useBasicAnalysis;

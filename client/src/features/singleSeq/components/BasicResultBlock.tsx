@@ -1,15 +1,17 @@
 import NucleotideBasicResult from "@/features/singleSeq/components/NucleotideBasicResult";
 import ProteinBasicResult from "@/features/singleSeq/components/ProteinBasicResult";
 
-import { mockDNAData } from "@/features/singleSeq/api/mockData";
 import { getDataComponent } from "@/utils/getDataComponent";
 import NullOutput from "@/components/layout/NullOutput";
+import { type BasicAnalysisResults } from "../api/interface";
 
-const BasicResultBlock = () => {
-  const { sampleLabel, data } = mockDNAData;
-  // const data = null;
-  // const sampleLabel = "Test Sample";
+interface BasicResultBlockProps {
+  sampleLabel:string;
+  data: BasicAnalysisResults;
+};
 
+const BasicResultBlock = ({sampleLabel, data}: BasicResultBlockProps) => {
+  
   const renderAnalysisResult = () => {
     switch(getDataComponent(data)) {
       case "nucleotide":

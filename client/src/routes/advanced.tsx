@@ -30,7 +30,10 @@ function RouteComponent() {
 
     <Stack sx={getMainLayout()}>
     {!loading ?  <>
-      <InputSingleSequenceBlock analysisFeature='advanced' />
+      <InputSingleSequenceBlock 
+        analysisFeature='advanced' 
+        runAnalysis={()=>{}}
+        />
         <OutputBlock>
           <AdvancedResultBlock/>
         </OutputBlock>

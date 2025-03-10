@@ -8,20 +8,22 @@ import {
   SequenceLabel,
   SequenceInput
 } from "@/components/ui/form";
+import { type SubmitSingleSeq } from "@/features/singleSeq/api/interface";
 
 
 interface InputSingleSequenceBlockprops {
   analysisFeature: "basic" | "advanced";
+  runAnalysis: SubmitSingleSeq;
 }
 
-const InputSingleSequenceBlock = ({analysisFeature}: InputSingleSequenceBlockprops) => {
+const InputSingleSequenceBlock = ({analysisFeature, runAnalysis}: InputSingleSequenceBlockprops) => {
   const {
     singleSeq,
     handleInputChange,
     handleSelectChange,
     handleClearSingleSeq,
     handleRunAnalysis
-  } = useSingleSeqAnalysis();
+  } = useSingleSeqAnalysis(runAnalysis);
 
   return (
         <Box
