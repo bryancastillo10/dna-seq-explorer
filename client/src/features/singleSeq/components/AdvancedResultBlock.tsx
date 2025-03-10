@@ -4,6 +4,7 @@ import { Stack } from "@mui/material";
 import { advancedMockData } from "@/features/singleSeq/api/mockData";
 import { ControlButtons } from "@/components/ui/form";
 import {ShortStringResult, BarChartBlock, SeqLabelOutput }from "@/components/ui/outputs";
+import NullOutput from "@/components/layout/NullOutput";
 
 const AdvancedResultBlock = () => {
   const { sampleLabel, 
@@ -11,6 +12,11 @@ const AdvancedResultBlock = () => {
 		  dnaType,
 		  kingdomTaxa
 	    } = advancedMockData;
+
+
+    if(advancedMockData === null){
+		return( <NullOutput/>);
+	}
 
   return (
 	<Stack flexDirection="column" gap={2} >
