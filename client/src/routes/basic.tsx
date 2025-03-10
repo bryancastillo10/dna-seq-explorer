@@ -7,6 +7,7 @@ import OutputBlock from '@/components/layout/OutputBlock';
 import BasicResultBlock from '@/features/singleSeq/components/BasicResultBlock';
 import DNALoader from '@/components/common/DNALoader';
 
+import useBasicAnalysis from '@/features/singleSeq/hooks/useBasicAnalysis';
 import { getMainLayout } from '@/utils/getMainLayout';
 
 export const Route = createFileRoute('/basic')({
@@ -23,8 +24,9 @@ function RouteComponent() {
     your inputs are correct to avoid warnings.
   `
 
-  const loading = false;
-
+  const {runBasicAnalysis, analysisResult, loading } = useBasicAnalysis();
+  const sampleLabel = analysisResult?.sampleLabel || "";
+  const data = analysisResult?.data || {};
 
   return (
     <Stack width="100%">
@@ -33,9 +35,17 @@ function RouteComponent() {
         description={pageDescription}
       />
       <Stack sx={getMainLayout()}>
-      {!loading ? (<><InputSingleSequenceBlock analysisFeature='basic' />
+      {!loading ? 
+      (<>
+      <InputSingleSequenceBlock 
+        analysisFeature='basic' 
+        runAnalysis={runBasicAnalysis}
+      />
         <OutputBlock>
-          <BasicResultBlock/>
+        <BasicResultBlock
+            sampleLabel={sampleLabel}
+            data={data}
+        />
         </OutputBlock></>)
         : <DNALoader/>}
 

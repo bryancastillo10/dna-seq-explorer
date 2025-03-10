@@ -1,17 +1,17 @@
 import { useMutation } from "@tanstack/react-query";
 
 import { useToast } from "@/context/useToast";
-import { basicAnalysis } from "@/features/singleSeq/api/analysisApi";
+import { dotplotSequencing } from "@/features/dotplot/api/dotplotApi";
 
-const useBasicAnalysis = () => {
+const useDotPlotAlignment = () => {
 	const { showToast } = useToast();
 
-	const { mutate: runBasicAnalysis, 
-			data: analysisResult, 
+		const { mutate: runDotPlot, 
+			data: dotPlotResult, 
 			isPending: loading }
 	 = useMutation({
-		mutationKey:["basicAnalysis"],
-		mutationFn: basicAnalysis,
+		mutationKey:["dotplot"],
+		mutationFn: dotplotSequencing,
 		onSuccess: (data) => {
 			showToast(data.message, "success");
 		},
@@ -20,7 +20,7 @@ const useBasicAnalysis = () => {
 		} 
 	});
 
-	return { runBasicAnalysis, analysisResult, loading };
+	return { runDotPlot, dotPlotResult, loading };
 }
 
-export default useBasicAnalysis;
+export default useDotPlotAlignment

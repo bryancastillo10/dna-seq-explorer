@@ -1,3 +1,5 @@
+import { type UseMutateFunction } from "@tanstack/react-query";
+
 export interface SingleSeqInput<T> {
     sampleLabel: T;
     seqType: "DNA" | "RNA" | "Protein";
@@ -49,8 +51,9 @@ type Codon = `${RNABase}${RNABase}${RNABase}`;
 
 export interface AdvancedAnalysisResponse {
     sampleLabel: string;
-    data: {
-        codonUsage: Partial<Record<Codon, number>>;
-        prediction: string;
-    }
+    codonUsage: Partial<Record<Codon, number>>;
+    dnaType: string;
+    kingdomTaxa: string;
 }
+
+export type SubmitSingleSeq = UseMutateFunction<any, Error, SingleSeqInput<string>, unknown>
