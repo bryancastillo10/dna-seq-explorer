@@ -1,16 +1,9 @@
 import { type SingleSeqInput } from "@/features/singleSeq/api/interface";
+
 import { handlePostRequest } from "@/utils/handlePostReq";
+import { prepPythonPayload } from "@/utils/prepPythonPayload";
 
 const baseURL = import.meta.env.VITE_API_BASE_URL + "analysis";
-
-
-const prepPythonPayload = (seqData: SingleSeqInput<string>) => {
-	return  {
-		"sample_name": seqData.sampleLabel,
-		"seq_type": seqData.seqType,
-		"seq": seqData.seq
-	}
-};
 
 const basicAnalysis = async (seqData: SingleSeqInput<string>) => {
 	const payload =  prepPythonPayload(seqData);
