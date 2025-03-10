@@ -7,7 +7,10 @@ import InputPairSequenceBlock from '@/components/layout/InputPairSequenceBlock';
 import OutputBlock from '@/components/layout/OutputBlock';
 
 import { mockDotPlotData } from '@/features/dotplot/api/mockData';
+
 import DotPlotCanvas from '@/features/dotplot/components/DotPlotCanvas';
+import { getMainLayout } from '@/utils/getMainLayout';
+import DNALoader from '@/components/common/DNALoader';
 
 export const Route = createFileRoute('/dotplot')({
   component: RouteComponent,
@@ -19,17 +22,23 @@ function RouteComponent() {
     regions with dots. This quick visual analysis helps identify similarities and variations 
     between those sequences that can provide insights their relationships. `
 
+  const loading = false;
+
   return (
     <Stack width="100%">
       <SectionHeader
         title="Dot Plot Sequence Alignment"
         description={pageDescription}
       />
-      <Stack flexDirection={{xs: "column", md:"row"}} marginTop={2} marginBottom={4}>
-        <InputPairSequenceBlock />
-        <OutputBlock>
-            <DotPlotCanvas data={mockDotPlotData}/>
-        </OutputBlock>
+      <Stack sx={getMainLayout()}>
+     {!loading ? 
+        <>
+          <InputPairSequenceBlock />
+          <OutputBlock>
+              <DotPlotCanvas data={mockDotPlotData}/>
+          </OutputBlock>
+        </>
+    : <DNALoader/>}
       </Stack>
     </Stack>
   )

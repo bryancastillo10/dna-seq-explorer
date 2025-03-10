@@ -5,6 +5,9 @@ import SectionHeader from '@/components/layout/SectionHeader';
 import InputSingleSequenceBlock from '@/components/layout/InputSingleSequenceBlock';
 import OutputBlock from '@/components/layout/OutputBlock';
 import AdvancedResultBlock from '@/features/singleSeq/components/AdvancedResultBlock';
+import DNALoader from '@/components/common/DNALoader';
+
+import { getMainLayout } from '@/utils/getMainLayout';
 
 export const Route = createFileRoute('/advanced')({
   component: RouteComponent,
@@ -16,6 +19,8 @@ function RouteComponent() {
   Note: Although the model was rigorously evaluated using cross-validation and exploratory data analysis (EDA), it may still produce errors and is intended for demonstration purposes only.
   Click “Run” to analyze, “Save Output” to save your results, and “Clear” to start over.`
 
+  const loading = false;
+
   return (
   <Stack width="100%">
     <SectionHeader
@@ -23,12 +28,15 @@ function RouteComponent() {
       description={pageDescription}
     />
 
-    <Stack flexDirection={{xs: "column", md:"row"}} marginTop={2} marginBottom={4}>
-        <InputSingleSequenceBlock analysisFeature='advanced' />
+    <Stack sx={getMainLayout()}>
+    {!loading ?  <>
+      <InputSingleSequenceBlock analysisFeature='advanced' />
         <OutputBlock>
           <AdvancedResultBlock/>
         </OutputBlock>
-      </Stack>
+    </>
+    : <DNALoader/>}
+    </Stack>
   </Stack>
   )
 }
