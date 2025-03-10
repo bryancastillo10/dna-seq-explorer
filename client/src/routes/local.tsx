@@ -6,6 +6,7 @@ import InputPairSequenceBlock from '@/components/layout/InputPairSequenceBlock';
 import OutputBlock from '@/components/layout/OutputBlock';
 
 import PairSeqAlignmentResult from '@/features/pairSeq/components/PairSeqAlignmentResult';
+import { getMainLayout } from '@/utils/getMainLayout';
 
 export const Route = createFileRoute('/local')({
   component: RouteComponent,
@@ -22,7 +23,7 @@ function RouteComponent() {
       title="Local Pairwise Sequence Alignment"
       description={pageDescription}
     />
-    <Stack flexDirection={{xs: "column", md:"row"}} marginTop={2} marginBottom={4}>
+    <Stack sx={getMainLayout()}>
       <InputPairSequenceBlock/>
       <OutputBlock>
         <PairSeqAlignmentResult/>
