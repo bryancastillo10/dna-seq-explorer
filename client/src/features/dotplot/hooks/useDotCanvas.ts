@@ -4,6 +4,7 @@ import type { MatrixEntry, DotPlotCanvasConfig } from "@/features/dotplot/api/in
 
 import { drawMatrix } from "@/features/dotplot/utils/drawMatrix";
 import { drawAxisLabels } from "@/features/dotplot/utils/drawAxisLabel";
+import { prepareCanvas } from "@/features/dotplot/utils/prepareCanvas";
 
 interface DotCanvas {
 	canvasRef: React.RefObject<HTMLCanvasElement | null>;
@@ -29,14 +30,12 @@ const useDotCanvas = (props: DotCanvas) => {
 		const context = canvas.getContext("2d");
 		if(!context) return;
 
-		const rowCount = Math.max(...matrix.map((m) => m.row)) + 1;
-		const colCount = Math.max(...matrix.map((m) => m.col)) + 1;
-
-		const marginLeft = seqALabel ? 50: 0;
-		const marginBottom = seqALabel ? 50 : 0;
-
-		canvas.width = colCount * cellSize + marginLeft;
-    	canvas.height = rowCount * cellSize + marginBottom;
+		const {
+		marginLeft,
+		marginBottom,
+		rowCount,
+		colCount
+		} = prepareCanvas(canvas, matrix, cellSize, seqALabel, seqBLabel);
 
 		context.clearRect(0, 0, canvas.width, canvas.height);
 
@@ -50,6 +49,7 @@ const useDotCanvas = (props: DotCanvas) => {
     	};
 
 		drawMatrix(matrix,config);
+
 		drawAxisLabels(seqALabel, seqBLabel, config);
 
 		
