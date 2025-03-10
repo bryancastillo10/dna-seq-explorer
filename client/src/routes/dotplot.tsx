@@ -5,12 +5,11 @@ import { Stack } from '@mui/material';
 import SectionHeader from '@/components/layout/SectionHeader';
 import InputPairSequenceBlock from '@/components/layout/InputPairSequenceBlock';
 import OutputBlock from '@/components/layout/OutputBlock';
-
-import { mockDotPlotData } from '@/features/dotplot/api/mockData';
-
-import DotPlotCanvas from '@/features/dotplot/components/DotPlotCanvas';
-import { getMainLayout } from '@/utils/getMainLayout';
 import DNALoader from '@/components/common/DNALoader';
+
+import { getMainLayout } from '@/utils/getMainLayout';
+import DotPlotResultBlock from '@/features/dotplot/components/DotPlotResultBlock';
+
 
 export const Route = createFileRoute('/dotplot')({
   component: RouteComponent,
@@ -35,7 +34,7 @@ function RouteComponent() {
         <>
           <InputPairSequenceBlock />
           <OutputBlock>
-              <DotPlotCanvas data={mockDotPlotData}/>
+              <DotPlotResultBlock/>
           </OutputBlock>
         </>
     : <DNALoader/>}

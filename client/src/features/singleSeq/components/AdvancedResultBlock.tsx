@@ -1,7 +1,6 @@
 import { Box, Stack, Typography } from "@mui/material";
 import { Tag } from "lucide-react";
 
-
 import { advancedMockData } from "@/features/singleSeq/api/mockData";
 import { ControlButtons } from "@/components/ui/form";
 import {ShortStringResult, BarChartBlock }from "@/components/ui/outputs";
