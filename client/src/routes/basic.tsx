@@ -37,8 +37,7 @@ function RouteComponent() {
         <OutputBlock>
           <BasicResultBlock/>
         </OutputBlock></>)
-        : <DNALoader/>
-        }
+        : <DNALoader/>}
 
       </Stack>
     </Stack>

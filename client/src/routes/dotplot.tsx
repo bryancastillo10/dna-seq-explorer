@@ -30,14 +30,14 @@ function RouteComponent() {
         description={pageDescription}
       />
       <Stack sx={getMainLayout()}>
-     {!loading ? 
-        <>
-          <InputPairSequenceBlock />
-          <OutputBlock>
-              <DotPlotResultBlock/>
-          </OutputBlock>
-        </>
-    : <DNALoader/>}
+      {!loading ? 
+          <>
+            <InputPairSequenceBlock />
+            <OutputBlock>
+                <DotPlotResultBlock/>
+            </OutputBlock>
+          </>
+      : <DNALoader/>}
       </Stack>
     </Stack>
   )
