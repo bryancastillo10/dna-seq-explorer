@@ -21,6 +21,9 @@ const LongStringResult = ({label, result}: LongStringResultProps) => {
           wordBreak: "break-word",
           border: `1px solid ${theme.palette.primary.dark}`,
           borderRadius: "14px",
+          "&::-webkit-scrollbar": {
+            display: "none"
+          }
         }}
       >
         <Typography>
