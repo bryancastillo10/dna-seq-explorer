@@ -1,7 +1,6 @@
-import { Box, Stack, Typography } from "@mui/material";
-import { Tag } from "lucide-react";
+import { Box, Typography } from "@mui/material";
 
-import { BarChartBlock, LongStringResult, IntValueResult } from "@/components/ui/outputs";
+import { BarChartBlock, LongStringResult, IntValueResult, SeqLabelOutput } from "@/components/ui/outputs";
 
 import type { BasicAnalysisResults } from "@/features/singleSeq/api/interface";
 import { ControlButtons } from "@/components/ui/form";
@@ -25,10 +24,10 @@ const ProteinBasicResult = ({analysisResult, sampleLabel}: ProteinBasicResultPro
 
   return (
 	<>
-		<Stack flexDirection="row" alignItems="center" gap={1}>
-		<Tag size={20}/>
-		<Typography>{sampleLabel}</Typography>
-		</Stack>
+		<SeqLabelOutput
+			sampleLabel={sampleLabel}
+		/>
+
 		<Box>	
 			<LongStringResult
 				label="Amino Acid Sequence"

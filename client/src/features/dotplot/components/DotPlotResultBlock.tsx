@@ -5,8 +5,14 @@ import { mockDotPlotData } from '@/features/dotplot/api/mockData'
 import { IntValueResult } from '@/components/ui/outputs';
 import { ControlButtons } from '@/components/ui/form';
 
+import NullOutput from '@/components/layout/NullOutput';
+
 const DotPlotResultBlock = () => {
 	const { seqALabel, seqBLabel, matrix, match, mismatch } = mockDotPlotData;
+
+	if(mockDotPlotData === null){
+		return (<NullOutput/>);
+	}
 
   return (
 	<Stack flexDirection="column" gap={2} >

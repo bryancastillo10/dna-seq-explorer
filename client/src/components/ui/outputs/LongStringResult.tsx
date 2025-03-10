@@ -3,9 +3,10 @@ import { Stack, Box, Typography, useTheme } from "@mui/material";
 interface LongStringResultProps {
   label: string;
   result: string;
+  minHeight?: number;
 }
 
-const LongStringResult = ({label, result}: LongStringResultProps) => {
+const LongStringResult = ({label, result, minHeight = 60}: LongStringResultProps) => {
   const theme = useTheme();
   return (
     <Stack sx={{display:"flex", flexDirection:"column", gap:1, marginBottom:2 }}>
@@ -16,7 +17,7 @@ const LongStringResult = ({label, result}: LongStringResultProps) => {
         sx={{ 
           overflowY: "scroll", 
           overflowX: "hidden", 
-          maxHeight: 75,
+          minHeight: minHeight,
           p: 0.75,
           wordBreak: "break-word",
           border: `1px solid ${theme.palette.primary.dark}`,

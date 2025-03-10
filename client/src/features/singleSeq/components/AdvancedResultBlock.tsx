@@ -1,9 +1,10 @@
-import { Box, Stack, Typography } from "@mui/material";
-import { Tag } from "lucide-react";
+import { Stack } from "@mui/material";
+
 
 import { advancedMockData } from "@/features/singleSeq/api/mockData";
 import { ControlButtons } from "@/components/ui/form";
-import {ShortStringResult, BarChartBlock }from "@/components/ui/outputs";
+import {ShortStringResult, BarChartBlock, SeqLabelOutput }from "@/components/ui/outputs";
+import NullOutput from "@/components/layout/NullOutput";
 
 const AdvancedResultBlock = () => {
   const { sampleLabel, 
@@ -12,12 +13,16 @@ const AdvancedResultBlock = () => {
 		  kingdomTaxa
 	    } = advancedMockData;
 
+
+    if(advancedMockData === null){
+		return( <NullOutput/>);
+	}
+
   return (
 	<Stack flexDirection="column" gap={2} >
-		<Box display="flex" flexDirection="row" alignItems="center" gap={1}>
-    	  <Tag size={20}/>
-    	  <Typography>{sampleLabel}</Typography>
-    	</Box>
+		<SeqLabelOutput
+			sampleLabel={sampleLabel}
+		/>
 
 		<BarChartBlock
 			title="Codon Usage"

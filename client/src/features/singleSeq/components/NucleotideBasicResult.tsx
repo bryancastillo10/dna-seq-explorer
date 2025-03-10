@@ -1,8 +1,7 @@
-import { Typography, Box, Stack } from "@mui/material";
-import { Tag } from "lucide-react";
+import { Typography, Box } from "@mui/material";
 
 import type { BasicAnalysisResults } from "@/features/singleSeq/api/interface";
-import { IntValueResult, LongStringResult, BarChartBlock } from "@/components/ui/outputs";
+import { IntValueResult, LongStringResult, BarChartBlock, SeqLabelOutput } from "@/components/ui/outputs";
 
 import { ControlButtons } from "@/components/ui/form";
 
@@ -28,10 +27,9 @@ const NucleotideBasicResult = ({analysisResult, sampleLabel}: NucleotideBasicRes
 
   return (
     <>
-    <Stack flexDirection="row" alignItems="center" gap={1}>
-      <Tag size={20}/>
-      <Typography>{sampleLabel}</Typography>
-    </Stack>
+    <SeqLabelOutput
+        sampleLabel={sampleLabel}
+    />
 		<Box>
       <LongStringResult
           label="Transcription"
