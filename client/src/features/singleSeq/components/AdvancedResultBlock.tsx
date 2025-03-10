@@ -5,19 +5,20 @@ import { advancedMockData } from "@/features/singleSeq/api/mockData";
 import { ControlButtons } from "@/components/ui/form";
 import {ShortStringResult, BarChartBlock, SeqLabelOutput }from "@/components/ui/outputs";
 import NullOutput from "@/components/layout/NullOutput";
+import type { AdvancedAnalysisResponse } from "@/features/singleSeq/api/interface";
 
-const AdvancedResultBlock = () => {
-  const { sampleLabel, 
-		  codonUsage, 
-		  dnaType,
-		  kingdomTaxa
-	    } = advancedMockData;
+interface AdvancedResultBlockProps {
+	sampleLabel:string;
+	data: AdvancedAnalysisResponse;
+}
 
+const AdvancedResultBlock = ({sampleLabel, data}: AdvancedResultBlockProps) => {
 
-    if(advancedMockData === null){
+    if(!data){
 		return( <NullOutput/>);
 	}
 
+	const {codonUsage, dnaType, kingdomTaxa } = data;
   return (
 	<Stack flexDirection="column" gap={2} >
 		<SeqLabelOutput
