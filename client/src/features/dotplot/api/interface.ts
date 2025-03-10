@@ -11,3 +11,12 @@ export interface DotPlotResponse {
 	mismatch: number;
 	matrix: MatrixEntry<number>[];
 }
+
+export interface DotPlotCanvasConfig<T> {
+	context: CanvasRenderingContext2D;
+	cellSize: T;
+	marginLeft: T;
+	marginBottom: T;
+	rowCount: T;
+	colCount: T;
+}
