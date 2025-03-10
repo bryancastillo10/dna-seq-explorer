@@ -6,7 +6,10 @@ import { basicAnalysis } from "@/features/singleSeq/api/analysisApi";
 const useBasicAnalysis = () => {
 	const { showToast } = useToast();
 
-	const { mutate: runBasicAnalysis, isPending: loading } = useMutation({
+	const { mutate: runBasicAnalysis, 
+			data: basicAnalysisResult, 
+			isPending: loading }
+	 = useMutation({
 		mutationKey:["basicAnalysis"],
 		mutationFn: basicAnalysis,
 		onSuccess: (data) => {
@@ -17,7 +20,7 @@ const useBasicAnalysis = () => {
 		} 
 	});
 
-	return { runBasicAnalysis, loading };
+	return { runBasicAnalysis, basicAnalysisResult, loading };
 }
 
 export default useBasicAnalysis;

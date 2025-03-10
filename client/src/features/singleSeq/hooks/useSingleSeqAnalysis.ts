@@ -13,7 +13,7 @@ const initialData = {
 
 const useSingleSeqAnalysis = () => {
   const [singleSeq, setSingleSeq] = useState<SingleSeqInput<string>>(initialData);
-  const { runBasicAnalysis, loading } = useBasicAnalysis();
+  const { runBasicAnalysis, basicAnalysisResult, loading } = useBasicAnalysis();
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
       const { id, value } = e.target;
@@ -41,6 +41,7 @@ const useSingleSeqAnalysis = () => {
   return {
     singleSeq,
     loading,
+    basicAnalysisResult,
     handleInputChange,
     handleSelectChange,
     handleClearSingleSeq,
