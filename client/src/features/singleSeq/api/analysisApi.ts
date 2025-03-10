@@ -18,7 +18,8 @@ const basicAnalysis = async (seqData: SingleSeqInput<string>) => {
 	const res = await fetch(`${baseURL}/basic`, handlePostRequest(payload));
 
 	if(!res.ok){
-		throw new Error("Basic Analysis Failed");
+		const errorRes = await res.json();
+		throw new Error(errorRes.detail || "Failed to analyze the provided input");
 	}
 	return res.json();
 };
@@ -29,7 +30,8 @@ const advancedAnalysis = async (seqData: SingleSeqInput<string>) => {
 	const res = await fetch(`${baseURL}/advanced`, handlePostRequest(payload));
 
 	if(!res.ok){
-		throw new Error("Advanced Analysis Failed");
+		const errorRes = await res.json();
+		throw new Error(errorRes.detail || "Failed to analyze the provided input");
 	}
 	return res.json();
 };
