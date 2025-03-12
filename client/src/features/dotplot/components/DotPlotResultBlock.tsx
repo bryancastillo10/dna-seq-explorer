@@ -6,13 +6,20 @@ import { IntValueResult } from '@/components/ui/outputs';
 import { ControlButtons } from '@/components/ui/form';
 
 import NullOutput from '@/components/layout/NullOutput';
+import type { DotPlotResponse } from '@/features/dotplot/api/interface';
 
-const DotPlotResultBlock = () => {
+interface DotPlotResultBlockProps {
+	result: DotPlotResponse;
+}
+
+const DotPlotResultBlock = ({result}: DotPlotResultBlockProps) => {
 	const { seqALabel, seqBLabel, matrix, match, mismatch } = mockDotPlotData;
 
 	if(mockDotPlotData === null){
 		return (<NullOutput/>);
 	}
+
+	console.log(result);
 
   return (
 	<Stack flexDirection="column" gap={2} >

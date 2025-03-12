@@ -35,20 +35,17 @@ function RouteComponent() {
         description={pageDescription}
       />
       <Stack sx={getMainLayout()}>
-      {!loading ? 
-      (<>
-      <InputSingleSequenceBlock 
-        analysisFeature='basic' 
-        runAnalysis={runBasicAnalysis}
-      />
-        <OutputBlock>
-        <BasicResultBlock
-            sampleLabel={sampleLabel}
-            data={data}
+        <InputSingleSequenceBlock 
+          analysisFeature='basic' 
+          runAnalysis={runBasicAnalysis}
         />
-        </OutputBlock></>)
-        : <DNALoader/>}
-
+          <OutputBlock>
+          {loading ? <DNALoader/> 
+            :( <BasicResultBlock
+                  sampleLabel={sampleLabel}
+                  data={data}
+               />)}
+        </OutputBlock>
       </Stack>
     </Stack>
   )

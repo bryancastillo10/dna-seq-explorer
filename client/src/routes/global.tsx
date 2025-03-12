@@ -28,7 +28,9 @@ function RouteComponent() {
       />
     {!loading ? <>
     <Stack sx={getMainLayout}>
-      <InputPairSequenceBlock/>
+      <InputPairSequenceBlock
+          runSequencing={()=>{}}
+      />
       <OutputBlock>
         <PairSeqAlignmentResult/>
       </OutputBlock>

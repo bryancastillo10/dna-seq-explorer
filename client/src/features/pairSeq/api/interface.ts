@@ -1,3 +1,5 @@
+import { type UseMutateFunction } from "@tanstack/react-query";
+
 export interface PairSeqInput<T> {
 	seqType: "DNA" | "RNA" | "Protein";
 	seqALabel: T;
@@ -18,3 +20,5 @@ export interface LocalGlobalSeqResult<T> {
 	alignedSeqB: T;
 	similarity: number;
 };
+
+export type SubmitPairSeq = UseMutateFunction<any, Error, PairSeqInput<string>,unknown>
