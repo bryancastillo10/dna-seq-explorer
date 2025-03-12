@@ -2,14 +2,14 @@ import React, { useState } from "react"
 
 import type { PairSeqInput, ISequenceData } from "@/features/pairSeq/api/interface";
 import { type SelectChangeEvent } from "@mui/material";
-
+import { type SubmitPairSeq } from "@/features/pairSeq/api/interface";
 
 const initialSeqData = {
 	label: "",
 	sequence: ""
 }
 
-const usePairSeqAnalysis = () => {
+const usePairSeqAnalysis = (runSequencing: SubmitPairSeq) => {
   const [seqType, setSeqType] = useState<PairSeqInput<string>["seqType"]>("DNA");
   const [ seqA, setSeqA ] = useState<ISequenceData>(initialSeqData);
   const [seqB, setSeqB ] = useState<ISequenceData>(initialSeqData);
@@ -46,7 +46,7 @@ const usePairSeqAnalysis = () => {
 		e.preventDefault();
 
 		const payload = getPairSeqData();
-		console.log(payload);
+		runSequencing(payload);
   };
 
   return {
