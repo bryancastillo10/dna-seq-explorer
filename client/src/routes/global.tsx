@@ -8,7 +8,8 @@ import PairSeqAlignmentResult from '@/features/pairSeq/components/PairSeqAlignme
 import DNALoader from '@/components/common/DNALoader';
 
 import { getMainLayout } from '@/utils/getMainLayout';
-import useLocalAlignment from '@/features/pairSeq/hooks/useLocalAlignment';
+import useGlobalAlignment from '@/features/pairSeq/hooks/useGlobalAlignment';
+import NullOutput from '@/components/layout/NullOutput';
 
 export const Route = createFileRoute('/global')({
   component: RouteComponent,
@@ -19,7 +20,9 @@ function RouteComponent() {
     Global alignment is useful for comparing entire sequences of DNA or protein to reveal evolutionary relationships and functional similarities. 
     The algorithm used in this feature is Needleman-Wunsch Algorithm.`
 
-  const { loading, runLocalAlignment } = useLocalAlignment();
+  const { runGlobalAlignment, sequencingResult, loading } = useGlobalAlignment();
+
+  const result = sequencingResult?.data;
 
   return (
     <Stack width="100%">
@@ -29,10 +32,13 @@ function RouteComponent() {
       />
     <Stack sx={getMainLayout}>
       <InputPairSequenceBlock
-          runSequencing={runLocalAlignment}
+          runSequencing={runGlobalAlignment}
       />
       <OutputBlock>
-        {loading ? <DNALoader/> : <PairSeqAlignmentResult/>}
+        {loading ? <DNALoader/> 
+      : (sequencingResult ? <PairSeqAlignmentResult
+          result={result}
+      /> : <NullOutput/>)}
       </OutputBlock>
     </Stack>
   </Stack>
