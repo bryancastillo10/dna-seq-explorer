@@ -8,8 +8,13 @@ import {
 } from "@/components/ui/form";
 
 import usePairSeqAnalysis from "@/features/pairSeq/hooks/usePairSeqAnalysis";
+import { type SubmitPairSeq } from "@/features/pairSeq/api/interface";
 
-const InputPairSequenceBlock = () => {
+interface InputPairSequenceBlockProps {
+    runSequencing: SubmitPairSeq;
+}
+
+const InputPairSequenceBlock = ({runSequencing}: InputPairSequenceBlockProps) => {
   const {
 		seqType,
 		seqA,
@@ -19,7 +24,7 @@ const InputPairSequenceBlock = () => {
 		handleSeqBChange,
 		handleClearPairSeq,
     handleRunAnalysis
-	} = usePairSeqAnalysis();
+	} = usePairSeqAnalysis(runSequencing);
  
 
 

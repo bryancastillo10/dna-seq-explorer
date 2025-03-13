@@ -34,19 +34,17 @@ function RouteComponent() {
     />
 
     <Stack sx={getMainLayout()}>
-    {!loading ?  <>
       <InputSingleSequenceBlock 
         analysisFeature='advanced' 
         runAnalysis={runAdvancedAnalysis}
         />
         <OutputBlock>
-          <AdvancedResultBlock
+          {loading ? <DNALoader/> 
+          : <AdvancedResultBlock
             sampleLabel={sampleLabel}
             data={data}
-          />
+          />}
         </OutputBlock>
-    </>
-    : <DNALoader/>}
     </Stack>
   </Stack>
   )

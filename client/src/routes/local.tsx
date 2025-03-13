@@ -28,16 +28,15 @@ function RouteComponent() {
       description={pageDescription}
     />
     <Stack sx={getMainLayout()}>
-    {!loading ?    
-      <>
       <InputPairSequenceBlock
           runSequencing={()=>{}}
       />
       <OutputBlock>
-        <PairSeqAlignmentResult/>
+        { loading ? <DNALoader/> 
+        : <PairSeqAlignmentResult
+
+        /> }
       </OutputBlock>  
-      </>
-    : <DNALoader/>}
     </Stack>
   </Stack>
   );
