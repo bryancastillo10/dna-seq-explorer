@@ -10,6 +10,7 @@ import DNALoader from '@/components/common/DNALoader';
 import { getMainLayout } from '@/utils/getMainLayout';
 import DotPlotResultBlock from '@/features/dotplot/components/DotPlotResultBlock';
 import useDotPlotAlignment from '@/features/dotplot/hooks/useDotPlotAlignment';
+import NullOutput from '@/components/layout/NullOutput';
 
 export const Route = createFileRoute('/dotplot')({
   component: RouteComponent,
@@ -23,6 +24,8 @@ function RouteComponent() {
 
   const { runDotPlot, dotPlotResult, loading } = useDotPlotAlignment();
 
+  const result = dotPlotResult?.data;
+
   return (
     <Stack width="100%">
       <SectionHeader
@@ -35,9 +38,9 @@ function RouteComponent() {
               />
             <OutputBlock>
                 {loading ? <DNALoader/> 
-                :(<DotPlotResultBlock 
-                    result={dotPlotResult} 
-                />)}
+                :( dotPlotResult ? <DotPlotResultBlock 
+                    result={result} 
+                /> : <NullOutput/>)}
             </OutputBlock>
       </Stack>
     </Stack>
