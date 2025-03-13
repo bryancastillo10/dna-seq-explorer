@@ -1,11 +1,10 @@
 import { Stack, Box, Typography } from '@mui/material'
 
 import DotPlotCanvas from '@/features/dotplot/components/DotPlotCanvas'
-import { mockDotPlotData } from '@/features/dotplot/api/mockData'
+
 import { IntValueResult } from '@/components/ui/outputs';
 import { ControlButtons } from '@/components/ui/form';
 
-import NullOutput from '@/components/layout/NullOutput';
 import type { DotPlotResponse } from '@/features/dotplot/api/interface';
 
 interface DotPlotResultBlockProps {
@@ -13,13 +12,8 @@ interface DotPlotResultBlockProps {
 }
 
 const DotPlotResultBlock = ({result}: DotPlotResultBlockProps) => {
-	const { seqALabel, seqBLabel, matrix, match, mismatch } = mockDotPlotData;
 
-	if(mockDotPlotData === null){
-		return (<NullOutput/>);
-	}
-
-	console.log(result);
+	const { matrix, seqALabel, seqBLabel, match, mismatch } = result;
 
   return (
 	<Stack flexDirection="column" gap={2} >

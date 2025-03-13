@@ -7,6 +7,9 @@ import OutputBlock from '@/components/layout/OutputBlock';
 
 import PairSeqAlignmentResult from '@/features/pairSeq/components/PairSeqAlignmentResult';
 import DNALoader from '@/components/common/DNALoader';
+import NullOutput from '@/components/layout/NullOutput';
+
+import useLocalAlignment from '@/features/pairSeq/hooks/useLocalAlignment';
 
 import { getMainLayout } from '@/utils/getMainLayout';
 
@@ -19,7 +22,10 @@ function RouteComponent() {
     motifs within larger sequences, ignoring unrelated regions. The algorithm used in this feature
     is Smith-Waterman Algorithm.`
 
-  const loading = false;
+  const {runLocalAlignment, sequencingResult, loading } = useLocalAlignment();
+
+  const result = sequencingResult?.data;
+
 
   return(
   <Stack width="100%">
@@ -28,16 +34,15 @@ function RouteComponent() {
       description={pageDescription}
     />
     <Stack sx={getMainLayout()}>
-    {!loading ?    
-      <>
       <InputPairSequenceBlock
-          runSequencing={()=>{}}
+          runSequencing={runLocalAlignment}
       />
       <OutputBlock>
-        <PairSeqAlignmentResult/>
+        { loading ? <DNALoader/> 
+        : (sequencingResult ? <PairSeqAlignmentResult
+              result={result}
+        /> : <NullOutput/>) }
       </OutputBlock>  
-      </>
-    : <DNALoader/>}
     </Stack>
   </Stack>
   );

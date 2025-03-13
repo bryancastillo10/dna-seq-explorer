@@ -12,8 +12,8 @@ function RouteComponent() {
   
   return (
     <Stack width="100%">
-    <Hero/>
-    <AppGuide/>
+      <Hero/>
+      <AppGuide/>
     </Stack>
   )
 };
