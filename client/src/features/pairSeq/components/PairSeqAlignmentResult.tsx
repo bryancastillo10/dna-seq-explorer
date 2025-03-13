@@ -19,7 +19,6 @@ const PairSeqAlignmentResult = ({result}: PairSeqAlignmentResultProps) => {
 		similarity
 	} = result;
 
-	console.log(result);
   return (
 	<Stack flexDirection="column" gap={2} >
 		<LongStringResult
