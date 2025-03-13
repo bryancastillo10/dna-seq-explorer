@@ -41,7 +41,7 @@ async def local_alignment(data:PairwiseSequence):
             "seqALabel": data.seq_A_label,
             "alignedSeqA": align_result["aligned_seq_A"],
             "seqBLabel": data.seq_B_label,
-            "aliignedSeqB":  align_result["aligned_seq_B"],
+            "alignedSeqB":  align_result["aligned_seq_B"],
             "similarity": align_result["similarity"]
             }
         }
@@ -64,7 +64,7 @@ async def global_alignment(data: PairwiseSequence):
             "seqALabel": data.seq_A_label,
             "alignedSeqA": align_result["aligned_seq_A"],
             "seqBLabel": data.seq_B_label,
-            "aliignedSeqB":  align_result["aligned_seq_B"],
+            "alignedSeqB":  align_result["aligned_seq_B"],
             "similarity": align_result["similarity"]
         }
     }

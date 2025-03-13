@@ -1,24 +1,25 @@
 import { IntValueResult, LongStringResult } from "@/components/ui/outputs";
 import { Stack } from "@mui/material";
 
-import { mockLocalAlign } from "@/features/pairSeq/api/mockData";
 import { ControlButtons } from "@/components/ui/form";
 
-import NullOutput from "@/components/layout/NullOutput";
+import type { LocalGlobalSeqResult } from "@/features/pairSeq/api/interface";
 
-const PairSeqAlignmentResult = () => {
+interface PairSeqAlignmentResultProps {
+	result: LocalGlobalSeqResult<string>;
+};
+
+const PairSeqAlignmentResult = ({result}: PairSeqAlignmentResultProps) => {
+
 	const {  
 		seqALabel,
 		alignedSeqA,
 		seqBLabel,
-		aliignedSeqB,
+		alignedSeqB,
 		similarity
-	} = mockLocalAlign;
+	} = result;
 
-	if(mockLocalAlign === null){
-		return (<NullOutput/>);
-	}
-
+	console.log(result);
   return (
 	<Stack flexDirection="column" gap={2} >
 		<LongStringResult
@@ -29,7 +30,7 @@ const PairSeqAlignmentResult = () => {
 
 		<LongStringResult
 			label={`Aligned ${seqBLabel}`}
-			result={aliignedSeqB}
+			result={alignedSeqB}
 			minHeight={200}
 		/>
 

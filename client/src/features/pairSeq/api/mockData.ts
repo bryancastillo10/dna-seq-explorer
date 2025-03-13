@@ -10,6 +10,6 @@ export const mockGlobalAlign = {
 	"seqALabel": "Sequence 1 Example",
     "alignedSeqA": "AGCCGATCGATCGATCGATCGATCGATCGATCGATCGATCGATCGAT",
     "seqBLabel": "Sequence 2 Example",
-    "aliignedSeqB": "ATCG-ATCGATGGATCGATCGATCGATCGATCGATCGATCGATCGAT",
+    "alignedSeqB": "ATCG-ATCGATGGATCGATCGATCGATCGATCGATCGATCGATCGAT",
     "similarity": 91.49
 }
