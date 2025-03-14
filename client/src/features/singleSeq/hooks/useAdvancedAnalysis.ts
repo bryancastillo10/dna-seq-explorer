@@ -9,7 +9,8 @@ const useAdvancedAnalysis = () => {
 
 	const { mutate: runAdvancedAnalysis,
 			data: analysisResult,
-			isPending: loading
+			isPending: loading,
+			reset
 	} = useMutation({
 		mutationKey:["advancedAnalysis"],
 		mutationFn: advancedAnalysis,
@@ -21,7 +22,7 @@ const useAdvancedAnalysis = () => {
 		}
 	});
 
-	return { runAdvancedAnalysis, analysisResult, loading }
+	return { runAdvancedAnalysis, analysisResult, loading, reset }
 }
 
 export default useAdvancedAnalysis

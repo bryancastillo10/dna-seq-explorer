@@ -6,6 +6,7 @@ import InputSingleSequenceBlock from '@/components/layout/InputSingleSequenceBlo
 import OutputBlock from '@/components/layout/OutputBlock';
 import AdvancedResultBlock from '@/features/singleSeq/components/AdvancedResultBlock';
 import DNALoader from '@/components/common/DNALoader';
+import NullOutput from '@/components/layout/NullOutput';
 
 import useAdvancedAnalysis from '@/features/singleSeq/hooks/useAdvancedAnalysis';
 
@@ -21,11 +22,12 @@ function RouteComponent() {
   Note: Although the model was rigorously evaluated using cross-validation and exploratory data analysis (EDA), it may still produce errors and is intended for demonstration purposes only.
   Click “Run” to analyze, “Save Output” to save your results, and “Clear” to start over.`
 
-  const { runAdvancedAnalysis, analysisResult, loading } = useAdvancedAnalysis();
+  const { runAdvancedAnalysis, analysisResult, loading, reset } = useAdvancedAnalysis();
 
   const sampleLabel = analysisResult?.sampleLabel || "";
   const data = analysisResult || null;
 
+  console.log(analysisResult);
   return (
   <Stack width="100%">
     <SectionHeader
@@ -40,10 +42,11 @@ function RouteComponent() {
         />
         <OutputBlock>
           {loading ? <DNALoader/> 
-          : <AdvancedResultBlock
+          :( analysisResult ? <AdvancedResultBlock
             sampleLabel={sampleLabel}
             data={data}
-          />}
+            reset={reset}
+          /> : <NullOutput/>)}
         </OutputBlock>
     </Stack>
   </Stack>

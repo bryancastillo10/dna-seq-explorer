@@ -2,19 +2,15 @@ import { Stack } from "@mui/material";
 
 import { ControlButtons } from "@/components/ui/form";
 import {ShortStringResult, BarChartBlock, SeqLabelOutput }from "@/components/ui/outputs";
-import NullOutput from "@/components/layout/NullOutput";
 import type { AdvancedAnalysisResponse } from "@/features/singleSeq/api/interface";
 
 interface AdvancedResultBlockProps {
 	sampleLabel:string;
 	data: AdvancedAnalysisResponse;
+	reset: () => void;
 }
 
-const AdvancedResultBlock = ({sampleLabel, data}: AdvancedResultBlockProps) => {
-
-    if(!data){
-		return( <NullOutput/>);
-	}
+const AdvancedResultBlock = ({sampleLabel, data, reset}: AdvancedResultBlockProps) => {
 
 	const {codonUsage, dnaType, kingdomTaxa } = data;
   return (
@@ -40,6 +36,8 @@ const AdvancedResultBlock = ({sampleLabel, data}: AdvancedResultBlockProps) => {
 
 		<ControlButtons
 			mainBtnLabel="Save"
+			otherBtn1Label="Clear Output"
+			otherBtn1Action={reset}
 			withOtherBtn2={false}
 		/>
 	</Stack>
