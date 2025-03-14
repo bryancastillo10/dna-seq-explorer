@@ -12,7 +12,7 @@ def perform_dotplot_alignment(data: PairwiseSequence):
 	
 	empty_matrix = np.empty((0,0), dtype=str)
 	
-	dot_matrix = DotMatrix(empty_matrix, data.seq_A, data.seq_B)
+	dot_matrix = DotMatrix(empty_matrix, data.seq_A, data.seq_B, data.seq_A_label, data.seq_B_label)
 
 	result = dot_matrix.calculate_dotmatrix(data.seq_A_label, data.seq_B_label)
 
