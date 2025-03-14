@@ -1,85 +1,41 @@
+import os
+import json
+from datetime import datetime
 from fastapi import APIRouter, HTTPException
-from models.saveData import SaveResultsRequest
+from models.saveData import SaveSingleSeqResult, SavePairSeqResult
 
 from pydantic import BaseModel
 
 saveResultsRoute = APIRouter()
 
-class TestData(BaseModel):
-    data: str
+@saveResultsRoute.post("/single-seq", tags=["save_results"])
+async def save_analysis_result(request: SaveSingleSeqResult):
+	"""To save the results from single sequence analysis"""
+	try:
+		timestamp = datetime.utcnow().strftime("%Y%m%dT%H%M%SZ")
+		file_name = f"Analysis Result_{request.feature}-{timestamp}.json"
+		file_path = os.path.join(request.save_dir, file_name)
 
+		with open(file_path, "w") as file:
+			json.dump(request.dict(), file, indent=4)
+        
+		return {"message": f"{request.feature} analysis result saved", "file": file_name}
 
-#Routes
-@saveResultsRoute.post("/", tags=["results"])
-async def save_results(data: TestData):
+	except Exception as e:
+		raise HTTPException(status_code=500, detail=str(e))
 
-	return {
-		"sample": data.data
-	}
-	# if request.output_format.lower() not in ["html","plain"]:
-	# 	raise HTTPException(status_code=400, detail="Unsupported output format. html or plain only")
+@saveResultsRoute.post("/pair-seq", tags=["save_results"])
+async def save_pairwise_sequencing_result(request: SavePairSeqResult):
+	"""To save the results from pairwise sequencing"""
+	try:
+		timestamp= datetime.utcnow().strftime("%Y%m%dT%H%M%SZ")
+		file_name = f"Analysis Result_{request.feature}-{timestamp}.json"
+		file_path = os.path.join(request.save_dir,file_name)
 
-	
-	# if request.feature.lower() == "basic":
-	# 	title = f"Basic Sequence Analysis Report for {request.sample_label}"
-	# 	content_items = "".join(
-    #         f"<li><strong>{key}:</strong> {value}</li>" for key, value in request.results.items()
-    #     )
+		with open(file_path, "w") as file:
+			json.dump(request.dict(), file, indent=4)
 
-	# elif request.feature.lower() == "advanced":
-	# 	title = f"Advanced Sequence Analysis Report for {request.sample_label}"
-	# 	content_items = "".join(
-    #         f"<li><em>{key}:</em> {value}</li>" for key, value in request.results.items()
-    #     )
-	# elif request.feature.lower() == "dotplot":
-	# 	title = f"Dotplot Alignment Report for {request.sample_label}"
-	# 	content_items = "".join(
-    #         f"<li>{key}: {value}</li>" for key, value in request.results.items()
-    #     )
-	# elif request.feature.lower() == "local":
-	# 	title = f"Local Alignment Report for {request.sample_label}"
-	# 	content_items = "".join(
-    #         f"<li>{key}: {value}</li>" for key, value in request.results.items()
-    #     )
-	# elif request.feature.lower() == "global":
-	# 	title = f"Global Alignment Report for {request.sample_label}"
-	# 	content_items = "".join(
-    #         f"<li>{key}: {value}</li>" for key, value in request.results.items()
-    #     )
-	# else:
-	# 	raise HTTPException(status_code=400, detail="Unsupported feature type.")
+		return {"message": f"{request.feature} analysis result saved", "file": file_name}
 
-
-	# if request.output_format.lower() == "html":
-	# 	css = request.custom_css if request.custom_css else "body { font-family: Arial, sans-serif; }"
-	# 	html_content = f"""
-    #     <html>
-    #       <head>
-    #         <style>
-    #           {css}
-    #         </style>
-    #       </head>
-    #       <body>
-    #         <h1>{title}</h1>
-    #         <ul>
-    #           {content_items}
-    #         </ul>
-    #       </body>
-    #     </html>
-    #     """
-	# 	stream = BytesIO(html_content.encode("utf-8"))
-	# 	return StreamingResponse(
-    #         stream,
-    #         media_type="text/html",
-    #         headers={"Content-Disposition": "attachment; filename=results.html"}
-    #     )
-	# else:  
-	# 	text_content = f"{title}\n\n"
-	# 	for key, value in request.results.items():
-	# 		text_content += f"{key}: {value}\n"
-	# 	stream = BytesIO(text_content.encode("utf-8"))
-	# 	return StreamingResponse(
-    #         stream,
-    #         media_type="text/plain",
-    #         headers={"Content-Disposition": "attachment; filename=results.txt"}
-    #     )
+	except Exception as e:
+		raise HTTPException(status_code=500, detail=str(e))

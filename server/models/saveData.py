@@ -1,10 +1,18 @@
 from pydantic import BaseModel
-from typing import Dict, Optional, Literal
+from typing import Dict, Optional, Literal, Any
 
-class SaveResultsRequest(BaseModel):
-	feature: Literal["basic","advanced","dotplot","local","global"]
-	seq_A_label: str
+
+class SaveSingleSeqResult(BaseModel):
+	feature: Literal["basic","advanced"]
+	seq_label: Optional[str] = None
+	results: Dict[str, Any]
+	output_format: Literal["html","pdf","docx","plain"]
+	save_dir: str
+
+class SavePairSeqResult(BaseModel):
+	feature: Literal["dotplot","local","global"]
+	seq_A_label: Optional[str] = None
 	seq_B_label: Optional[str] = None
-	results: Dict[str, str]
-	output_format: Literal["html","plain"]
-	custom_css: Optional[str] = None
+	results: Dict[str, Any]
+	output_format: Literal["html","pdf","docx","plain"]
+	save_dir: str
