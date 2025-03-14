@@ -8,9 +8,10 @@ import { ControlButtons } from "@/components/ui/form";
 interface ProteinBasicResultProps {
   analysisResult?: BasicAnalysisResults;
   sampleLabel: string;
+  reset: () => void;
 }
 
-const ProteinBasicResult = ({analysisResult, sampleLabel}: ProteinBasicResultProps) => {
+const ProteinBasicResult = ({analysisResult, sampleLabel, reset}: ProteinBasicResultProps) => {
 	if(!analysisResult){
     return <Typography>Data Failed to Fetch</Typography>
   }
@@ -53,6 +54,8 @@ const ProteinBasicResult = ({analysisResult, sampleLabel}: ProteinBasicResultPro
 			
 			<ControlButtons
 				mainBtnLabel="Save"
+				otherBtn1Label="Clear Output"
+				otherBtn1Action={reset}
 				withOtherBtn2={false}
 			/>
 		</Box>

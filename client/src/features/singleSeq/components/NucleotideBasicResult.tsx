@@ -8,9 +8,10 @@ import { ControlButtons } from "@/components/ui/form";
 interface NucleotideBasicResultProps {
   analysisResult?: BasicAnalysisResults;
   sampleLabel: string;
+  reset: () => void;
 }
 
-const NucleotideBasicResult = ({analysisResult, sampleLabel}: NucleotideBasicResultProps) => {
+const NucleotideBasicResult = ({analysisResult, sampleLabel, reset}: NucleotideBasicResultProps) => {
   if(!analysisResult){
     return <Typography>Data Failed to Fetch</Typography>
   }
@@ -57,6 +58,8 @@ const NucleotideBasicResult = ({analysisResult, sampleLabel}: NucleotideBasicRes
 
       <ControlButtons
           mainBtnLabel="Save"
+          otherBtn1Label="Clear Output"
+          otherBtn1Action={reset}
           withOtherBtn2={false}
       />
     </Box>

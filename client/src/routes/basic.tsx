@@ -24,7 +24,7 @@ function RouteComponent() {
     your inputs are correct to avoid warnings.
   `
 
-  const {runBasicAnalysis, analysisResult, loading } = useBasicAnalysis();
+  const {runBasicAnalysis, analysisResult, loading, reset } = useBasicAnalysis();
   const sampleLabel = analysisResult?.sampleLabel || "";
   const data = analysisResult?.data || {};
 
@@ -44,6 +44,7 @@ function RouteComponent() {
             :( <BasicResultBlock
                   sampleLabel={sampleLabel}
                   data={data}
+                  reset={reset}
                />)}
         </OutputBlock>
       </Stack>
