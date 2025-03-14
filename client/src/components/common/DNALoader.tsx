@@ -12,7 +12,7 @@ const DNALoader = () => {
         height:"50vh"
     }}>
       <DNA size={200}/>
-      <Typography>Analyzing. Please wait ...</Typography>
+      <Typography>Loading! Please wait ...</Typography>
     </Box>
   )
 }

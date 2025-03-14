@@ -8,6 +8,7 @@ import BasicResultBlock from '@/features/singleSeq/components/BasicResultBlock';
 import DNALoader from '@/components/common/DNALoader';
 
 import useBasicAnalysis from '@/features/singleSeq/hooks/useBasicAnalysis';
+import useDelayedLoading from '@/hooks/useDelayedLoading';
 import { getMainLayout } from '@/utils/getMainLayout';
 
 export const Route = createFileRoute('/basic')({
@@ -28,6 +29,8 @@ function RouteComponent() {
   const sampleLabel = analysisResult?.sampleLabel || "";
   const data = analysisResult?.data || {};
 
+  const delayedLoading = useDelayedLoading(loading);
+
   return (
     <Stack width="100%">
       <SectionHeader
@@ -40,7 +43,7 @@ function RouteComponent() {
           runAnalysis={runBasicAnalysis}
         />
           <OutputBlock>
-          {loading ? <DNALoader/> 
+          {delayedLoading ? <DNALoader/> 
             :( <BasicResultBlock
                   sampleLabel={sampleLabel}
                   data={data}

@@ -9,7 +9,7 @@ import DNALoader from '@/components/common/DNALoader';
 import NullOutput from '@/components/layout/NullOutput';
 
 import useAdvancedAnalysis from '@/features/singleSeq/hooks/useAdvancedAnalysis';
-
+import useDelayedLoading from '@/hooks/useDelayedLoading';
 import { getMainLayout } from '@/utils/getMainLayout';
 
 export const Route = createFileRoute('/advanced')({
@@ -27,7 +27,8 @@ function RouteComponent() {
   const sampleLabel = analysisResult?.sampleLabel || "";
   const data = analysisResult || null;
 
-  console.log(analysisResult);
+  const delayedLoading = useDelayedLoading(loading);
+
   return (
   <Stack width="100%">
     <SectionHeader
@@ -41,7 +42,7 @@ function RouteComponent() {
         runAnalysis={runAdvancedAnalysis}
         />
         <OutputBlock>
-          {loading ? <DNALoader/> 
+          {delayedLoading ? <DNALoader/> 
           :( analysisResult ? <AdvancedResultBlock
             sampleLabel={sampleLabel}
             data={data}
