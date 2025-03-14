@@ -9,7 +9,8 @@ const useGlobalAlignment = () => {
 
  const { mutate: runGlobalAlignment,
 		 data: sequencingResult,
-		 isPending: loading
+		 isPending: loading,
+		 reset
 	} = useMutation({
 		mutationKey:["GlobalAlignment"],
 		mutationFn: globalSequencing,
@@ -21,7 +22,7 @@ const useGlobalAlignment = () => {
 		}
 	});
 
-	return { runGlobalAlignment, sequencingResult, loading }
+	return { runGlobalAlignment, sequencingResult, loading, reset }
 }
 
 export default useGlobalAlignment;

@@ -8,7 +8,9 @@ const useDotPlotAlignment = () => {
 
 		const { mutate: runDotPlot, 
 			data: dotPlotResult, 
-			isPending: loading }
+			isPending: loading,
+			reset
+	 }
 	 = useMutation({
 		mutationKey:["dotplot"],
 		mutationFn: dotplotSequencing,
@@ -20,7 +22,7 @@ const useDotPlotAlignment = () => {
 		} 
 	});
 
-	return { runDotPlot, dotPlotResult, loading };
+	return { runDotPlot, dotPlotResult, loading, reset };
 }
 
 export default useDotPlotAlignment

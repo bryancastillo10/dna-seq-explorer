@@ -8,6 +8,7 @@ import BasicResultBlock from '@/features/singleSeq/components/BasicResultBlock';
 import DNALoader from '@/components/common/DNALoader';
 
 import useBasicAnalysis from '@/features/singleSeq/hooks/useBasicAnalysis';
+import useDelayedLoading from '@/hooks/useDelayedLoading';
 import { getMainLayout } from '@/utils/getMainLayout';
 
 export const Route = createFileRoute('/basic')({
@@ -24,9 +25,11 @@ function RouteComponent() {
     your inputs are correct to avoid warnings.
   `
 
-  const {runBasicAnalysis, analysisResult, loading } = useBasicAnalysis();
+  const {runBasicAnalysis, analysisResult, loading, reset } = useBasicAnalysis();
   const sampleLabel = analysisResult?.sampleLabel || "";
   const data = analysisResult?.data || {};
+
+  const delayedLoading = useDelayedLoading(loading);
 
   return (
     <Stack width="100%">
@@ -40,10 +43,11 @@ function RouteComponent() {
           runAnalysis={runBasicAnalysis}
         />
           <OutputBlock>
-          {loading ? <DNALoader/> 
+          {delayedLoading ? <DNALoader/> 
             :( <BasicResultBlock
                   sampleLabel={sampleLabel}
                   data={data}
+                  reset={reset}
                />)}
         </OutputBlock>
       </Stack>

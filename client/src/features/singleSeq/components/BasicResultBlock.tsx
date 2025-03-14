@@ -8,9 +8,10 @@ import { type BasicAnalysisResults } from "../api/interface";
 interface BasicResultBlockProps {
   sampleLabel:string;
   data: BasicAnalysisResults;
+  reset: () => void;
 };
 
-const BasicResultBlock = ({sampleLabel, data}: BasicResultBlockProps) => {
+const BasicResultBlock = ({sampleLabel, data, reset}: BasicResultBlockProps) => {
   
   const renderAnalysisResult = () => {
     switch(getDataComponent(data)) {
@@ -19,12 +20,14 @@ const BasicResultBlock = ({sampleLabel, data}: BasicResultBlockProps) => {
           <NucleotideBasicResult
             sampleLabel={sampleLabel}
             analysisResult={data}
+            reset={reset}
           />);
       case "protein":
         return (
           <ProteinBasicResult
             sampleLabel={sampleLabel}
             analysisResult={data}
+            reset={reset}
           />);
       default:
         return <NullOutput/>;

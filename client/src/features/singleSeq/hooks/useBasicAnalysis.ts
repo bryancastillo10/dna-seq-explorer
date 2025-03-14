@@ -8,7 +8,9 @@ const useBasicAnalysis = () => {
 
 	const { mutate: runBasicAnalysis, 
 			data: analysisResult, 
-			isPending: loading }
+			isPending: loading,
+			reset
+ 		}
 	 = useMutation({
 		mutationKey:["basicAnalysis"],
 		mutationFn: basicAnalysis,
@@ -20,7 +22,7 @@ const useBasicAnalysis = () => {
 		} 
 	});
 
-	return { runBasicAnalysis, analysisResult, loading };
+	return { runBasicAnalysis, analysisResult, reset, loading };
 }
 
 export default useBasicAnalysis;

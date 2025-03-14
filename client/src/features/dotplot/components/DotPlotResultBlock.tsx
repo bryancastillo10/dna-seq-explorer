@@ -9,9 +9,10 @@ import type { DotPlotResponse } from '@/features/dotplot/api/interface';
 
 interface DotPlotResultBlockProps {
 	result: DotPlotResponse;
+	reset: () => void;
 }
 
-const DotPlotResultBlock = ({result}: DotPlotResultBlockProps) => {
+const DotPlotResultBlock = ({result, reset}: DotPlotResultBlockProps) => {
 
 	const { matrix, seqALabel, seqBLabel, match, mismatch } = result;
 
@@ -41,6 +42,8 @@ const DotPlotResultBlock = ({result}: DotPlotResultBlockProps) => {
 
 		<ControlButtons
 			mainBtnLabel='Save'
+			otherBtn1Label='Clear Output'
+			otherBtn1Action={reset}
 			withOtherBtn2={false}
 		/>
 	</Stack>

@@ -10,6 +10,7 @@ import DNALoader from '@/components/common/DNALoader';
 import { getMainLayout } from '@/utils/getMainLayout';
 import DotPlotResultBlock from '@/features/dotplot/components/DotPlotResultBlock';
 import useDotPlotAlignment from '@/features/dotplot/hooks/useDotPlotAlignment';
+import useDelayedLoading from '@/hooks/useDelayedLoading';
 import NullOutput from '@/components/layout/NullOutput';
 
 export const Route = createFileRoute('/dotplot')({
@@ -22,9 +23,11 @@ function RouteComponent() {
     regions with dots. This quick visual analysis helps identify similarities and variations 
     between those sequences that can provide insights their relationships. `
 
-  const { runDotPlot, dotPlotResult, loading } = useDotPlotAlignment();
+  const { runDotPlot, dotPlotResult, loading, reset } = useDotPlotAlignment();
 
   const result = dotPlotResult?.data;
+
+  const delayedLoading = useDelayedLoading(loading);
 
   return (
     <Stack width="100%">
@@ -37,9 +40,11 @@ function RouteComponent() {
                 runSequencing={runDotPlot}              
               />
             <OutputBlock>
-                {loading ? <DNALoader/> 
-                :( dotPlotResult ? <DotPlotResultBlock 
+                {delayedLoading ? <DNALoader/> 
+                :( dotPlotResult 
+                ? <DotPlotResultBlock 
                     result={result} 
+                    reset={reset}
                 /> : <NullOutput/>)}
             </OutputBlock>
       </Stack>
