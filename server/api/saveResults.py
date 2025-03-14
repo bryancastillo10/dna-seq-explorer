@@ -4,7 +4,7 @@ from datetime import datetime
 from fastapi import APIRouter, HTTPException
 
 from models.saveData import SaveSingleSeqResult, SavePairSeqResult
-from service.file_export.exporter_service import save_exported_result
+from service.file_export.main import save_exported_result
 
 saveResultsRoute = APIRouter()
 
