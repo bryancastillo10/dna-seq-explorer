@@ -11,7 +11,7 @@ class DotMatrix:
         self.seq_A = seq_A
         self.seq_B = seq_B
         self.seq_A_label = seq_A_label
-        self.seq_B_label = seq_B_label  # Corrected assignment
+        self.seq_B_label = seq_B_label 
 
     def matrix_dim(self):
         """Set Up Matrix Dimensions"""
@@ -34,24 +34,16 @@ class DotMatrix:
         norm = mcolors.BoundaryNorm(bounds, cmap.N)
 
         fig, ax = plt.subplots(figsize=(10, 10), dpi=100)
-        label_section = f"\n{seq_A_label}\n{seq_B_label}"
-        fig.text(0.5, 0.90, label_section, fontsize=15, ha="center")
-
-        # Remove the header row and column from the matrix for plotting
         M_plot = np.delete(M, 0, axis=1)
         M_plot = np.delete(M_plot, 0, axis=0)
 
-        # Convert to boolean: True where cell equals "*", False otherwise.
         M_bool = (M_plot == "*")
         ax.imshow(M_bool, cmap=cmap, norm=norm)
 
         ax.set_xticks([])
         ax.set_yticks([])
-        ax.set_ylabel(seq_A_label, fontsize=15)  # Corrected method name and parameter
+        ax.set_ylabel(seq_A_label, fontsize=15)  
         ax.set_xlabel(seq_B_label, fontsize=15)
-
-        subcaption = f"Number of aligned bases: {match}\nNumber of mismatched bases: {mismatch}"
-        fig.text(0.5, 0.02, subcaption, fontsize=15, ha="center")
 
         buf = io.BytesIO()
         plt.savefig(buf, format='png', bbox_inches='tight')
@@ -69,9 +61,6 @@ class DotMatrix:
             self.M[0][cols + 1] = self.seq_B[cols]
         
         match, mismatch, matrix = self.matrix_dim()
-
-        # If you need the raw matrix as a list, you can keep this:
-        # matrix_list = matrix.tolist()
 
         image_base64 = self.fill_plot(seq_A_label, seq_B_label, matrix, match, mismatch)
 

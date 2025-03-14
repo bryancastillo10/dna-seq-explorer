@@ -1,14 +1,20 @@
 from fastapi import APIRouter, HTTPException
 from models.saveData import SaveResultsRequest
 
+from pydantic import BaseModel
+
 saveResultsRoute = APIRouter()
+
+class TestData(BaseModel):
+    data: str
+
 
 #Routes
 @saveResultsRoute.post("/", tags=["results"])
-async def save_results(data: str):
+async def save_results(data: TestData):
 
 	return {
-		"sample": data
+		"sample": data.data
 	}
 	# if request.output_format.lower() not in ["html","plain"]:
 	# 	raise HTTPException(status_code=400, detail="Unsupported output format. html or plain only")

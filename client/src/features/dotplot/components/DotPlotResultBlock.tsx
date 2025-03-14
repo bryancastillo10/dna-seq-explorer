@@ -1,6 +1,6 @@
 import { Stack, Box, Typography } from '@mui/material'
 
-import DotPlotCanvas from '@/features/dotplot/components/DotPlotCanvas'
+
 
 import { IntValueResult } from '@/components/ui/outputs';
 import { ControlButtons } from '@/components/ui/form';
@@ -14,15 +14,14 @@ interface DotPlotResultBlockProps {
 
 const DotPlotResultBlock = ({result, reset}: DotPlotResultBlockProps) => {
 
-	const { matrix, seqALabel, seqBLabel, match, mismatch } = result;
 
+	const { seqALabel, seqBLabel, match, mismatch } = result;
+
+	const imageSrc = `data:image/png;base64,${result.image}`;
   return (
 	<Stack flexDirection="column" gap={2} >
-	  <DotPlotCanvas 
-		matrix={matrix} 
-		seqALabel={seqALabel}
-		seqBLabel={seqBLabel}
-	  />
+
+		 <img src={imageSrc} alt="Dotplot" />
 
 		<Box sx={{display:"flex", justifyContent:"center"}}>
 			<Typography variant="body2">{seqALabel} vs. {seqBLabel}</Typography>
