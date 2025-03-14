@@ -8,7 +8,7 @@ class SingleSequence(BaseModel):
 
 class PairwiseSequence(BaseModel):
     seq_type: Literal["DNA","RNA","Protein"]
-    seq_A_label: str
+    seq_A_label: Optional[str] = None
     seq_A: str 
-    seq_B_label: str
+    seq_B_label: Optional[str] = None
     seq_B: str

@@ -5,6 +5,7 @@ from dotenv import load_dotenv
 
 from api.singleSequence import analysisRoute
 from api.pairSequence import sequencingRoute
+from api.saveResults import saveResultsRoute
 
 from utils.cors import configure_cors
 
@@ -15,6 +16,7 @@ configure_cors(app)
 
 app.include_router(analysisRoute, prefix="/analysis")
 app.include_router(sequencingRoute, prefix="/sequencing")
+app.include_router(saveResultsRoute, prefix="/save")
 
 if __name__ == "__main__":
     import uvicorn

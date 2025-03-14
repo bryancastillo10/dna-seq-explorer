@@ -8,8 +8,8 @@ export interface DotPlotResponse {
 	seqALabel: string;
 	seqBLabel: string;
 	match: number;
-	mismatch: number;
-	matrix: MatrixEntry<number>[];
+	mismatch:number;
+	image: string;
 }
 
 export interface DotPlotCanvasConfig<T> {
