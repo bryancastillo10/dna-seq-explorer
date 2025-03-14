@@ -7,9 +7,10 @@ import type { LocalGlobalSeqResult } from "@/features/pairSeq/api/interface";
 
 interface PairSeqAlignmentResultProps {
 	result: LocalGlobalSeqResult<string>;
+	reset: () => void;
 };
 
-const PairSeqAlignmentResult = ({result}: PairSeqAlignmentResultProps) => {
+const PairSeqAlignmentResult = ({result, reset}: PairSeqAlignmentResultProps) => {
 
 	const {  
 		seqALabel,
@@ -41,6 +42,8 @@ const PairSeqAlignmentResult = ({result}: PairSeqAlignmentResultProps) => {
 
 		<ControlButtons
 			mainBtnLabel="Save"
+			otherBtn1Label="Clear Output"
+			otherBtn1Action={reset}
 			withOtherBtn2={false}
 		/>
 	</Stack>

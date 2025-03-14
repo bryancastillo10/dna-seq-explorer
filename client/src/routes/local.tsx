@@ -10,7 +10,7 @@ import DNALoader from '@/components/common/DNALoader';
 import NullOutput from '@/components/layout/NullOutput';
 
 import useLocalAlignment from '@/features/pairSeq/hooks/useLocalAlignment';
-
+import useDelayedLoading from '@/hooks/useDelayedLoading';
 import { getMainLayout } from '@/utils/getMainLayout';
 
 export const Route = createFileRoute('/local')({
@@ -22,10 +22,11 @@ function RouteComponent() {
     motifs within larger sequences, ignoring unrelated regions. The algorithm used in this feature
     is Smith-Waterman Algorithm.`
 
-  const {runLocalAlignment, sequencingResult, loading } = useLocalAlignment();
+  const {runLocalAlignment, sequencingResult, loading, reset } = useLocalAlignment();
 
   const result = sequencingResult?.data;
 
+  const delayedLoading = useDelayedLoading(loading);
 
   return(
   <Stack width="100%">
@@ -38,9 +39,12 @@ function RouteComponent() {
           runSequencing={runLocalAlignment}
       />
       <OutputBlock>
-        { loading ? <DNALoader/> 
-        : (sequencingResult ? <PairSeqAlignmentResult
+        { delayedLoading 
+        ? <DNALoader/> 
+        : (sequencingResult 
+        ? <PairSeqAlignmentResult
               result={result}
+              reset={reset}
         /> : <NullOutput/>) }
       </OutputBlock>  
     </Stack>

@@ -9,7 +9,8 @@ const useLocalAlignment = () => {
 
 	const { mutate: runLocalAlignment,
 			data: sequencingResult,
-			isPending: loading
+			isPending: loading,
+			reset
 	} = useMutation({
 		mutationKey:["LocalAlignment"],
 		mutationFn: localSequencing,
@@ -21,7 +22,7 @@ const useLocalAlignment = () => {
 		}
 	});
 
-	return { runLocalAlignment, sequencingResult, loading }
+	return { runLocalAlignment, sequencingResult, loading, reset }
 }
 
 export default useLocalAlignment;
