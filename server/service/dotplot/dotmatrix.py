@@ -45,12 +45,12 @@ class DotMatrix:
         ax.set_ylabel(seq_A_label, fontsize=15)  
         ax.set_xlabel(seq_B_label, fontsize=15)
 
-        buf = io.BytesIO()
-        plt.savefig(buf, format='png', bbox_inches='tight')
+        buff = io.BytesIO()
+        plt.savefig(buff, format='png', bbox_inches='tight', transparent=True)
         plt.close(fig)
         buf.seek(0)
 
-        image_base64 = base64.b64encode(buf.read()).decode('utf-8')
+        image_base64 = base64.b64encode(buff.read()).decode('utf-8')
         return image_base64
 
     def calculate_dotmatrix(self, seq_A_label, seq_B_label):
