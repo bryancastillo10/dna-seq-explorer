@@ -1,6 +1,6 @@
 from typing import Dict,Any
 
-from service.file_export.constants import basic_nuc_mapping, basic_protein_mapping
+from service.file_export.constants import basic_nuc_mapping, basic_protein_mapping, advanced_mapping
 from lib.pdf_table_template import generate_pdf_table
 
 def export_basic_advanced(feature_title, results:Dict[str,Any], seq_label, save_file):
@@ -10,6 +10,8 @@ def export_basic_advanced(feature_title, results:Dict[str,Any], seq_label, save_
 			mapping = basic_nuc_mapping
 		elif any(key in results for key in basic_protein_mapping):
 			mapping = basic_protein_mapping
+		elif any(key in results for key in advanced_mapping):
+			mapping = advanced_mapping
 		else:
 			raise ValueError("Unknown result format: cannot determine mapping.")
 

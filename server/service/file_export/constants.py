@@ -20,3 +20,9 @@ basic_protein_mapping = {
 	"aminoAcidFrequency": "Amino Acid Frequency",
 	"isoelectricPoint": "Isoelectric Point (pI)"
 }
+
+advanced_mapping = {
+	"codonUsage": "Codon Frequency",
+	"dnaType":"Predicted DNA Type",
+	"kingdomTaxa":"Predicted Taxa (Kingdom)"
+}
