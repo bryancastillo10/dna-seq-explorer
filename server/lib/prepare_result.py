@@ -28,11 +28,11 @@ class PrepareResults:
         title_style = styles["Title"]
 
         if seq_label:
-            return Paragraph(f"<b>Sequence Label:</b> {seq_label}", title_style)
+            return Paragraph(f"{seq_label}", title_style)
         elif seq_A_label and seq_B_label:
-            return Paragraph(f"<b>Pairwise Comparison:</b> {seq_A_label} vs {seq_B_label}", title_style)
+            return Paragraph(f"<b>Pairwise:</b> {seq_A_label} vs {seq_B_label}", title_style)
         else:
-            return Paragraph("<b>Sequence Label:</b> Unknown", title_style)
+            return Paragraph("Unknown Sequence Label", title_style)
 
     def to_nested_list(self) -> List[List[Any]]:
         """Convert dictionary to a nested list with wrapped text for ReportLab tables."""
