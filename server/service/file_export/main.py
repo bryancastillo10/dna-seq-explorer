@@ -1,37 +1,24 @@
-import os
-from datetime import datetime
+from models.exportData import ExportSingleSeqResult, ExportPairSeqResult
+from pathlib import Path
 
-from models.saveData import SaveSingleSeqResult
-from utils.file_exporters import Extensions
+from service.file_export.pdf import export_basic_advanced, export_pairwise
 
-def save_exported_result(request: SaveSingleSeqResult):
-	"""Export the provided data using the provided ouput_format"""
-	output_format = request.output_format
-	if output_format not in Extensions:
-		raise ValueError(f"Unsupported output format of {ouput_format}")
+def export_pdf(request: ExportSingleSeqResult | ExportPairSeqResult):
+	"""To export as pdf"""
+	feature = request.feature
+	results = request.results
+	save_path = Path(request.save_dir)
 
+	if feature in ["basic","advanced"]:
+		seq_label = request.seq_label
+		save_file = save_path / f"{seq_label}.pdf"
+		export_basic_advanced(results, seq_label, save_file)
 
-	timestamp = datetime.utcnow().strftime("%Y%m%dT%H%M%SZ")
-	extension_mapping = {
-		"plain":".txt",
-		"html":".html",
-		"pdf":".pdf",
-		"docx":".docx"
-	}
+	elif feature in ["dotplot", "local", "global"]:
+		seq_A_label = request.seq_A_label
+		seq_B_label = request.seq_B_label
+		save_file = save_path / f"{seq_A_label}_vs_{seq_B_label}.pdf"
+		export_pairwise(results, seq_A_label, seq_B_label, save_file)
+	else:
+		raise ValueError(f"Unsupported feature: {feature}")
 
-	ext = extension_mapping.get(output_format,".json")
-	file_name = f"Analysis_Report_{request.feature}-{timestamp}{ext}"
-	file_path = os.path.join(request.save_dir, file_name)
-
-	exported_content = Extensions[output_format](request.results)
-
-	mode = "w"
-	if output_format in ["pdf","docx"]:
-		mode ="wb"
-		if isinstance(exported_content, str):
-			exported_content = exported_content.encode("utf-8")
-
-	with open(file_path, mode) as f:
-		f.write(exported_content)
-
-	return file_name
