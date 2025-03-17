@@ -13,7 +13,7 @@ def export_basic_advanced(feature_title, results:Dict[str,Any], seq_label, save_
 		else:
 			raise ValueError("Unknown result format: cannot determine mapping.")
 
-		return generate_pdf_table(feature_title, results, mapping, save_file)
+		return generate_pdf_table(feature_title, results, mapping, save_file, seq_label)
 
 def export_pairwise(feature_title, results:Dict[str,Any], seq_A_label, seq_B_label, save_file):
 		""" Exporting the results of pairwise sequenceing feature """

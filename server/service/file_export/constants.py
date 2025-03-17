@@ -16,7 +16,7 @@ basic_nuc_mapping = {
 
 basic_protein_mapping = {
 	"aminoAcidSequence": "Amino Acid",
-	"molceularWeight": "Molecular Weight (Da)",
+	"molecularWeight": "Molecular Weight (Da)",
 	"aminoAcidFrequency": "Amino Acid Frequency",
-	"isoElectricPoint": "Isoelectric Point (pI)"
+	"isoelectricPoint": "Isoelectric Point (pI)"
 }
