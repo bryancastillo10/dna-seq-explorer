@@ -13,3 +13,10 @@ basic_nuc_mapping = {
     "nucleotideFrequency": "Nucleotide Frequency",
     "translatedSequence": "Translated Sequence"
 }
+
+basic_protein_mapping = {
+	"aminoAcidSequence": "Amino Acid",
+	"molceularWeight": "Molecular Weight (Da)",
+	"aminoAcidFrequency": "Amino Acid Frequency",
+	"isoElectricPoint": "Isoelectric Point (pI)"
+}
