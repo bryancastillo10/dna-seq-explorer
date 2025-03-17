@@ -48,7 +48,7 @@ class DotMatrix:
         buff = io.BytesIO()
         plt.savefig(buff, format='png', bbox_inches='tight', transparent=True)
         plt.close(fig)
-        buf.seek(0)
+        buff.seek(0)
 
         image_base64 = base64.b64encode(buff.read()).decode('utf-8')
         return image_base64
