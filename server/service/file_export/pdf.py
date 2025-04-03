@@ -1,6 +1,7 @@
 from typing import Dict,Any
 
 from service.file_export.constants import basic_nuc_mapping, basic_protein_mapping, advanced_mapping
+from service.file_export.constants import pairwise_mapping
 from lib.pdf_table_template import generate_pdf_table
 
 def export_basic_advanced(feature_title, results:Dict[str,Any], seq_label, save_file):
@@ -19,4 +20,23 @@ def export_basic_advanced(feature_title, results:Dict[str,Any], seq_label, save_
 
 def export_pairwise(feature_title, results:Dict[str,Any], seq_A_label, seq_B_label, save_file):
 		""" Exporting the results of pairwise sequenceing feature """
-		return generate_pdf_table(feature_title,results, seq_A_label, seq_B_label, save_file)
+		if any(key in results for key in pairwise_mapping):
+			mapping = pairwise_mapping
+			generate_pdf_table(
+				feature_title= feature_title, 
+				results= results, 
+				mapping= pairwise_mapping,
+				save_file= save_file,
+				seq_A_label = seq_A_label,
+				seq_B_label = seq_B_label
+			)
+
+		else: 
+			generate_pdf_table(
+				feature_title=feature_title,
+				results=results,
+				mapping=None,
+				save_file=save_file,
+				seq_A_label=seq_A_label,
+				seq_B_label=seq_B_label
+			)

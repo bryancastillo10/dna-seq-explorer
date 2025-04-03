@@ -26,3 +26,9 @@ advanced_mapping = {
 	"dnaType":"Predicted DNA Type",
 	"kingdomTaxa":"Predicted Taxa (Kingdom)"
 }
+
+pairwise_mapping = {
+	"alignedSeqA":"Aligned Sequence A",
+	"alignedSeqB":"Aligned Sequence B",
+	"similarity":"Percentage Similarity"
+}
