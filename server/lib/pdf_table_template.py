@@ -88,7 +88,28 @@ def _generate_dotplot_pdf(feature_title, results, mapping, save_file, seq_A_labe
 
 def _generate_pairwise_pdf(feature_title, results, mapping, save_file, seq_A_label, seq_B_label):
 	""" Format for pairwise sequencing """
+	processor = PrepareResults(results, mapping)
+	processed_results = processor.to_nested_list()
+	label_paragraph = processor.get_label_paragraph(seq_A_label=seq_A_label, seq_B_label=seq_B_label)
 
+	doc = SimpleDocTemplate(save_file, pagesize=letter)
+
+	elements = []
+	elements.append(Spacer(1,80))
+
+	elements.append(label_paragraph)
+	elements.append(Spacer(1, 20))
+
+	table = Table(processed_results, colWidths=[150, 350], hAlign="LEFT")
+	table.setStyle(TableStyle(table_custom_style))
+
+	elements.append(table)
+
+	doc.build(
+		elements,
+		onFirstPage=lambda c, d: (write_canvas_header(c, d, feature_title), write_canvas_footer(c, d)),
+		onLaterPages=write_canvas_footer
+	)
 
 def _generate_single_seq_pdf(feature_title, results, mapping, save_file, seq_label):
 	""" Format for single sequence analysis """
