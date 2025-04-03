@@ -19,4 +19,11 @@ def export_basic_advanced(feature_title, results:Dict[str,Any], seq_label, save_
 
 def export_pairwise(feature_title, results:Dict[str,Any], seq_A_label, seq_B_label, save_file):
 		""" Exporting the results of pairwise sequenceing feature """
-		return generate_pdf_table(feature_title,results, seq_A_label, seq_B_label, save_file)
+		return generate_pdf_table(
+				feature_title=feature_title,
+				results=results,
+				mapping=None,
+				save_file=save_file,
+				seq_A_label=seq_A_label,
+				seq_B_label=seq_B_label
+			)

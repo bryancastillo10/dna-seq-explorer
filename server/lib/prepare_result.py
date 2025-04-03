@@ -30,7 +30,7 @@ class PrepareResults:
         if seq_label:
             return Paragraph(f"{seq_label}", title_style)
         elif seq_A_label and seq_B_label:
-            return Paragraph(f"<b>Pairwise:</b> {seq_A_label} vs {seq_B_label}", title_style)
+            return Paragraph(f"Pairwise {seq_A_label} vs {seq_B_label}", title_style)
         else:
             return Paragraph("Unknown Sequence Label", title_style)
 
