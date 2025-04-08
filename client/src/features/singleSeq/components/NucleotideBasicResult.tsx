@@ -4,6 +4,7 @@ import type { BasicAnalysisResults } from "@/features/singleSeq/api/interface";
 import { IntValueResult, LongStringResult, BarChartBlock, SeqLabelOutput } from "@/components/ui/outputs";
 
 import { ControlButtons } from "@/components/ui/form";
+import { useModalStore } from "@/zustand/modal";
 
 interface NucleotideBasicResultProps {
   analysisResult?: BasicAnalysisResults;
@@ -25,6 +26,8 @@ const NucleotideBasicResult = ({analysisResult, sampleLabel, reset}: NucleotideB
           gcContent, 
           nucleotideFrequency, 
           translatedSequence } = analysisResult;
+
+  const { openModal } = useModalStore();
 
   return (
     <>
@@ -58,6 +61,7 @@ const NucleotideBasicResult = ({analysisResult, sampleLabel, reset}: NucleotideB
 
       <ControlButtons
           mainBtnLabel="Save"
+          mainBtnAction={openModal}
           otherBtn1Label="Clear Output"
           otherBtn1Action={reset}
           withOtherBtn2={false}

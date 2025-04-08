@@ -3,7 +3,7 @@ import ProteinBasicResult from "@/features/singleSeq/components/ProteinBasicResu
 
 import { getDataComponent } from "@/utils/getDataComponent";
 import NullOutput from "@/components/layout/NullOutput";
-import { type BasicAnalysisResults } from "../api/interface";
+import { type BasicAnalysisResults } from "@/features/singleSeq/api/interface";
 
 interface BasicResultBlockProps {
   sampleLabel:string;
@@ -11,7 +11,7 @@ interface BasicResultBlockProps {
   reset: () => void;
 };
 
-const BasicResultBlock = ({sampleLabel, data, reset}: BasicResultBlockProps) => {
+const BasicResultBlock = ({sampleLabel, data, reset }: BasicResultBlockProps) => {
   
   const renderAnalysisResult = () => {
     switch(getDataComponent(data)) {

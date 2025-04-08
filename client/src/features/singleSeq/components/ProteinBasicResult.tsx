@@ -4,6 +4,7 @@ import { BarChartBlock, LongStringResult, IntValueResult, SeqLabelOutput } from 
 
 import type { BasicAnalysisResults } from "@/features/singleSeq/api/interface";
 import { ControlButtons } from "@/components/ui/form";
+import { useModalStore } from "@/zustand/modal";
 
 interface ProteinBasicResultProps {
   analysisResult?: BasicAnalysisResults;
@@ -22,6 +23,8 @@ const ProteinBasicResult = ({analysisResult, sampleLabel, reset}: ProteinBasicRe
 
   const { aminoAcidSequence, aminoAcidFrequency,
 	molecularWeight, isoelectricPoint } = analysisResult;
+
+  const { openModal } = useModalStore();
 
   return (
 	<>
@@ -54,6 +57,7 @@ const ProteinBasicResult = ({analysisResult, sampleLabel, reset}: ProteinBasicRe
 			
 			<ControlButtons
 				mainBtnLabel="Save"
+				mainBtnAction={openModal}
 				otherBtn1Label="Clear Output"
 				otherBtn1Action={reset}
 				withOtherBtn2={false}

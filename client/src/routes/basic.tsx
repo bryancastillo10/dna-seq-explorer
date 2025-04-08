@@ -11,6 +11,9 @@ import useBasicAnalysis from '@/features/singleSeq/hooks/useBasicAnalysis';
 import useDelayedLoading from '@/hooks/useDelayedLoading';
 import { getMainLayout } from '@/utils/getMainLayout';
 
+import SaveModal from '@/components/ui/outputs/SaveModal';
+import { useModalStore } from '@/zustand/modal';
+
 export const Route = createFileRoute('/basic')({
   component: RouteComponent,
 })
@@ -31,6 +34,9 @@ function RouteComponent() {
 
   const delayedLoading = useDelayedLoading(loading);
 
+
+  const { isOpen, closeModal } = useModalStore();
+
   return (
     <Stack width="100%">
       <SectionHeader
@@ -50,6 +56,11 @@ function RouteComponent() {
                   reset={reset}
                />)}
         </OutputBlock>
+
+        <SaveModal
+            isOpen={isOpen}
+            onClose={closeModal}
+        />
       </Stack>
     </Stack>
   )
