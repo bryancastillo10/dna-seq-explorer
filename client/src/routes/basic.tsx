@@ -11,8 +11,8 @@ import useBasicAnalysis from '@/features/singleSeq/hooks/useBasicAnalysis';
 import useDelayedLoading from '@/hooks/useDelayedLoading';
 import { getMainLayout } from '@/utils/getMainLayout';
 
-import SaveModal from '@/components/ui/outputs/SaveModal';
 import { useModalStore } from '@/zustand/modal';
+import { SaveModal } from '@/components/ui/outputs';
 
 export const Route = createFileRoute('/basic')({
   component: RouteComponent,
@@ -60,6 +60,7 @@ function RouteComponent() {
         <SaveModal
             isOpen={isOpen}
             onClose={closeModal}
+            sampleLabel={sampleLabel}            
         />
       </Stack>
     </Stack>
