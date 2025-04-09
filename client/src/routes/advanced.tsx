@@ -12,6 +12,9 @@ import useAdvancedAnalysis from '@/features/singleSeq/hooks/useAdvancedAnalysis'
 import useDelayedLoading from '@/hooks/useDelayedLoading';
 import { getMainLayout } from '@/utils/getMainLayout';
 
+import { useModalStore } from '@/zustand/modal';
+import { SaveModal } from '@/components/ui/outputs';
+
 export const Route = createFileRoute('/advanced')({
   component: RouteComponent,
 });
@@ -28,6 +31,8 @@ function RouteComponent() {
   const data = analysisResult || null;
 
   const delayedLoading = useDelayedLoading(loading);
+
+  const { isOpen, closeModal } = useModalStore();
 
   return (
   <Stack width="100%">
@@ -49,6 +54,13 @@ function RouteComponent() {
             reset={reset}
           /> : <NullOutput/>)}
         </OutputBlock>
+
+
+        <SaveModal
+            isOpen={isOpen}
+            onClose={closeModal}
+            sampleLabel={sampleLabel}            
+        />
     </Stack>
   </Stack>
   )

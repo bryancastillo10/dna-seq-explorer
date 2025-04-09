@@ -19,11 +19,13 @@ import FormFieldLabel from "@/components/ui/form/FormFieldLabel";
 interface SaveModalProps {
 	isOpen: boolean;
 	onClose: () => void;
-	sampleLabel: string;
+	sampleLabel?: string;
+	sampleALabel?:string;
+	sampleBLabel?:string;
 }
 
 
-const SaveModal = ({isOpen, onClose, sampleLabel }: SaveModalProps) => {
+const SaveModal = ({isOpen, onClose, sampleLabel, sampleALabel, sampleBLabel }: SaveModalProps) => {
 
   const [selectedFileType, setSelectedFileType] = useState<string>(".pdf");
 
@@ -52,9 +54,8 @@ const SaveModal = ({isOpen, onClose, sampleLabel }: SaveModalProps) => {
 			<Stack gap={2}>
 				<FormFieldLabel
 					icon={Tag}
-					label={sampleLabel}
+					label={sampleLabel ? sampleLabel : `${sampleALabel} vs ${sampleBLabel}`}
 				/>
-
 				<FormControl sx={{my: 1, width: "100%"}}>
 
 				<InputLabel sx={{
