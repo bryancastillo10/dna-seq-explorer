@@ -4,6 +4,7 @@ import { Stack } from "@mui/material";
 import { ControlButtons } from "@/components/ui/form";
 
 import type { LocalGlobalSeqResult } from "@/features/pairSeq/api/interface";
+import { useModalStore } from "@/zustand/modal";
 
 interface PairSeqAlignmentResultProps {
 	result: LocalGlobalSeqResult<string>;
@@ -19,6 +20,8 @@ const PairSeqAlignmentResult = ({result, reset}: PairSeqAlignmentResultProps) =>
 		alignedSeqB,
 		similarity
 	} = result;
+
+  const { openModal } = useModalStore();
 
   return (
 	<Stack flexDirection="column" gap={2} >
@@ -42,6 +45,7 @@ const PairSeqAlignmentResult = ({result, reset}: PairSeqAlignmentResultProps) =>
 
 		<ControlButtons
 			mainBtnLabel="Save"
+			mainBtnAction={openModal}
 			otherBtn1Label="Clear Output"
 			otherBtn1Action={reset}
 			withOtherBtn2={false}

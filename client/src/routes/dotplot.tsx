@@ -13,6 +13,9 @@ import useDotPlotAlignment from '@/features/dotplot/hooks/useDotPlotAlignment';
 import useDelayedLoading from '@/hooks/useDelayedLoading';
 import NullOutput from '@/components/layout/NullOutput';
 
+import { SaveModal } from '@/components/ui/outputs';
+import { useModalStore } from '@/zustand/modal';
+
 export const Route = createFileRoute('/dotplot')({
   component: RouteComponent,
 })
@@ -28,6 +31,8 @@ function RouteComponent() {
   const result = dotPlotResult?.data;
 
   const delayedLoading = useDelayedLoading(loading);
+
+  const { isOpen, closeModal } = useModalStore();
 
   return (
     <Stack width="100%">
@@ -47,6 +52,17 @@ function RouteComponent() {
                     reset={reset}
                 /> : <NullOutput/>)}
             </OutputBlock>
+
+
+            <SaveModal
+              isOpen={isOpen}
+              onClose={closeModal}
+              {...(result ? { 
+                sampleALabel: result.seqALabel,
+                sampleBLabel: result.seqBLabel
+              }: {})}
+            />
+
       </Stack>
     </Stack>
   )

@@ -6,6 +6,7 @@ import { IntValueResult } from '@/components/ui/outputs';
 import { ControlButtons } from '@/components/ui/form';
 
 import type { DotPlotResponse } from '@/features/dotplot/api/interface';
+import { useModalStore } from '@/zustand/modal';
 
 interface DotPlotResultBlockProps {
 	result: DotPlotResponse;
@@ -18,34 +19,37 @@ const DotPlotResultBlock = ({result, reset}: DotPlotResultBlockProps) => {
 	const { seqALabel, seqBLabel, match, mismatch } = result;
 
 	const imageSrc = `data:image/png;base64,${result.image}`;
-  return (
-	<Stack flexDirection="column" gap={2} >
 
-		 <img src={imageSrc} alt="Dotplot" />
+	const { openModal } = useModalStore();
+    return (
+		<Stack flexDirection="column" gap={2} >
 
-		<Box sx={{display:"flex", justifyContent:"center"}}>
-			<Typography variant="body2">{seqALabel} vs. {seqBLabel}</Typography>
-		</Box>
+			<img src={imageSrc} alt="Dotplot" />
 
-		<Box sx={{display:"flex", justifyContent:"space-evenly"}}>
-			<IntValueResult
-				title="Matches"
-				result={match}
+			<Box sx={{display:"flex", justifyContent:"center"}}>
+				<Typography variant="body2">{seqALabel} vs. {seqBLabel}</Typography>
+			</Box>
+
+			<Box sx={{display:"flex", justifyContent:"space-evenly"}}>
+				<IntValueResult
+					title="Matches"
+					result={match}
+				/>
+
+				<IntValueResult
+					title="Mismatches"
+					result={mismatch}
+				/>
+			</Box>
+
+			<ControlButtons
+				mainBtnLabel='Save'
+				mainBtnAction={openModal}
+				otherBtn1Label='Clear Output'
+				otherBtn1Action={reset}
+				withOtherBtn2={false}
 			/>
-
-			<IntValueResult
-				title="Mismatches"
-				result={mismatch}
-			/>
-		</Box>
-
-		<ControlButtons
-			mainBtnLabel='Save'
-			otherBtn1Label='Clear Output'
-			otherBtn1Action={reset}
-			withOtherBtn2={false}
-		/>
-	</Stack>
+		</Stack>
   )
 }
 
