@@ -1,35 +1,59 @@
 from models.exportData import ExportSingleSeqResult, ExportPairSeqResult
-from pathlib import Path
-from datetime import datetime
-
 from service.file_export.pdf import export_basic_advanced, export_pairwise
 from service.file_export.constants import features_key
+from utils.export_preparation import prepare_request_data
 
-def get_timestamp():
-	timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-	return timestamp
+import csv
+
 
 def export_pdf(request: ExportSingleSeqResult | ExportPairSeqResult):
 	"""To export as pdf"""
 	feature = request.feature
 	results = request.results
-	save_path = Path(request.save_dir)
-
+	
 	feature_title = features_key.get(feature)
 	if not feature_title:
 		raise ValueError(f"Unsupported feature: {feature}")
 
+	save_file = prepare_request_data(request,"pdf")
 	if feature in ["basic","advanced"]:
-		seq_label = request.seq_label
-		timestamp = get_timestamp()
-		save_file = str(save_path / f"{feature}_{seq_label}_{timestamp}.pdf")
-		export_basic_advanced(feature_title,results, seq_label, save_file)
+		export_basic_advanced(feature_title, results, request.seq_label, save_file)
 
-	elif feature in ["dotplot", "local", "global"]:
-		seq_A_label = request.seq_A_label
-		seq_B_label = request.seq_B_label
-		timestamp = get_timestamp()
-		save_file = str(save_path / f"{feature}_{seq_A_label}_vs_{seq_B_label}_{timestamp}.pdf")
-		export_pairwise(feature_title, results, seq_A_label, seq_B_label, save_file)
-	else:
-		raise ValueError(f"Unsupported feature: {feature}")
+	elif feature in ["dotplot","local","global"]:
+		export_pairwise(feature_title, results, request.seq_A_label, request.seq_B_label)
+
+
+def export_csv(request: ExportSingleSeqResult | ExportPairSeqResult):
+	"""To export as csv"""
+	save_file = prepare_request_data(request,"csv")
+	results = request.results
+
+	with open(save_file, "w", newline="") as csvfile:
+		if isinstance(results, list) and results and isinstance(results[0], dict):
+			fieldnames = list(results[0].keys())
+			writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
+			writer.writeheader()
+			write.writerows(results)
+		elif isinstance(results, dict):
+			writer = csv.writer(csvfile)
+			writer.writerow(["Parameters","Value"])
+			for key, value in results.items():
+				writer.writerow([key, value])
+		else:
+			csvfile.write(str(results))
+
+
+def export_plain(request: ExportSingleSeqResult | ExportPairSeqResult):
+	"""To export as txt file"""
+	save_file = prepare_request_data(request,"txt")
+	results = request.results
+
+	with open(save_file, "w") as txtfile:
+		if isinstance(results, dict):
+			for key, value in results.items():
+				txtfile.write(f"{key}: {value} \n")
+		elif isinstance(results, list):
+			for item in results:
+				txtfile.write(f"{item} \n")
+		else:
+			txtfile.write(str(results))
