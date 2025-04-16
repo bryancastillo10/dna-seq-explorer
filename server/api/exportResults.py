@@ -4,7 +4,7 @@ from datetime import datetime
 from fastapi import APIRouter, HTTPException
 
 from models.exportData import ExportSingleSeqResult, ExportPairSeqResult
-from service.file_export.main import export_pdf
+from service.file_export.main import export_pdf, export_csv, export_plain
 
 exportResultsRoute = APIRouter()
 
@@ -15,6 +15,10 @@ async def save_analysis_result(request: ExportSingleSeqResult):
 		if request.output_format == "pdf":
 			export_pdf(request)
 			return { "message": "PDF export successful"}
+
+		elif request.output_format == "csv":
+			export_csv(request)
+			return { "message": "CSV export successful" }
 
 		return {"message": "Output format not yet supported", "data": request}
 
@@ -28,6 +32,10 @@ async def save_pairwise_sequencing_result(request: ExportPairSeqResult):
 		if request.output_format == "pdf":
 			export_pdf(request)
 			return { "message": "PDF export successful"}
+
+		elif request.output_format == "csv":
+			export_csv(request)
+			return { "message": "CSV export successful" }
 
 		return {"message": "Output format not yet supported", "data": request}
 
