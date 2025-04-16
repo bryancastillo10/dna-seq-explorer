@@ -20,6 +20,10 @@ async def save_analysis_result(request: ExportSingleSeqResult):
 			export_csv(request)
 			return { "message": "CSV export successful" }
 
+		elif request.output_format == "plain":
+			export_plain(request)
+			return {"message": "Plain txt export successful"}
+
 		return {"message": "Output format not yet supported", "data": request}
 
 	except Exception as e:
@@ -36,6 +40,10 @@ async def save_pairwise_sequencing_result(request: ExportPairSeqResult):
 		elif request.output_format == "csv":
 			export_csv(request)
 			return { "message": "CSV export successful" }
+
+		elif request.output_format == "plain":
+			export_plain(request)
+			return {"message": "Plain txt export successful"}
 
 		return {"message": "Output format not yet supported", "data": request}
 

@@ -1,7 +1,4 @@
 from models.exportData import ExportSingleSeqResult, ExportPairSeqResult
-from pathlib import Path
-from datetime import datetime
-
 from service.file_export.pdf import export_basic_advanced, export_pairwise
 from service.file_export.constants import features_key
 from utils.export_preparation import prepare_request_data
@@ -48,3 +45,15 @@ def export_csv(request: ExportSingleSeqResult | ExportPairSeqResult):
 
 def export_plain(request: ExportSingleSeqResult | ExportPairSeqResult):
 	"""To export as txt file"""
+	save_file = prepare_request_data(request,"txt")
+	results = request.results
+
+	with open(save_file, "w") as txtfile:
+		if isinstance(results, dict):
+			for key, value in results.items():
+				txtfile.write(f"{key}: {value} \n")
+		elif isinstance(results, list):
+			for item in results:
+				txtfile.write(f"{item} \n")
+		else:
+			txtfile.write(str(results))
