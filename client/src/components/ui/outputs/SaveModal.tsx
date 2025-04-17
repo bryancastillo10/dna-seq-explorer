@@ -35,6 +35,17 @@ const SaveModal = ({isOpen, onClose, sampleLabel, sampleALabel, sampleBLabel }: 
 
   const fileTypeOptions = [".csv", ".pdf",".txt"]
 
+  const getModalLabel = () => {
+		switch(true){
+		case Boolean(sampleALabel):
+			return sampleLabel!
+		case Boolean(sampleALabel && sampleBLabel):
+			return `${sampleALabel} vs. ${sampleBLabel}`
+		default:
+			return "No Sample Label Provided"
+	}
+ }
+
   return (
 	<Dialog 
 		open={isOpen} 
@@ -54,7 +65,7 @@ const SaveModal = ({isOpen, onClose, sampleLabel, sampleALabel, sampleBLabel }: 
 			<Stack gap={2}>
 				<FormFieldLabel
 					icon={Tag}
-					label={sampleLabel ? sampleLabel : `${sampleALabel} vs ${sampleBLabel}`}
+					label={getModalLabel()}
 				/>
 				<FormControl sx={{my: 1, width: "100%"}}>
 
