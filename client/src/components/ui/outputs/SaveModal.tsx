@@ -15,6 +15,7 @@ import {
 import { Tag, File } from "lucide-react";
 
 import FormFieldLabel from "@/components/ui/form/FormFieldLabel";
+import type { ExportRequest } from "@/features/fileExport/api/interface";
 
 interface SaveModalProps {
 	isOpen: boolean;
@@ -22,6 +23,10 @@ interface SaveModalProps {
 	sampleLabel?: string;
 	sampleALabel?:string;
 	sampleBLabel?:string;
+
+	fileExport: ExportRequest;
+	results: any;
+	updateFileExport: (patch: Partial<ExportRequest>) => void;
 }
 
 

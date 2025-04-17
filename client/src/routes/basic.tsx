@@ -9,6 +9,7 @@ import DNALoader from '@/components/common/DNALoader';
 
 import useBasicAnalysis from '@/features/singleSeq/hooks/useBasicAnalysis';
 import useDelayedLoading from '@/hooks/useDelayedLoading';
+import useFileExport from '@/features/fileExport/hooks/useFileExport';
 import { getMainLayout } from '@/utils/getMainLayout';
 
 import { useModalStore } from '@/zustand/modal';
@@ -37,6 +38,8 @@ function RouteComponent() {
 
   const { isOpen, closeModal } = useModalStore();
 
+  const { fileExport, updateFileExport } = useFileExport("basic");
+
   return (
     <Stack width="100%">
       <SectionHeader
@@ -60,7 +63,11 @@ function RouteComponent() {
         <SaveModal
             isOpen={isOpen}
             onClose={closeModal}
-            sampleLabel={sampleLabel}            
+            sampleLabel={sampleLabel}   
+
+            fileExport={fileExport}
+            results={data}
+            updateFileExport={updateFileExport}
         />
       </Stack>
     </Stack>
