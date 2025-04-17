@@ -15,7 +15,7 @@ export type Nucleotides = typeof nucleotideBases[number];
 export type AminoAcid = typeof aminoAcids[number];
 
 // Basic Analysis: DNA or RNA 
-type BasicNucResult<T,U> = {
+export type BasicNucResult<T,U> = {
     transcription: T;
     gcContent: U;
     reverseComplement: T;
@@ -29,7 +29,7 @@ export interface NucleotideResponse {
 }
 
 //  Basic Analysis: Protein
-type BasicProteinResult<T,U> = {
+export type BasicProteinResult<T,U> = {
     aminoAcidSequence: T;
     molecularWeight: U;
     aminoAcidFrequency: Record<AminoAcid, U>;

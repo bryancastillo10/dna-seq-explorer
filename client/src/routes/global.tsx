@@ -10,6 +10,7 @@ import DNALoader from '@/components/common/DNALoader';
 import { getMainLayout } from '@/utils/getMainLayout';
 import useGlobalAlignment from '@/features/pairSeq/hooks/useGlobalAlignment';
 import useDelayedLoading from '@/hooks/useDelayedLoading';
+import useFileExport from '@/features/fileExport/hooks/useFileExport';
 import NullOutput from '@/components/layout/NullOutput';
 
 import { SaveModal } from '@/components/ui/outputs';
@@ -31,6 +32,8 @@ function RouteComponent() {
   const delayedLoading = useDelayedLoading(loading);
 
   const { isOpen, closeModal } = useModalStore();
+
+  const { fileExport, updateFileExport } = useFileExport("global");
 
   return (
     <Stack width="100%">
@@ -55,6 +58,11 @@ function RouteComponent() {
       <SaveModal
         isOpen={isOpen}
         onClose={closeModal}
+
+        fileExport={fileExport}
+        results={result}
+        updateFileExport={updateFileExport}
+
          {...(result ? { 
                 sampleALabel: result.seqALabel,
                 sampleBLabel: result.seqBLabel

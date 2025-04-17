@@ -15,6 +15,7 @@ import {
 import { Tag, File } from "lucide-react";
 
 import FormFieldLabel from "@/components/ui/form/FormFieldLabel";
+import type { ExportRequest } from "@/features/fileExport/api/interface";
 
 interface SaveModalProps {
 	isOpen: boolean;
@@ -22,6 +23,10 @@ interface SaveModalProps {
 	sampleLabel?: string;
 	sampleALabel?:string;
 	sampleBLabel?:string;
+
+	fileExport: ExportRequest;
+	results: any;
+	updateFileExport: (patch: Partial<ExportRequest>) => void;
 }
 
 
@@ -34,6 +39,17 @@ const SaveModal = ({isOpen, onClose, sampleLabel, sampleALabel, sampleBLabel }: 
   };
 
   const fileTypeOptions = [".csv", ".pdf",".txt"]
+
+  const getModalLabel = () => {
+		switch(true){
+		case Boolean(sampleALabel):
+			return sampleLabel!
+		case Boolean(sampleALabel && sampleBLabel):
+			return `${sampleALabel} vs. ${sampleBLabel}`
+		default:
+			return "No Sample Label Provided"
+	}
+ }
 
   return (
 	<Dialog 
@@ -54,7 +70,7 @@ const SaveModal = ({isOpen, onClose, sampleLabel, sampleALabel, sampleBLabel }: 
 			<Stack gap={2}>
 				<FormFieldLabel
 					icon={Tag}
-					label={sampleLabel ? sampleLabel : `${sampleALabel} vs ${sampleBLabel}`}
+					label={getModalLabel()}
 				/>
 				<FormControl sx={{my: 1, width: "100%"}}>
 
