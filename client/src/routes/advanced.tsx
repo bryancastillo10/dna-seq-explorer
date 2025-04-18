@@ -35,7 +35,7 @@ function RouteComponent() {
 
   const { isOpen, closeModal } = useModalStore();
 
-  const { fileExport, updateFileExport } = useFileExport("advanced");
+  const { fileExport, openExportModal } = useFileExport("advanced");
 
   return (
   <Stack width="100%">
@@ -53,6 +53,7 @@ function RouteComponent() {
           {delayedLoading ? <DNALoader/> 
           :( analysisResult ? <AdvancedResultBlock
             sampleLabel={sampleLabel}
+            openExportModal={openExportModal}
             data={data}
             reset={reset}
           /> : <NullOutput/>)}
@@ -64,9 +65,7 @@ function RouteComponent() {
             onClose={closeModal}
             sampleLabel={sampleLabel}
 
-            fileExport={fileExport}
-            results={data}
-            updateFileExport={updateFileExport}            
+            fileExport={fileExport}    
         />
     </Stack>
   </Stack>

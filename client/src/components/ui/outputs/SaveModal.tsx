@@ -25,12 +25,17 @@ interface SaveModalProps {
 	sampleBLabel?:string;
 
 	fileExport: ExportRequest;
-	results: any;
-	updateFileExport: (patch: Partial<ExportRequest>) => void;
 }
 
 
-const SaveModal = ({isOpen, onClose, sampleLabel, sampleALabel, sampleBLabel }: SaveModalProps) => {
+const SaveModal = ({
+	isOpen, 
+	onClose, 
+	sampleLabel, 
+	sampleALabel, 
+	sampleBLabel,
+	fileExport
+ }: SaveModalProps) => {
 
   const [selectedFileType, setSelectedFileType] = useState<string>(".pdf");
 
