@@ -3,15 +3,18 @@ import ProteinBasicResult from "@/features/singleSeq/components/ProteinBasicResu
 
 import { getDataComponent } from "@/utils/getDataComponent";
 import NullOutput from "@/components/layout/NullOutput";
+
 import { type BasicAnalysisResults } from "@/features/singleSeq/api/interface";
+import { type IExportData } from "@/features/fileExport/hooks/useFileExport";
 
 interface BasicResultBlockProps {
   sampleLabel:string;
   data: BasicAnalysisResults;
   reset: () => void;
+  openExportModal: (data: IExportData) => void;
 };
 
-const BasicResultBlock = ({sampleLabel, data, reset }: BasicResultBlockProps) => {
+const BasicResultBlock = ({sampleLabel, data, reset, openExportModal }: BasicResultBlockProps) => {
   
   const renderAnalysisResult = () => {
     switch(getDataComponent(data)) {
@@ -20,6 +23,7 @@ const BasicResultBlock = ({sampleLabel, data, reset }: BasicResultBlockProps) =>
           <NucleotideBasicResult
             sampleLabel={sampleLabel}
             analysisResult={data}
+            openExportModal={openExportModal}
             reset={reset}
           />);
       case "protein":

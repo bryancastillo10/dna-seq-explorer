@@ -2,15 +2,18 @@ import { Stack } from "@mui/material";
 
 import { ControlButtons } from "@/components/ui/form";
 import {ShortStringResult, BarChartBlock, SeqLabelOutput }from "@/components/ui/outputs";
+
 import type { AdvancedAnalysisResponse } from "@/features/singleSeq/api/interface";
+import type { IExportData } from "@/features/fileExport/hooks/useFileExport";
 
 interface AdvancedResultBlockProps {
 	sampleLabel:string;
 	data: AdvancedAnalysisResponse;
 	reset: () => void;
+	openExportModal: (data: IExportData) => void;
 }
 
-const AdvancedResultBlock = ({sampleLabel, data, reset}: AdvancedResultBlockProps) => {
+const AdvancedResultBlock = ({sampleLabel, data, reset, openExportModal}: AdvancedResultBlockProps) => {
 
 	const {codonUsage, dnaType, kingdomTaxa } = data;
   return (

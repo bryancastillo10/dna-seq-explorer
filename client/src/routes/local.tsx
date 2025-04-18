@@ -34,7 +34,7 @@ function RouteComponent() {
 
   const { isOpen, closeModal } = useModalStore();
 
-  const { fileExport, updateFileExport } = useFileExport("local");
+  const { fileExport } = useFileExport("local");
 
   return(
   <Stack width="100%">
@@ -61,8 +61,7 @@ function RouteComponent() {
          onClose={closeModal}
 
           fileExport={fileExport}
-          results={result}
-          updateFileExport={updateFileExport}
+
          {...(result ? { 
            sampleALabel: result.seqALabel,
            sampleBLabel: result.seqBLabel
