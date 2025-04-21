@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { 
 		Stack,
 		InputLabel,
@@ -25,6 +24,8 @@ interface SaveModalProps {
 	sampleBLabel?:string;
 
 	fileExport: ExportRequest;
+	extensionOptions: string[];
+	handleSelectChange: (e: SelectChangeEvent) => void;
 }
 
 
@@ -34,16 +35,11 @@ const SaveModal = ({
 	sampleLabel, 
 	sampleALabel, 
 	sampleBLabel,
-	fileExport
+	fileExport,
+	extensionOptions,
+	handleSelectChange
  }: SaveModalProps) => {
 
-  const [selectedFileType, setSelectedFileType] = useState<string>(".pdf");
-
-  const handleSelectChange = (e : SelectChangeEvent) => {
-		setSelectedFileType(e.target.value)
-  };
-
-  const fileTypeOptions = [".csv", ".pdf",".txt"]
 
   const getModalLabel = () => {
 		switch(true){
@@ -91,11 +87,11 @@ const SaveModal = ({
 				<Select
 					label="Hd File Extension "
 					id="fileType"
-					value={selectedFileType}
+					value={fileExport.output_format}
 					onChange={handleSelectChange}
 					fullWidth
 				>
-				{fileTypeOptions.map((file) => (
+				{extensionOptions.map((file) => (
 					<MenuItem key={file} value={file}>{file}</MenuItem>
 					))}
 				</Select>

@@ -5,7 +5,7 @@ import type { BasicNucResult, BasicProteinResult } from "@/features/singleSeq/ap
 type Results = BasicNucResult<string, number> | BasicProteinResult<string,number> | 
 	DotPlotResult<string,number> | PairwiseResult<string> | null
 
-type OutputFormat = "pdf" | "csv" | "plain"
+export type OutputFormat = "pdf" | "csv" | "plain"
 
 interface DotPlotResult<T,U> {
 	match: U

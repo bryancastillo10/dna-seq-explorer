@@ -1,6 +1,7 @@
 import { useState } from "react";
+import type { SelectChangeEvent } from "@mui/material";
 
-import type { ExportRequest, SingleSeqExport, PairSeqExport } from "@/features/fileExport/api/interface";
+import type { ExportRequest, SingleSeqExport, PairSeqExport, OutputFormat } from "@/features/fileExport/api/interface";
 import { createInitialExport } from "@/features/fileExport/utils/createInitialExport";
 
 import { useModalStore } from "@/zustand/modal";
@@ -48,6 +49,25 @@ const useFileExport = (defaultFeature: ExportRequest["feature"]) => {
     });
   };
 
+  const fileExtensions = {
+      ".csv": "csv",
+      ".pdf": "pdf",
+      ".txt":"plain"
+  }
+
+  const extensionOptions = Object.keys(fileExtensions);
+
+  const handleSelectChange = (e: SelectChangeEvent) => {
+        const selectedExtension = e.target.value as keyof typeof fileExtensions;
+        const outputFormat = fileExtensions[selectedExtension];
+
+        if (outputFormat){
+          prepareFileExport({ output_format: outputFormat as OutputFormat });
+
+        }
+  };
+
+
   const openExportModal = (data: IExportData) => {
     prepareFileExport(data);
     openModal();
@@ -55,6 +75,8 @@ const useFileExport = (defaultFeature: ExportRequest["feature"]) => {
 
   return {
     fileExport,
+    extensionOptions,
+    handleSelectChange,
     prepareFileExport,
     openExportModal
   };
