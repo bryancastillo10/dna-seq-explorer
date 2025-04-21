@@ -14,7 +14,7 @@ import {
 import { Tag, File } from "lucide-react";
 
 import FormFieldLabel from "@/components/ui/form/FormFieldLabel";
-import type { ExportRequest } from "@/features/fileExport/api/interface";
+import type { ExportRequest,SelectExtensions } from "@/features/fileExport/api/interface";
 
 interface SaveModalProps {
 	isOpen: boolean;
@@ -24,7 +24,7 @@ interface SaveModalProps {
 	sampleBLabel?:string;
 
 	fileExport: ExportRequest;
-	extensionOptions: string[];
+	extensionOptions: SelectExtensions[];
 	handleSelectChange: (e: SelectChangeEvent) => void;
 }
 
@@ -43,7 +43,7 @@ const SaveModal = ({
 
   const getModalLabel = () => {
 		switch(true){
-		case Boolean(sampleALabel):
+		case Boolean(sampleLabel):
 			return sampleLabel!
 		case Boolean(sampleALabel && sampleBLabel):
 			return `${sampleALabel} vs. ${sampleBLabel}`
@@ -51,7 +51,7 @@ const SaveModal = ({
 			return "No Sample Label Provided"
 	}
  }
-
+  console.log(fileExport.output_format)
   return (
 	<Dialog 
 		open={isOpen} 
@@ -85,14 +85,14 @@ const SaveModal = ({
 				</InputLabel>
 
 				<Select
-					label="Hd File Extension "
+					label="fileType-label"
 					id="fileType"
 					value={fileExport.output_format}
 					onChange={handleSelectChange}
 					fullWidth
 				>
 				{extensionOptions.map((file) => (
-					<MenuItem key={file} value={file}>{file}</MenuItem>
+					<MenuItem key={file.value} value={file.value}>{file.label}</MenuItem>
 					))}
 				</Select>
 				</FormControl>

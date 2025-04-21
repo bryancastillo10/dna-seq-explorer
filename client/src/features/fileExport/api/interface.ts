@@ -37,4 +37,8 @@ export interface PairSeqExport extends BaseExportRequest {
 	seq_B_label: string;
 }
 
+export interface SelectExtensions {
+	value: OutputFormat; label: string
+}
+
 export type ExportRequest = SingleSeqExport | PairSeqExport
