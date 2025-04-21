@@ -35,7 +35,7 @@ function RouteComponent() {
 
   const { isOpen, closeModal } = useModalStore();
 
-  const { fileExport, openExportModal } = useFileExport("advanced");
+  const { fileExport, extensionOptions, handleSelectChange, openExportModal } = useFileExport("advanced");
 
   return (
   <Stack width="100%">
@@ -60,12 +60,14 @@ function RouteComponent() {
         </OutputBlock>
 
 
-        <SaveModal
+         <SaveModal
             isOpen={isOpen}
             onClose={closeModal}
-            sampleLabel={sampleLabel}
+            sampleLabel={sampleLabel}   
 
-            fileExport={fileExport}    
+            fileExport={fileExport}
+            extensionOptions={extensionOptions}
+            handleSelectChange={handleSelectChange}
         />
     </Stack>
   </Stack>

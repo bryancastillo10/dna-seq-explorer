@@ -39,6 +39,7 @@ const AdvancedResultBlock = ({sampleLabel, data, reset, openExportModal}: Advanc
 
 		<ControlButtons
 			mainBtnLabel="Save"
+			mainBtnAction={() => openExportModal({results: data, seq_label: sampleLabel })}
 			otherBtn1Label="Clear Output"
 			otherBtn1Action={reset}
 			withOtherBtn2={false}

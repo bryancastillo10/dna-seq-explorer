@@ -3,16 +3,19 @@ import { Box, Typography } from "@mui/material";
 import { BarChartBlock, LongStringResult, IntValueResult, SeqLabelOutput } from "@/components/ui/outputs";
 
 import type { BasicAnalysisResults } from "@/features/singleSeq/api/interface";
+import { type IExportData } from "@/features/fileExport/hooks/useFileExport";
+
 import { ControlButtons } from "@/components/ui/form";
-import { useModalStore } from "@/zustand/modal";
+
 
 interface ProteinBasicResultProps {
   analysisResult?: BasicAnalysisResults;
   sampleLabel: string;
   reset: () => void;
+  openExportModal: (data: IExportData) => void;
 }
 
-const ProteinBasicResult = ({analysisResult, sampleLabel, reset}: ProteinBasicResultProps) => {
+const ProteinBasicResult = ({analysisResult, sampleLabel, openExportModal, reset}: ProteinBasicResultProps) => {
 	if(!analysisResult){
     return <Typography>Data Failed to Fetch</Typography>
   }
@@ -24,7 +27,6 @@ const ProteinBasicResult = ({analysisResult, sampleLabel, reset}: ProteinBasicRe
   const { aminoAcidSequence, aminoAcidFrequency,
 	molecularWeight, isoelectricPoint } = analysisResult;
 
-  const { openModal } = useModalStore();
 
   return (
 	<>
@@ -57,7 +59,7 @@ const ProteinBasicResult = ({analysisResult, sampleLabel, reset}: ProteinBasicRe
 			
 			<ControlButtons
 				mainBtnLabel="Save"
-				mainBtnAction={openModal}
+				mainBtnAction={() => openExportModal({results: analysisResult, seq_label: sampleLabel})}
 				otherBtn1Label="Clear Output"
 				otherBtn1Action={reset}
 				withOtherBtn2={false}

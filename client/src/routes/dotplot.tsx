@@ -35,7 +35,7 @@ function RouteComponent() {
 
   const { isOpen, closeModal } = useModalStore();
 
-  const { fileExport } = useFileExport("dotplot");
+  const { fileExport, extensionOptions, handleSelectChange } = useFileExport("dotplot");
 
   return (
     <Stack width="100%">
@@ -62,6 +62,8 @@ function RouteComponent() {
               onClose={closeModal}
 
               fileExport={fileExport}
+              extensionOptions={extensionOptions}
+              handleSelectChange={handleSelectChange}
 
               {...(result ? { 
                 sampleALabel: result.seqALabel,

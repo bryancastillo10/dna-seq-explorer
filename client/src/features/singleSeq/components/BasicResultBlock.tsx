@@ -31,7 +31,9 @@ const BasicResultBlock = ({sampleLabel, data, reset, openExportModal }: BasicRes
           <ProteinBasicResult
             sampleLabel={sampleLabel}
             analysisResult={data}
+            openExportModal={openExportModal} 
             reset={reset}
+
           />);
       default:
         return <NullOutput/>;

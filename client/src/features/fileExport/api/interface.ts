@@ -1,11 +1,12 @@
-import type { BasicNucResult, BasicProteinResult } from "@/features/singleSeq/api/interface"
+import type { BasicNucResult, BasicProteinResult, AdvancedAnalysisResponse } from "@/features/singleSeq/api/interface"
 
 
 
 type Results = BasicNucResult<string, number> | BasicProteinResult<string,number> | 
+	AdvancedAnalysisResponse |
 	DotPlotResult<string,number> | PairwiseResult<string> | null
 
-type OutputFormat = "pdf" | "csv" | "plain"
+export type OutputFormat = "pdf" | "csv" | "plain"
 
 interface DotPlotResult<T,U> {
 	match: U
@@ -35,6 +36,10 @@ export interface PairSeqExport extends BaseExportRequest {
 	feature: "dotplot" | "local" | "global";
 	seq_A_label: string;
 	seq_B_label: string;
+}
+
+export interface SelectExtensions {
+	value: OutputFormat; label: string
 }
 
 export type ExportRequest = SingleSeqExport | PairSeqExport

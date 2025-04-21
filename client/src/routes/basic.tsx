@@ -38,9 +38,9 @@ function RouteComponent() {
 
   const { isOpen, closeModal } = useModalStore();
 
-  const { fileExport, openExportModal } = useFileExport("basic");
+  const { fileExport, extensionOptions, handleSelectChange, openExportModal } = useFileExport("basic");
 
-  console.log(fileExport);
+
   return (
     <Stack width="100%">
       <SectionHeader
@@ -68,6 +68,8 @@ function RouteComponent() {
             sampleLabel={sampleLabel}   
 
             fileExport={fileExport}
+            extensionOptions={extensionOptions}
+            handleSelectChange={handleSelectChange}
         />
       </Stack>
     </Stack>
