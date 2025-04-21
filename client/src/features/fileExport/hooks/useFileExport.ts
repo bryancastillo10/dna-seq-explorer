@@ -53,7 +53,7 @@ const useFileExport = (defaultFeature: ExportRequest["feature"]) => {
   { value: "csv", label: ".csv" },
   { value: "pdf", label: ".pdf" },
   { value: "plain", label: ".txt" },
-];
+  ];
 
 const handleSelectChange = (e: SelectChangeEvent) => {
   const selectedFormat = e.target.value as OutputFormat;

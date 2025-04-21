@@ -1,8 +1,9 @@
-import type { BasicNucResult, BasicProteinResult } from "@/features/singleSeq/api/interface"
+import type { BasicNucResult, BasicProteinResult, AdvancedAnalysisResponse } from "@/features/singleSeq/api/interface"
 
 
 
 type Results = BasicNucResult<string, number> | BasicProteinResult<string,number> | 
+	AdvancedAnalysisResponse |
 	DotPlotResult<string,number> | PairwiseResult<string> | null
 
 export type OutputFormat = "pdf" | "csv" | "plain"
