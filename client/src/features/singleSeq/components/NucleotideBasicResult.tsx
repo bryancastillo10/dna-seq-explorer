@@ -28,6 +28,10 @@ const NucleotideBasicResult = ({analysisResult, sampleLabel, reset, openExportMo
           nucleotideFrequency, 
           translatedSequence } = analysisResult;
 
+  const exportData = {
+    results: analysisResult, 
+    seq_label: sampleLabel
+  };
 
   return (
     <>
@@ -61,7 +65,7 @@ const NucleotideBasicResult = ({analysisResult, sampleLabel, reset, openExportMo
 
       <ControlButtons
           mainBtnLabel="Save"
-          mainBtnAction={() => openExportModal({results: analysisResult, seq_label: sampleLabel})}
+          mainBtnAction={() => openExportModal(exportData)}
           otherBtn1Label="Clear Output"
           otherBtn1Action={reset}
           withOtherBtn2={false}

@@ -4,14 +4,15 @@ import { Stack } from "@mui/material";
 import { ControlButtons } from "@/components/ui/form";
 
 import type { LocalGlobalSeqResult } from "@/features/pairSeq/api/interface";
-import { useModalStore } from "@/zustand/modal";
+import type { IExportData } from "@/features/fileExport/hooks/useFileExport";
 
 interface PairSeqAlignmentResultProps {
 	result: LocalGlobalSeqResult<string>;
 	reset: () => void;
+	openExportModal: (data: IExportData) => void;
 };
 
-const PairSeqAlignmentResult = ({result, reset}: PairSeqAlignmentResultProps) => {
+const PairSeqAlignmentResult = ({result, reset, openExportModal}: PairSeqAlignmentResultProps) => {
 
 	const {  
 		seqALabel,
@@ -21,7 +22,16 @@ const PairSeqAlignmentResult = ({result, reset}: PairSeqAlignmentResultProps) =>
 		similarity
 	} = result;
 
-  const { openModal } = useModalStore();
+ 
+  const exportData = {
+		seq_A_label: seqALabel,
+		seq_B_label: seqBLabel,
+		results: {
+			  alignedSeqA,
+			  alignedSeqB,
+			  similarity
+			}
+	};
 
   return (
 	<Stack flexDirection="column" gap={2} >
@@ -45,7 +55,7 @@ const PairSeqAlignmentResult = ({result, reset}: PairSeqAlignmentResultProps) =>
 
 		<ControlButtons
 			mainBtnLabel="Save"
-			mainBtnAction={openModal}
+			mainBtnAction={() => openExportModal(exportData)}
 			otherBtn1Label="Clear Output"
 			otherBtn1Action={reset}
 			withOtherBtn2={false}

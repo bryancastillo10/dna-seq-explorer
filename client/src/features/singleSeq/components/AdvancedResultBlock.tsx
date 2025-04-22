@@ -15,7 +15,13 @@ interface AdvancedResultBlockProps {
 
 const AdvancedResultBlock = ({sampleLabel, data, reset, openExportModal}: AdvancedResultBlockProps) => {
 
-	const {codonUsage, dnaType, kingdomTaxa } = data;
+  const {codonUsage, dnaType, kingdomTaxa } = data;
+
+  const exportData = { 
+		results: data, 
+		seq_label: sampleLabel 
+	};
+
   return (
 	<Stack flexDirection="column" gap={2} >
 		<SeqLabelOutput
@@ -39,7 +45,7 @@ const AdvancedResultBlock = ({sampleLabel, data, reset, openExportModal}: Advanc
 
 		<ControlButtons
 			mainBtnLabel="Save"
-			mainBtnAction={() => openExportModal({results: data, seq_label: sampleLabel })}
+			mainBtnAction={() => openExportModal(exportData)}
 			otherBtn1Label="Clear Output"
 			otherBtn1Action={reset}
 			withOtherBtn2={false}

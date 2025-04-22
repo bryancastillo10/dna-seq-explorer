@@ -27,6 +27,10 @@ const ProteinBasicResult = ({analysisResult, sampleLabel, openExportModal, reset
   const { aminoAcidSequence, aminoAcidFrequency,
 	molecularWeight, isoelectricPoint } = analysisResult;
 
+  const exportData = {
+		results: analysisResult, 
+		seq_label: sampleLabel
+	};
 
   return (
 	<>
@@ -59,7 +63,7 @@ const ProteinBasicResult = ({analysisResult, sampleLabel, openExportModal, reset
 			
 			<ControlButtons
 				mainBtnLabel="Save"
-				mainBtnAction={() => openExportModal({results: analysisResult, seq_label: sampleLabel})}
+				mainBtnAction={() => openExportModal(exportData)}
 				otherBtn1Label="Clear Output"
 				otherBtn1Action={reset}
 				withOtherBtn2={false}
