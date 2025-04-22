@@ -35,7 +35,7 @@ function RouteComponent() {
 
   const { isOpen, closeModal } = useModalStore();
 
-  const { fileExport, extensionOptions, handleSelectChange } = useFileExport("dotplot");
+  const { fileExport, extensionOptions, handleSelectChange, openExportModal } = useFileExport("dotplot");
 
   return (
     <Stack width="100%">
@@ -53,6 +53,7 @@ function RouteComponent() {
                 ? <DotPlotResultBlock 
                     result={result} 
                     reset={reset}
+                    openExportModal={openExportModal}
                 /> : <NullOutput/>)}
             </OutputBlock>
 
