@@ -34,7 +34,7 @@ function RouteComponent() {
 
   const { isOpen, closeModal } = useModalStore();
 
-  const { fileExport, extensionOptions, handleSelectChange } = useFileExport("local");
+  const { fileExport, extensionOptions, handleSelectChange, openExportModal } = useFileExport("local");
 
   return(
   <Stack width="100%">
@@ -53,6 +53,7 @@ function RouteComponent() {
         ? <PairSeqAlignmentResult
               result={result}
               reset={reset}
+              openExportModal={openExportModal}
         /> : <NullOutput/>) }
       </OutputBlock>  
 
