@@ -1,3 +1,5 @@
+import type { IExportData } from "@/features/fileExport/hooks/useFileExport";
+
 const Biomolecules =["DNA", "RNA" , "Protein"];
 type PythonSingleSeq = {
 	"sample_name": string;
@@ -13,7 +15,7 @@ type PythonPairSeq<T> = {
 	"seq_B": T;
 }
 
-export const handlePostRequest = (data: PythonSingleSeq | PythonPairSeq<string>) => {
+export const handlePostRequest = (data: PythonSingleSeq | PythonPairSeq<string> | IExportData) => {
 	return {
 		method: "POST",
 		headers: {"Content-Type": "application/json"},
