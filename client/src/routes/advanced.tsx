@@ -9,6 +9,7 @@ import DNALoader from '@/components/common/DNALoader';
 import NullOutput from '@/components/layout/NullOutput';
 
 import useAdvancedAnalysis from '@/features/singleSeq/hooks/useAdvancedAnalysis';
+import useSingleSeqExport from '@/features/fileExport/hooks/useSingleSeqExport';
 import useDelayedLoading from '@/hooks/useDelayedLoading';
 import useFileExport from '@/features/fileExport/hooks/useFileExport';
 import { getMainLayout } from '@/utils/getMainLayout';
@@ -36,6 +37,8 @@ function RouteComponent() {
   const { isOpen, closeModal } = useModalStore();
 
   const { fileExport, extensionOptions, handleSelectChange, openExportModal } = useFileExport("advanced");
+
+  const { exportSingleSeqResult } = useSingleSeqExport();
 
   return (
   <Stack width="100%">
@@ -68,6 +71,7 @@ function RouteComponent() {
             fileExport={fileExport}
             extensionOptions={extensionOptions}
             handleSelectChange={handleSelectChange}
+            handleExport={exportSingleSeqResult}
         />
     </Stack>
   </Stack>

@@ -5,6 +5,7 @@ import SectionHeader from '@/components/layout/SectionHeader';
 import InputPairSequenceBlock from '@/components/layout/InputPairSequenceBlock';
 import OutputBlock from '@/components/layout/OutputBlock';
 import PairSeqAlignmentResult from '@/features/pairSeq/components/PairSeqAlignmentResult';
+import usePairSeqExport from '@/features/fileExport/hooks/usePairSeqExport';
 import DNALoader from '@/components/common/DNALoader';
 
 import { getMainLayout } from '@/utils/getMainLayout';
@@ -35,6 +36,8 @@ function RouteComponent() {
 
   const { fileExport, extensionOptions, handleSelectChange, openExportModal } = useFileExport("global");
 
+  const { exportPairSeqResult } = usePairSeqExport();
+
   return (
     <Stack width="100%">
       <SectionHeader
@@ -63,6 +66,7 @@ function RouteComponent() {
         fileExport={fileExport}
         extensionOptions={extensionOptions}
         handleSelectChange={handleSelectChange}
+        handleExport={exportPairSeqResult}
 
          {...(result ? { 
                 sampleALabel: result.seqALabel,

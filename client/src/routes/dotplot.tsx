@@ -10,6 +10,7 @@ import DNALoader from '@/components/common/DNALoader';
 import { getMainLayout } from '@/utils/getMainLayout';
 import DotPlotResultBlock from '@/features/dotplot/components/DotPlotResultBlock';
 import useDotPlotAlignment from '@/features/dotplot/hooks/useDotPlotAlignment';
+import usePairSeqExport from '@/features/fileExport/hooks/usePairSeqExport';
 import useDelayedLoading from '@/hooks/useDelayedLoading';
 import useFileExport from '@/features/fileExport/hooks/useFileExport';
 import NullOutput from '@/components/layout/NullOutput';
@@ -28,6 +29,8 @@ function RouteComponent() {
     between those sequences that can provide insights their relationships. `
 
   const { runDotPlot, dotPlotResult, loading, reset } = useDotPlotAlignment();
+
+  const { exportPairSeqResult } = usePairSeqExport();
 
   const result = dotPlotResult?.data;
 
@@ -65,6 +68,7 @@ function RouteComponent() {
               fileExport={fileExport}
               extensionOptions={extensionOptions}
               handleSelectChange={handleSelectChange}
+              handleExport={exportPairSeqResult}
 
               {...(result ? { 
                 sampleALabel: result.seqALabel,

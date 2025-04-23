@@ -1,4 +1,6 @@
 import type { BasicNucResult, BasicProteinResult, AdvancedAnalysisResponse } from "@/features/singleSeq/api/interface"
+import type { UseMutateFunction } from "@tanstack/react-query"
+import type { IExportData } from "@/features/fileExport/hooks/useFileExport"
 
 
 
@@ -42,4 +44,6 @@ export interface SelectExtensions {
 	value: OutputFormat; label: string
 }
 
-export type ExportRequest = SingleSeqExport | PairSeqExport
+export type ExportRequest = SingleSeqExport | PairSeqExport;
+
+export type HandleFileExport = UseMutateFunction<any, Error, IExportData,unknown>
