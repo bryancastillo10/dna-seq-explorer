@@ -14,7 +14,7 @@ import {
 import { Tag, File } from "lucide-react";
 
 import FormFieldLabel from "@/components/ui/form/FormFieldLabel";
-import type { ExportRequest,SelectExtensions } from "@/features/fileExport/api/interface";
+import type { ExportRequest,HandleFileExport,SelectExtensions } from "@/features/fileExport/api/interface";
 
 interface SaveModalProps {
 	isOpen: boolean;
@@ -26,6 +26,7 @@ interface SaveModalProps {
 	fileExport: ExportRequest;
 	extensionOptions: SelectExtensions[];
 	handleSelectChange: (e: SelectChangeEvent) => void;
+	handleExport: HandleFileExport;
 }
 
 

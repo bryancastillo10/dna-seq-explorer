@@ -10,6 +10,7 @@ import DNALoader from '@/components/common/DNALoader';
 import NullOutput from '@/components/layout/NullOutput';
 
 import useLocalAlignment from '@/features/pairSeq/hooks/useLocalAlignment';
+import usePairSeqExport from '@/features/fileExport/hooks/usePairSeqExport';
 import useDelayedLoading from '@/hooks/useDelayedLoading';
 import useFileExport from '@/features/fileExport/hooks/useFileExport';
 import { getMainLayout } from '@/utils/getMainLayout';
@@ -35,6 +36,8 @@ function RouteComponent() {
   const { isOpen, closeModal } = useModalStore();
 
   const { fileExport, extensionOptions, handleSelectChange, openExportModal } = useFileExport("local");
+
+  const { exportPairSeqResult } = usePairSeqExport();
 
   return(
   <Stack width="100%">
@@ -64,6 +67,7 @@ function RouteComponent() {
         fileExport={fileExport}
         extensionOptions={extensionOptions}
         handleSelectChange={handleSelectChange}
+        handleExport={ exportPairSeqResult }
 
          {...(result ? { 
            sampleALabel: result.seqALabel,
