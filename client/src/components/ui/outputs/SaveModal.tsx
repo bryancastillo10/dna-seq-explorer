@@ -15,6 +15,7 @@ import { Tag, File } from "lucide-react";
 
 import FormFieldLabel from "@/components/ui/form/FormFieldLabel";
 import type { ExportRequest,HandleFileExport,SelectExtensions } from "@/features/fileExport/api/interface";
+import { useModalStore } from "@/zustand/modal";
 
 interface SaveModalProps {
 	isOpen: boolean;
@@ -38,7 +39,8 @@ const SaveModal = ({
 	sampleBLabel,
 	fileExport,
 	extensionOptions,
-	handleSelectChange
+	handleSelectChange,
+	handleExport
  }: SaveModalProps) => {
 
 
@@ -52,7 +54,13 @@ const SaveModal = ({
 			return "No Sample Label Provided"
 	}
  }
-  console.log(fileExport.output_format)
+  const { closeModal } = useModalStore();
+
+  const handleSubmit = () => {
+		handleExport(fileExport);
+		closeModal();
+  };
+
   return (
 	<Dialog 
 		open={isOpen} 
@@ -102,7 +110,7 @@ const SaveModal = ({
 
 		<DialogActions>
 			<Button variant="outlined" onClick={onClose}>Cancel</Button>
-			<Button variant="contained">Save</Button>
+			<Button variant="contained" onClick={handleSubmit}>Save</Button>
 		</DialogActions>
 	</Dialog>
   )
