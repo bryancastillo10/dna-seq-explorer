@@ -25,7 +25,6 @@ interface PairwiseResult <T> {
 
 interface BaseExportRequest {
 	results: Results
-	save_dir: string
 	output_format: OutputFormat
 }
 

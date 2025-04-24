@@ -1,59 +1,74 @@
-from models.exportData import ExportSingleSeqResult, ExportPairSeqResult
+from fastapi.responses import StreamingResponse
+from io import StringIO, BytesIO
+import csv
+import os
+
 from service.file_export.pdf import export_basic_advanced, export_pairwise
 from service.file_export.constants import features_key
-from utils.export_preparation import prepare_request_data
+from utils.export_preparation import prepare_download_filename
 
-import csv
+def export_csv(request):
+    results = request.results
+    output = StringIO()
+    writer = csv.writer(output)
 
+    if isinstance(results, list) and results and isinstance(results[0], dict):
+        fieldnames = list(results[0].keys())
+        dict_writer = csv.DictWriter(output, fieldnames=fieldnames)
+        dict_writer.writeheader()
+        dict_writer.writerows(results)
+    elif isinstance(results, dict):
+        writer.writerow(["Parameters", "Value"])
+        for key, value in results.items():
+            writer.writerow([key, value])
+    else:
+        output.write(str(results))
 
-def export_pdf(request: ExportSingleSeqResult | ExportPairSeqResult):
-	"""To export as pdf"""
-	feature = request.feature
-	results = request.results
-	
-	feature_title = features_key.get(feature)
-	if not feature_title:
-		raise ValueError(f"Unsupported feature: {feature}")
-
-	save_file = prepare_request_data(request,"pdf")
-	if feature in ["basic","advanced"]:
-		export_basic_advanced(feature_title, results, request.seq_label, save_file)
-
-	elif feature in ["dotplot","local","global"]:
-		export_pairwise(feature_title, results, request.seq_A_label, request.seq_B_label)
-
-
-def export_csv(request: ExportSingleSeqResult | ExportPairSeqResult):
-	"""To export as csv"""
-	save_file = prepare_request_data(request,"csv")
-	results = request.results
-
-	with open(save_file, "w", newline="") as csvfile:
-		if isinstance(results, list) and results and isinstance(results[0], dict):
-			fieldnames = list(results[0].keys())
-			writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
-			writer.writeheader()
-			write.writerows(results)
-		elif isinstance(results, dict):
-			writer = csv.writer(csvfile)
-			writer.writerow(["Parameters","Value"])
-			for key, value in results.items():
-				writer.writerow([key, value])
-		else:
-			csvfile.write(str(results))
+    output.seek(0)
+    filename = prepare_download_filename(request, "csv")
+    return StreamingResponse(output, media_type="text/csv", headers={
+        "Content-Disposition": f"attachment; filename={filename}"
+    })
 
 
-def export_plain(request: ExportSingleSeqResult | ExportPairSeqResult):
-	"""To export as txt file"""
-	save_file = prepare_request_data(request,"txt")
-	results = request.results
+def export_plain(request):
+    results = request.results
+    output = StringIO()
 
-	with open(save_file, "w") as txtfile:
-		if isinstance(results, dict):
-			for key, value in results.items():
-				txtfile.write(f"{key}: {value} \n")
-		elif isinstance(results, list):
-			for item in results:
-				txtfile.write(f"{item} \n")
-		else:
-			txtfile.write(str(results))
+    if isinstance(results, dict):
+        for key, value in results.items():
+            output.write(f"{key}: {value}\n")
+    elif isinstance(results, list):
+        for item in results:
+            output.write(f"{item}\n")
+    else:
+        output.write(str(results))
+
+    output.seek(0)
+    filename = prepare_download_filename(request, "txt")
+    return StreamingResponse(output, media_type="text/plain", headers={
+        "Content-Disposition": f"attachment; filename={filename}"
+    })
+
+
+def export_pdf(request):
+    feature_title = features_key.get(request.feature)
+    if not feature_title:
+        raise ValueError(f"Unsupported feature: {request.feature}")
+
+    filename = prepare_download_filename(request, "pdf")
+    buffer = BytesIO()
+
+    print(filename)
+
+    if request.feature in ["basic", "advanced"]:
+        export_basic_advanced(feature_title, request.results, request.seq_label, buffer)
+    elif request.feature in ["dotplot", "local", "global"]:
+        export_pairwise(feature_title, request.results, request.seq_A_label, request.seq_B_label, buffer)
+    else:
+        raise ValueError(f"Unsupported feature: {request.feature}")
+
+    buffer.seek(0)
+    return StreamingResponse(buffer, media_type="application/pdf", headers={
+        "Content-Disposition": f"attachment; filename={filename}"
+    })

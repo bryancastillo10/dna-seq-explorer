@@ -18,18 +18,16 @@ def get_seq_label(request:ExportSingleSeqResult | ExportPairSeqResult):
 	else:
 		raise ValueError(f"Unsupported feature: {feature}")
 
-def prepare_request_data(request:ExportSingleSeqResult | ExportPairSeqResult, ext: str):
-	save_path = Path(request.save_dir)
+def prepare_download_filename(request, ext: str):
+	""" Utility function to prepare the filename """
 	timestamp = get_timestamp()
-	seq_label = get_seq_label(request)
+	feature = request.feature
 
-	if request.feature in ["basic","advanced"]:
-		file_name = f"{request.feature}_{seq_label}_{timestamp}.{ext}"
-
-	elif request.feature in ["dotplot","local","global"]:
-		seq_A_label, seq_B_label = seq_label
-		file_name = f"{request.feature}_{seq_A_label}_vs_{seq_B_label}_{timestamp}.{ext}"
+	if feature in ["basic","advanced"]:
+		filename = f"{feature}_{request.seq_label.replace(' ','_')}_{timestamp}.{ext}"
+	elif feature in ["dotplot","local","global"]:
+		filename = f"{feature}_{request.seq_A_label}_vs_{request.seq_B_label}_{timestamp}.{ext}"
 	else:
 		raise ValueError(f"Unsupported feature: {feature}")
 
-	return str(save_path/ file_name)
+	return filename

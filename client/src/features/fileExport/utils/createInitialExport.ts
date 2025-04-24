@@ -3,8 +3,7 @@ import type { ExportRequest } from "@/features/fileExport/api/interface";
 export const createInitialExport = (feature: ExportRequest["feature"]) => {
 	const baseRequest = {
 		results: null,
-		output_format: "pdf" as const,
-		save_dir:"."
+		output_format: "pdf" as const
 	}
 
 	if(feature === "basic" || feature === "advanced" ){
