@@ -7,7 +7,6 @@ class ExportSingleSeqResult(BaseModel):
 	seq_label: Optional[str] = None
 	results: Dict[str, Any]
 	output_format: Literal["csv","pdf","plain"]
-	save_dir: str
 
 class ExportPairSeqResult(BaseModel):
 	feature: Literal["dotplot","local","global"]
@@ -15,4 +14,3 @@ class ExportPairSeqResult(BaseModel):
 	seq_B_label: Optional[str] = None
 	results: Dict[str, Any]
 	output_format: Literal["csv","pdf","plain"]
-	save_dir: str

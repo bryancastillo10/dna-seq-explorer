@@ -8,7 +8,7 @@ from lib.pdf_base_template import write_canvas_header, write_canvas_footer
 from lib.prepare_result import PrepareResults
 
 import base64
-import io
+from io import BytesIO
 
 table_custom_style= [
     ('BACKGROUND', (0, 0), (-1, 0), HexColor("#009688")),
@@ -30,28 +30,28 @@ def generate_pdf_table(
 		feature_title: str, 
 		results: Dict[str, Any],
 		mapping: Dict[str, str], 
-		save_file: str,
+		buffer: BytesIO,
 		seq_label: Optional[str] = None, 
 		seq_A_label: Optional[str] = None, 
 		seq_B_label: Optional[str] = None, 
 	):
 	"""Generate a PDF report with a structured table format, supporting both single and pairwise sequence labels."""
 	if feature_title == "Dotplot Sequence Alignment":
-		return _generate_dotplot_pdf(feature_title, results, mapping, save_file, seq_A_label, seq_B_label)
+		return _generate_dotplot_pdf(feature_title, results, mapping, buffer, seq_A_label, seq_B_label)
 
 	elif feature_title in ["Local Pairwise Alignment", "Global Pairwise Alignment"]:
-		return _generate_pairwise_pdf(feature_title, results, mapping, save_file, seq_A_label, seq_B_label)
+		return _generate_pairwise_pdf(feature_title, results, mapping, buffer, seq_A_label, seq_B_label)
 
 	else:
-		return _generate_single_seq_pdf(feature_title, results, mapping, save_file, seq_label)
+		return _generate_single_seq_pdf(feature_title, results, mapping, buffer, seq_label)
 
 
 
-def _generate_dotplot_pdf(feature_title, results, mapping, save_file, seq_A_label, seq_B_label):
+def _generate_dotplot_pdf(feature_title, results, mapping, buffer, seq_A_label, seq_B_label):
 	""" Format for dotplot sequence"""
 	processor = PrepareResults(results)
 
-	doc = SimpleDocTemplate(save_file, pagesize = letter)
+	doc = SimpleDocTemplate(buffer, pagesize = letter)
 
 	elements = []
 	elements.append(Spacer(1, 80))
@@ -59,7 +59,7 @@ def _generate_dotplot_pdf(feature_title, results, mapping, save_file, seq_A_labe
 	try:
 		image_data = results.get("image")
 		image_bytes = base64.b64decode(image_data)
-		image_stream = io.BytesIO(image_bytes)
+		image_stream = BytesIO(image_bytes)
 		image = Image(image_stream, width = 400, height = 300)
 
 		elements.append(image)
@@ -86,13 +86,13 @@ def _generate_dotplot_pdf(feature_title, results, mapping, save_file, seq_A_labe
 	)
 
 
-def _generate_pairwise_pdf(feature_title, results, mapping, save_file, seq_A_label, seq_B_label):
+def _generate_pairwise_pdf(feature_title, results, mapping, buffer, seq_A_label, seq_B_label):
 	""" Format for pairwise sequencing """
 	processor = PrepareResults(results, mapping)
 	processed_results = processor.to_nested_list()
 	label_paragraph = processor.get_label_paragraph(seq_A_label=seq_A_label, seq_B_label=seq_B_label)
 
-	doc = SimpleDocTemplate(save_file, pagesize=letter)
+	doc = SimpleDocTemplate(buffer, pagesize=letter)
 
 	elements = []
 	elements.append(Spacer(1,80))
@@ -111,13 +111,13 @@ def _generate_pairwise_pdf(feature_title, results, mapping, save_file, seq_A_lab
 		onLaterPages=write_canvas_footer
 	)
 
-def _generate_single_seq_pdf(feature_title, results, mapping, save_file, seq_label):
+def _generate_single_seq_pdf(feature_title, results, mapping, buffer, seq_label):
 	""" Format for single sequence analysis """
 	processor = PrepareResults(results, mapping)
 	processed_results = processor.to_nested_list()
 	label_paragraph = processor.get_label_paragraph(seq_label)
 
-	doc = SimpleDocTemplate(save_file, pagesize=letter)
+	doc = SimpleDocTemplate(buffer, pagesize=letter)
 
 	elements = []
 	elements.append(Spacer(1, 80))
