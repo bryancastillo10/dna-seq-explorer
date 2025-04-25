@@ -14,16 +14,13 @@ async def save_analysis_result(request: ExportSingleSeqResult):
 	try:
 		match request.output_format:
 			case "pdf":
-				export_pdf(request)
-				return { "message": "PDF export successful"}
+				return export_pdf(request)
 
 			case "csv":
-				export_csv(request)
-				return { "message": "CSV export successful" }
+				return export_csv(request)
 
 			case "plain":
-				export_plain(request)
-				return {"message": "Plain txt export successful"}
+				return export_plain(request)
 
 	except Exception as e:
 		raise HTTPException(status_code=500, detail=str(e))
@@ -34,16 +31,13 @@ async def save_pairwise_sequencing_result(request: ExportPairSeqResult):
 	try:
 		match request.output_format:
 			case "pdf":
-				export_pdf(request)
-				return { "message": "PDF export successful"}
+				return export_pdf(request)
 
 			case "csv":
-				export_csv(request)
-				return { "message": "CSV export successful" }
+				return export_csv(request)
 
 			case "plain":
-				export_plain(request)
-				return {"message": "Plain txt export successful"}
+				return export_plain(request)
 
 	except Exception as e:
 		raise HTTPException(status_code=500, detail=str(e))

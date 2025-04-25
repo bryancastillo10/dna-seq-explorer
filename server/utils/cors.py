@@ -12,4 +12,5 @@ def configure_cors(app: FastAPI):
         allow_credentials=True,
         allow_methods=["POST"],        
         allow_headers=["*"], 
+		expose_headers=["X-filename","X-Message"]
 	)

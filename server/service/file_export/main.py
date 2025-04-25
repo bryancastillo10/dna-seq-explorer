@@ -27,7 +27,9 @@ def export_csv(request):
     output.seek(0)
     filename = prepare_download_filename(request, "csv")
     return StreamingResponse(output, media_type="text/csv", headers={
-        "Content-Disposition": f"attachment; filename={filename}"
+        "Content-Disposition": f"attachment; filename={filename}",
+        "X-Message": "CSV file saved successfully",
+        "X-Filename": filename
     })
 
 
@@ -47,7 +49,9 @@ def export_plain(request):
     output.seek(0)
     filename = prepare_download_filename(request, "txt")
     return StreamingResponse(output, media_type="text/plain", headers={
-        "Content-Disposition": f"attachment; filename={filename}"
+        "Content-Disposition": f"attachment; filename={filename}",
+        "X-Message":"TXT file saved successfully",
+        "X-Filename": filename
     })
 
 
@@ -70,5 +74,7 @@ def export_pdf(request):
 
     buffer.seek(0)
     return StreamingResponse(buffer, media_type="application/pdf", headers={
-        "Content-Disposition": f"attachment; filename={filename}"
+        "Content-Disposition": f"attachment; filename={filename}",
+        "X-Message":"PDF file saved successfully",
+        "X-Filename": filename
     })
