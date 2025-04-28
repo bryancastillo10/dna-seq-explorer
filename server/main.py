@@ -22,7 +22,7 @@ app.include_router(exportResultsRoute, prefix="/export")
 ENV = os.getenv("ENV","development")
 
 if ENV == "production":
-    app.mount("/", StaticFiles(directory="../client/dist", html=True), name="static")
+    app.mount("/", StaticFiles(directory="/client/dist", html=True), name="static")
 
 if __name__ == "__main__":
     import uvicorn
