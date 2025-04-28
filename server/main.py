@@ -1,6 +1,7 @@
 import os
 
-from fastapi import FastAPI 
+from fastapi import FastAPI
+from fastapi.staticfiles import StaticFiles 
 from dotenv import load_dotenv
 
 from api.singleSequence import analysisRoute
@@ -17,6 +18,11 @@ configure_cors(app)
 app.include_router(analysisRoute, prefix="/analysis")
 app.include_router(sequencingRoute, prefix="/sequencing")
 app.include_router(exportResultsRoute, prefix="/export")
+
+ENV = os.getenv("ENV","development")
+
+if ENV == "production":
+    app.mount("/", StaticFiles(directory="../client/dist", html=True), name="static")
 
 if __name__ == "__main__":
     import uvicorn
