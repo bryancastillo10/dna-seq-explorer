@@ -13,13 +13,11 @@ RUN yarn build
 # Build Server
 FROM python:3.11-slim
 
-WORKDIR /server
+WORKDIR /app
 
-COPY server/requirements.txt ./
+COPY server/ /app/
 
 RUN pip install --no-cache-dir -r requirements.txt
-
-COPY server .
 
 COPY --from=client-builder /client/dist ./client/dist
 
@@ -27,4 +25,4 @@ EXPOSE 8000
 
 ENV ENV=production
 
-CMD ["uvicorn","main:app","--host","0.0.0.0","--port","8000"]
+CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
