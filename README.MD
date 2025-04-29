@@ -4,7 +4,7 @@ This **React-Typescript & Python-FastAPI** web application helps life science en
 
 The architecture of this app does not include storage system (no database), but it offers a **report export feature** for saving the analysis results. For the tech stacks, the client side is mainly built from React-Typescript, together with Material UI, Tanstack Router, React-Query, and Zustand. Meanwhile, the server side is powered by Python-FastAPI with libraries such as numpy, reportlab, pydantic, and sci-kit learn.
 
-## Client Side Directory
+## 1. Client Side Directory
 
 ```bash
 #client/src
@@ -32,7 +32,7 @@ The architecture of this app does not include storage system (no database), but 
 └── 📖zustand
 
 ```
-## Server Side Directory
+## 2. Server Side Directory
 
 ```bash
 ├── 🛜 api
@@ -50,13 +50,13 @@ The architecture of this app does not include storage system (no database), but 
 
 ```
 
-### Preview (Screenshots)
+## 3. Preview (Screenshots)
 
 ![Alt text](preview1.png)
 
 ![Alt text](preview2.png)
 
-### User Features
+## 4. User Features
 
 ![Static Badge](https://img.shields.io/badge/Basic_Sequence_Analysis-%23006da3?style=flat)
 
@@ -77,3 +77,18 @@ The architecture of this app does not include storage system (no database), but 
 ![Static Badge](https://img.shields.io/badge/Global_Pairwise_Sequence_Analysis-%23006da3?style=flat)
 
 > Global pairwise sequence alignment feature based on the scoring system by Neeedleman-Wunsch algorithm. It is suitable for comparing an entire sequence of DNA or protein to reveal evolutionary relationships and functional similarities.
+
+## 5 API Documentation
+This project demonstrates REST API using Python FastAPI framework which are generally several POST request methods for analysis and export file feature.
+
+📖 **[View Full Documentation](server/docs/index.md)**
+
+## 6 Licenses
+
+MIT License
+
+Copyright (c) 2025 Bryan Castillo
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
