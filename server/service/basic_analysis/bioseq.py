@@ -10,7 +10,7 @@ class BioSeq:
         self.seq_type = seq_type
         self.is_valid = self.__validate()
         if not self.is_valid:
-            raise ValueError(f"Invalid sequence at {self.label}, please make sure it matches the provided sequence type")
+            raise ValueError(f"Invalid sequence, please make sure it matches the provided sequence type")
 
     def __validate(self):
         """Check if the sequence is valid for its biomolecule type."""
