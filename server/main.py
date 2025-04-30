@@ -3,6 +3,7 @@ import os
 from fastapi import FastAPI
 from fastapi.staticfiles import StaticFiles 
 from dotenv import load_dotenv
+from pathlib import Path
 
 from api.singleSequence import analysisRoute
 from api.pairSequence import sequencingRoute
@@ -21,8 +22,11 @@ app.include_router(exportResultsRoute, prefix="/export")
 
 ENV = os.getenv("ENV","development")
 
-if ENV == "production":
-    app.mount("/", StaticFiles(directory="../client/dist", html=True), name="static")
+current_dir = Path(__file__).resolve().parent
+static_path = current_dir / "client" / "dist"
+
+if ENV == "production" and static_path.exists():
+    app.mount("/", StaticFiles(directory=static_path, html=True), name="static")
 
 if __name__ == "__main__":
     import uvicorn
