@@ -3,6 +3,7 @@ import pickle
 
 from utils.bioStruct import Codon_Order 
 from utils.prediction_references import DNA_Types, Kingdoms
+from utils.modelPath import DNAType_Model_Path, Kingdom_Model_Path
 
 class ClassifyCodon:
 
@@ -25,7 +26,7 @@ class ClassifyCodon:
 
     def classify_dna_type(codon_usage: dict):
         """Use a pre-trained model to classify DNA Type based on codon usage."""
-        with open('../ml/dnaTypePrediction.pkl', 'rb') as file:
+        with open(DNAType_Model_Path, 'rb') as file:
             trained_model = pickle.load(file)
 
         features = {codon: 0.0 for codon in Codon_Order}
@@ -43,7 +44,7 @@ class ClassifyCodon:
 
     def classify_kingdom_taxa(codon_usage: dict):
         """Use a pre-trained model to classify  Kingdom based on codon usage."""
-        with open('../ml/kingdomTaxaPrediction.pkl', 'rb') as file:
+        with open(Kingdom_Model_Path, 'rb') as file:
             trained_model = pickle.load(file)
 
         features = {codon: 0.0 for codon in Codon_Order}
