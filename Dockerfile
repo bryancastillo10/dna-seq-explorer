@@ -17,6 +17,9 @@ WORKDIR /server
 
 COPY server .
 
+COPY ml/dnaTypePrediction.pkl ./ml/dnaTypePrediction.pkl
+COPY ml/kingdomTaxaPrediction.pkl ./ml/kingdomTaxaPrediction.pkl
+
 RUN pip install --no-cache-dir -r requirements.txt
 
 COPY --from=client-builder /client/dist ./client/dist
