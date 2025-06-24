@@ -32,6 +32,7 @@ The architecture of this app does not include storage system (no database), but 
 └── 📖zustand
 
 ```
+
 ## 2. Server Side Directory
 
 ```bash
@@ -52,9 +53,9 @@ The architecture of this app does not include storage system (no database), but 
 
 ## 3. Preview (Screenshots)
 
-![Alt text](preview1.png)
+![dna-seq-explorer-screenshot-1](preview1.png)
 
-![Alt text](preview2.png)
+![dna-seq-explorer-screenshot-2](preview2.png)
 
 ## 4. User Features
 
@@ -78,12 +79,17 @@ The architecture of this app does not include storage system (no database), but 
 
 > Global pairwise sequence alignment feature based on the scoring system by Neeedleman-Wunsch algorithm. It is suitable for comparing an entire sequence of DNA or protein to reveal evolutionary relationships and functional similarities.
 
-## 5 API Documentation
+## 5 Software System Architecture & Machine Learning Workflow
+
+![dna-seq-explorer-architecture](architecture.png)
+
+## 6 API Documentation
+
 This project demonstrates REST API using Python FastAPI framework which are generally several POST request methods for analysis and export file feature.
 
 📖 **[View Full Documentation](server/docs/index.md)**
 
-## 6 Licenses
+## 7 Licenses
 
 MIT License
 
