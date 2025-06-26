@@ -83,6 +83,9 @@ The architecture of this app does not include storage system (no database), but 
 
 ![dna-seq-explorer-architecture](architecture.png)
 
+Raw Data Preprocessing & AI Modeling (AI Development Phase)
+![machine-learning](machine-learning-screenshot.png)
+
 ## 6 API Documentation
 
 This project demonstrates REST API using Python FastAPI framework which are generally several POST request methods for analysis and export file feature.
