@@ -86,6 +86,8 @@ The architecture of this app does not include storage system (no database), but 
 Raw Data Preprocessing & AI Modeling (AI Development Phase)
 ![machine-learning](machine-learning-screenshot.png)
 
+![machine-learning-2](machine-learning-screenshot-2.png)
+
 ## 6 API Documentation
 
 This project demonstrates REST API using Python FastAPI framework which are generally several POST request methods for analysis and export file feature.
